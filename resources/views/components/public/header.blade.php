@@ -1,7 +1,7 @@
 <header class="z-[1000]">
     <div class="w-full mx-auto absolute right-0 left-0 bg_color z-[1000] px-4 lg:px-16">
         <div x-data="{ open: false }"
-            class="flex flex-col w-full mx-auto lg:items-center lg:justify-between lg:flex-row py-5"
+            class="flex flex-col w-full mx-auto lg:items-center lg:justify-between lg:flex-row py-5 px-0 sm:px-4 md:px-5 lg:px-0 2xl:px-4"
             x-init="$watch('open', value => document.body.classList.toggle('overflow-hidden', value))">
             <div class="flex flex-row items-center justify-between z-[1000] lg:w-auto lg:mx-0 lg:pr-10">
                 <a href="{{ route('index') }}"
