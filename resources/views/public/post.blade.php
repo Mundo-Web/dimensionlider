@@ -18,13 +18,13 @@
 
     <main class="bg-[#FAFAFA]">
         <section class="w-11/12 mx-auto pt-32 flex flex-col gap-10 pb-20">
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-1" data-aos="fade-up" data-aos-duration="150">
                 <h2 class="font-satoshiBold text-text48 md:text-text64 text-[#000929] leading-tight">Donec non imperdiet
                     nisi, <span class="text-[#2E609D]">et eleifend est proin lacinia efficitur</span> </h2>
                 <p class="text-[#2E609D] font-satoshiMedium text-text18">12 Abril, 2024</p>
             </div>
 
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
                 <p class="text-[#000929] font-satoshiRegular text-opacity-50 text-text18">
                     Donec tincidunt turpis lacinia nulla ultricies, quis sagittis nisl feugiat. Ut lobortis dui et risus
                     vulputate, ut placerat felis rhoncus. Proin iaculis tellus massa, non mattis nulla malesuada ultrices.
@@ -36,7 +36,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
                 <div class="flex flex-col gap-2">
                     <h2 class="font-satoshiMedium text-text32 text-[#000929] leading-tight">Vestibulum vehicula urna arcu
                     </h2>
@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-duration="150">
                 <h2 class="font-satoshiBold text-text32 text-[#000929] leading-tight">Nunc tincidunt sollicitudin lectus a
                     ornare</h2>
                 <p class="text-[#000929] font-satoshiRegular text-opacity-50 text-text18">
@@ -81,7 +81,7 @@
             </div>
 
 
-            <div class="flex flex-wrap gap-4 justify-center">
+            <div class="flex flex-wrap gap-4 justify-center" data-aos="fade-up" data-aos-duration="150">
                 <p
                     class="bg-[#FCFCFC] flex-grow text-[#000929] font-satoshiMedium text-text18 border-l-8 border-[#2E609D]  px-3 py-2 w-full md:w-5/12 lg:w-3/12">
                     Phasellus efficitur magna eget orci posuere, at pretium metus
@@ -101,7 +101,7 @@
             </div>
 
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-duration="150">
                 <h2 class="font-satoshiBold text-text32 text-[#000929] leading-tight">Nunc tincidunt sollicitudin lectus a
                     ornare</h2>
                 <p class="text-[#000929] font-satoshiRegular text-opacity-50 text-text18">

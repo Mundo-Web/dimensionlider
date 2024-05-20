@@ -132,7 +132,7 @@
     
                 </div>
                 <div class="flex order-2 md:order-1">
-                    <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32">
+                    <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32" data-aos="fade-up" data-aos-duration="150">
                         <h2 class="text-[#000929] font-satoshiBold text-text52 leading-tight">Compra, alquila o vende tu
                             propiedad fácilmente</h2>
                         <p class="text-[#000929] font-satoshiRegular text-text20 text-opacity-50">Una gran plataforma para

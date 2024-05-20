@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex justify-between md:justify-start items-center gap-3">
+                            <div class="flex justify-between md:justify-start items-center gap-3" data-aos="fade-up" data-aos-duration="150">
                                 <div
                                     class="flex justify-center items-center gap-2 bg-[#2E609D] py-2 px-3 rounded-lg border border-[#2E609D] cursor-pointer">
                                     <div>
@@ -142,7 +142,8 @@
 
                             <div class="flex flex-col gap-2">
                                 <h2 class="text-[#000929] font-satoshiBold text-text28 md:text-text32 leading-tight">Piso en
-                                    alquiler de 2 habitaciones, 65m²</h2>
+                                    alquiler de 2 habitaciones, 65m²
+                                </h2>
                                 <div
                                     class="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2">
                                     <p class="text-[#000929] font-satoshiRegular text-text16">Calle Leopoldo Couto 345, San
@@ -166,7 +167,7 @@
 
                     <div
                         class="order-3 lg:order-3 col-span-1 row-span-1 lg:col-span-4 lg:row-span-1 bg-[#FAFAFA] flex flex-col gap-5">
-                        <div class="bg-[#FFFFFF] flex flex-wrap justify-between items-center gap-5 rounded-xl p-4 md:p-8 ">
+                        <div class="bg-[#FFFFFF] flex flex-wrap justify-between items-center gap-5 rounded-xl p-4 md:p-8" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_26.svg') }}" alt="metros">
@@ -228,7 +229,7 @@
 
                         <div class="bg-[#FFFFFF] px-4 py-6 md:p-8 rounded-xl">
                             <div class="flex flex-col gap-10">
-                                <div class="flex gap-5 justify-start items-start w-full">
+                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -261,7 +262,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex gap-5 justify-start items-start w-full">
+                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -301,7 +302,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex gap-5 justify-start items-start w-full">
+                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -346,7 +347,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex gap-5 justify-start items-start w-full bg-[#F7F7FD] p-5 rounded-xl">
+                                <div class="flex gap-5 justify-start items-start w-full bg-[#F7F7FD] p-5 rounded-xl" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -377,7 +378,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#FAFAFA] order-2 lg:order-2 col-span-1 row-span-1 lg:col-span-2 lg:row-span-2">
+                    <div class="bg-[#FAFAFA] order-2 lg:order-2 col-span-1 row-span-1 lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-duration="150">
                         <div class="bg-[#F7F7FD] md:bg-[#FFFFFF]  rounded-xl px-4 py-6 md:p-8 ">
                             <div class="flex flex-col gap-10">
                                 <div class="flex justify-between items-center">

@@ -246,7 +246,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -338,7 +338,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -430,7 +430,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -522,7 +522,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -614,7 +614,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -706,7 +706,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -798,7 +798,7 @@
                                                 </p>
                                             </div>
 
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                                 Condomínio: R$ 150,00
                                             </p>
                                         </div>
@@ -893,7 +893,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>
@@ -983,7 +983,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>
@@ -1073,7 +1073,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>
@@ -1163,7 +1163,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>
@@ -1253,7 +1253,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>
@@ -1343,7 +1343,7 @@
                                     </p>
                                 </div>
 
-                                <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
                                     Condomínio: R$ 150,00
                                 </p>
                             </div>

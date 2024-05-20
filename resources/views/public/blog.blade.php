@@ -17,7 +17,7 @@
 @section('content')
 <main class="bg-[#FAFAFA]">
     <section class="w-11/12 mx-auto pt-32 flex flex-col gap-10 pb-20">
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-duration="150">
             <h2 class="text-[#000929] font-satoshiBold text-text32 md:text-text52 leading-tight">
                 En Dimensión Lider te brindamos <span class="text-[#2E609D]">información útil y algunas recomendaciones</span>
             </h2>
@@ -26,7 +26,7 @@
 
         <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-12">
             <div class="md:basis-4/6 order-2 md:order-1 flex flex-col gap-10">
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                     <div class="flex justify-center items-center">
                         <img src="{{asset('images/img/image_20.png')}}" alt="blog" class="w-full h-[450px] object-cover rounded-xl hidden md:block">
                         <img src="{{asset('images/img/image_21.png')}}" alt="blog" class="w-full h-[450px] object-cover rounded-xl block md:hidden">
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-10">
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_22.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_23.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_24.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_25.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_22.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_23.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_24.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_25.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -152,7 +152,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_22.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_23.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -177,7 +177,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-center items-center">
                             <img src="{{asset('images/img/image_24.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl hidden md:block">
                             <img src="{{asset('images/img/image_25.png')}}" alt="blog" class="w-full h-[300px] object-cover rounded-xl block md:hidden">
@@ -204,7 +204,7 @@
                 </div>
             </div>
 
-            <div class="md:basis-2/6 order-1 md:order-2 flex flex-col gap-5">
+            <div class="md:basis-2/6 order-1 md:order-2 flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                 <h3 class="text-[#000929] font-satoshiBold text-text20">Blog categorias</h3>
                 <div class="flex flex-col gap-3">
                     <a href="#" class="text-text18 py-3 px-4 rounded-lg font-satoshiBold text-white bg-[#2E609D]">Todas</a>

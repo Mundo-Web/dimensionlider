@@ -15,8 +15,8 @@
 
 @section('content')
     <main class="bg-[#FAFAFA]">
-        <section class="w-11/12 mx-auto pt-24 flex flex-col gap-10 md:gap-20">
-            <div class=" w-full md:max-w-[740px] mx-auto flex flex-col gap-3">
+        <section class="w-11/12 mx-auto flex flex-col gap-10 md:gap-20 pt-32">
+            <div class=" w-full md:max-w-[740px] mx-auto flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
                 <h2 class="text-[#000929] text-text44 md:text-text64 font-satoshiBold leading-tight text-center">Compra,
                     alquila o vende tu
                     propiedad <span class="text-[#2E609D]">fácilmente</span> </h2>
@@ -28,7 +28,7 @@
                 <img src="{{ asset('images/img/image_19.png') }}" alt="inmobiliaria"
                     class="h-[223px] w-full md:h-[800px] object-cover rounded-xl">
                 <div
-                    class="flex justify-center max-w-[848px] mx-auto gap-2 md:gap-5 absolute left-0 right-0 -bottom-[18%] md:bottom-[5%]">
+                    class="flex justify-center max-w-[848px] mx-auto gap-2 md:gap-5 absolute left-0 right-0 -bottom-[18%] md:bottom-[5%]" data-aos="fade-up" data-aos-duration="150">
                     <div
                         class="flex flex-col gap-2 bg-[#F7F7FD] rounded-xl p-2 md:p-5 max-w-[96px] md:max-w-[210px] lg:max-w-[270px] flex-1">
                         <p class="font-satoshiBold text-text20 md:text-text40 text-[#000929] leading-tight">200+</p>
@@ -54,7 +54,7 @@
         <section>
             <div class="flex flex-col lg:flex-row justify-between items-center w-11/12 mx-auto pt-20 gap-10">
                 <div class="flex flex-col gap-5 lg:basis-2/6 items-center">
-                    <div class="w-full lg:max-w-[420px] flex flex-col gap-5">
+                    <div class="w-full lg:max-w-[420px] flex flex-col gap-5" data-aos="fade-up" data-aos-duration="150">
                         <h3 class="text-[#000929] font-satoshiBold text-text32 md:text-text40 leading-tight">Nuestros
                             <span class="text-[#2E609D]">valores</span>
                         </h3>
@@ -74,7 +74,7 @@
                 <div class="lg:basis-4/6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div
-                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300">
+                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex gap-4 justify-start items-center">
                                 <div>
                                     <svg width="74" height="75" viewBox="0 0 74 75" fill="none"
@@ -97,7 +97,7 @@
                         </div>
 
                         <div
-                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300">
+                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex gap-4 justify-start items-center">
                                 <div>
 
@@ -128,7 +128,7 @@
                         </div>
 
                         <div
-                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300">
+                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex gap-4 justify-start items-center">
                                 <div>
                                     <svg width="74" height="75" viewBox="0 0 74 75" fill="none"
@@ -168,7 +168,7 @@
                         </div>
 
                         <div
-                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300">
+                            class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex gap-4 justify-start items-center">
                                 <div>
 
@@ -244,7 +244,7 @@
 
         <section class="bg-[#F7F7FD]">
             <div class="w-11/12 mx-auto py-20 flex flex-col gap-10 ">
-                <div class="flex flex-col gap-3 w-full md:max-w-[830px] mx-auto">
+                <div class="flex flex-col gap-3 w-full md:max-w-[830px] mx-auto" data-aos="fade-up" data-aos-duration="150">
                     <h3 class="text-[#000929] font-satoshiBold text-text40 leading-tight text-center">Nuestros <span
                             class="text-[#2E609D]">logros</span> </h3>
                     <p class="text-[#000929] font-satoshiRegular text-text20 text-center text-opacity-50">Nuestra historia es
@@ -253,17 +253,17 @@
                 </div>
     
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300">
+                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                         <h3 class="font-satoshiMedium text-text32 text-[#000929] leading-tight group-hover:text-white md:duration-300">Más de 3 años de excelencia</h3>
                         <p class="text-[#000929] font-satoshiRegular text-text20 text-left text-opacity-50 group-hover:text-white group-hover:opacity-1 md:duration-300">Con más de 3 años en la industria, hemos acumulado una gran cantidad de conocimiento y experiencia, convirtiéndonos en un recurso de referencia...</p>
                     </div>
 
-                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300">
+                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                         <h3 class="font-satoshiMedium text-text32 text-[#000929] leading-tight group-hover:text-white md:duration-300">Clientes Felices</h3>
                         <p class="text-[#000929] font-satoshiRegular text-text20 text-left text-opacity-50 group-hover:text-white group-hover:opacity-1 md:duration-300">Nuestro mayor logro es la satisfacción de nuestros clientes. Sus historias de éxito alimentan nuestra pasión por lo que hacemos.</p>
                     </div>
 
-                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300">
+                    <div class="flex flex-col gap-3 rounded-xl bg-white py-5 px-6 group hover:bg-[#2E609D] md:duration-300" data-aos="fade-up" data-aos-duration="150">
                         <h3 class="font-satoshiMedium text-text32 text-[#000929] leading-tight group-hover:text-white md:duration-300">Reconocimiento de la industria</h3>
                         <p class="text-[#000929] font-satoshiRegular text-text20 text-left text-opacity-50 group-hover:text-white group-hover:opacity-1 md:duration-300">Nos hemos ganado el respeto de nuestros pares y líderes de la industria, con elogios y premios que reflejan nuestro compromiso con la excelencia.</p>
                     </div>
