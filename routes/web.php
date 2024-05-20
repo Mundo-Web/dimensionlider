@@ -49,23 +49,13 @@ use App\Models\AboutUs;
 
 /* Las rutas publicas */
 Route::get('/', [IndexController::class, 'index'] )->name('index');
+Route::get('/propiedades', [IndexController::class, 'propiedades'] )->name('propiedades');
+Route::get('/detalle', [IndexController::class, 'detalle'] )->name('detalle');
 Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
-Route::get('/servicios', [IndexController::class, 'servicios'] )->name('servicios');
-Route::get('/comentario', [IndexController::class, 'comentario'] )->name('comentario');
-Route::post('/comentario/nuevo', [IndexController::class, 'hacerComentario'] )->name('nuevocomentario');
+Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
+Route::get('/post', [IndexController::class, 'post'] )->name('post');
 Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
-/* Proceso de pago */
-Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
-Route::get('/pago', [IndexController::class, 'pago'] )->name('pago');
-Route::post('/procesar/pago',[IndexController::class, 'procesarPago'])->name('procesar.pago');
-Route::get('/agradecimiento', [IndexController::class, 'agradecimiento'] )->name('agradecimiento');
-/* Catálogo y producto */
-Route::get('/producto/{id}', [IndexController::class, 'producto'] )->name('producto');
-Route::get('/catalogo/{filtro}', [IndexController::class, 'catalogo'] )->name('catalogo');
-Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'] )->name('carrito.buscarProducto');
-/* Página 404 */
-Route::get('/404', [IndexController::class, 'error'] )->name('error');
-/* Formulario de contacto */
+
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos');
 
 

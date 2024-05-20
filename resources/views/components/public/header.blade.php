@@ -1,213 +1,107 @@
-<div class="navigation z-20">
-  <button aria-label="hamburguer" type="button" class="hamburger" id="position" onclick="show()">
-    <!-- <div id="bar1" class="bar"></div>
-      <div id="bar2" class="bar"></div>
-      <div id="bar3" class="bar"></div> -->
+<header class="z-[1000]">
+    <div class="w-full mx-auto absolute right-0 left-0 bg_color z-[1000] px-3 md:px-16">
+        <div x-data="{ open: false }"
+            class="flex flex-col w-full mx-auto lg:items-center lg:justify-between lg:flex-row py-5"
+            x-init="$watch('open', value => document.body.classList.toggle('overflow-hidden', value))">
+            <div class="flex flex-row items-center justify-between z-[1000] lg:w-auto lg:mx-0 lg:pr-10">
+                <a href="{{ route('index') }}"
+                    class="text-lg font-satoshiBold text-white rounded-lg focus:outline-none focus:shadow-outline flex justify-start items-center gap-2"
+                    :class="{ 'text-black': open, 'text-white': !open }">
+                    <div>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_5_2178)">
+                                <path
+                                    d="M25.333 11.6132L18.2224 6.08252C17.5984 5.59707 16.8303 5.3335 16.0397 5.3335C15.2491 5.3335 14.4811 5.59707 13.857 6.08252L6.74505 11.6132C6.31764 11.9456 5.97184 12.3712 5.73405 12.8577C5.49627 13.3441 5.37279 13.8784 5.37305 14.4199V24.0199C5.37305 24.7271 5.654 25.4054 6.1541 25.9055C6.65419 26.4056 7.33247 26.6865 8.03971 26.6865H24.0397C24.747 26.6865 25.4252 26.4056 25.9253 25.9055C26.4254 25.4054 26.7064 24.7271 26.7064 24.0199V14.4199C26.7064 13.3225 26.1997 12.2865 25.333 11.6132Z"
+                                    fill="white" stroke="white" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21.3346 20C18.388 21.7773 13.612 21.7773 10.668 20" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="stroke-strokeWithe lg:stroke-strokeAzul" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_5_2178">
+                                    <rect width="32" height="32" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
 
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 2L2 18M18 18L2 2" stroke="white" stroke-width="2.66667" stroke-linecap="round" />
-        </svg>
-    </button>
-    <nav class="menu-list">
-        <ul>
-            <li>
-                <a href="/" class="">Home</a>
-            </li>
-            <li>
-                <a href="{{ route('catalogo', 0) }}" class="">Catálogo</a>
-            </li>
-            <li>
-                <a href="{{ route('contacto') }}" class="">Contacto</a>
-            </li>
-            <li>
-                <a href="{{ route('comentario') }}" class="">Comentar</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-
-<header>
-  <div class="absolute z-10 md:hidden top-[65px] left-[10px]">
-
-    <button aria-label="hamburguer" class="hamburger" onclick="show()">
-      <img src="{{ asset('images/img/menu_hamburguer.png') }}" alt="menu hamburguesa" class="w-44" />
-    </button>
-
-    </div>
-    @foreach ($datosgenerales as $item)
-        <div class="bg-colorBackgroundHeader">
-            <div class="flex justify-center md:justify-end gap-5 w-11/12 mx-auto py-4">
-                <div class="text-white font-normal font-poppins text-[14px] text-center w-full">
-                    {{ $item->htop }}
-                </div>
-            </div>
-        </div>
-    @endforeach
-    <div>
-        <div class="flex justify-between items-center w-11/12 mx-auto my-5">
-            <div class="hidden md:block">
-                <a href="{{ route('index') }}">
-                    <img src="{{ asset('images/svg/logo_decotab_header.svg') }}" alt="decotab" />
+                    <span>Dimensión lider</span>
                 </a>
+                <button class="lg:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+                    <svg fill="#fff" viewBox="0 0 20 20" class="w-8 h-8">
+                        <path x-show="!open" fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                        <path x-show="open" fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav :class="{ 'flex fixed inset-0 bg-slate-400 pt-20': open, 'hidden bg-transparent pt-0': !open }"
+                class="flex-col flex-grow pb-4 md:pb-0 hidden lg:flex lg:justify-between lg:flex-row gap-10 lg:gap-0 lg:items-center">
+                <div class="flex flex-col lg:flex-row gap-5 lg:gap-10 w-11/12 lg:w-auto mx-auto lg:mx-0">
+                    <a class="py-2 text-text16 font-satoshiBold text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('index') }}">Inicio</a>
+                    <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('propiedades') }}">Propiedades</a>
 
-        <!--  <p class="font-medium text-[24px] font-poppins">DecoTab</p> -->
-      </div>
-      <div class="hidden md:block">
-        <div>
-          <nav class="text-black flex gap-5">
-            <a href="{{ route('index') }}" class="font-medium font-poppins text-[14px]  hover:bg-slate-300">Home
-            </a>
-            <a href="{{ route('catalogo', 0) }}"
-              class="font-medium font-poppins text-[14px] hover:bg-slate-300">Catálogo
-            </a>
-            <a href="{{ route('contacto') }}" class="font-medium font-poppins text-[14px] hover:bg-slate-300">Contacto
-            </a>
 
-            <a href="{{ route('comentario') }}" class="font-medium font-poppins text-[14px] hover:bg-slate-300">Comentar
-            </a>
-          </nav>
-        </div>
-
-        <!-- <div class="sm:hidden">
-            <button
-              aria-label="hamburguer"
-              class="hamburger"
-              onclick="show()"
-            >
-              <div id="bar1" class="bar"></div>
-              <div id="bar2" class="bar"></div>
-              <div id="bar3" class="bar"></div>
-            </button>
-          </div> -->
-      </div>
-
-      <div class="flex justify-end w-full md:w-auto md:justify-center items-center gap-5">
-        {{-- <a href="{{route('catalogo')}}"><img src="{{ asset('images/svg/search_header.svg') }}" alt="buscar" /></a> --}}
-        @if (Auth::user() == null)
-          <a href="{{ route('login') }}"><img src="{{ asset('images/svg/header_user.svg') }}" alt="user" /></a>
-        @else
-          <div class="relative inline-flex" x-data="{ open: false }">
-            <button class="inline-flex justify-center items-center group" aria-haspopup="true"
-              @click.prevent="open = !open" :aria-expanded="open">
-              <div class="flex items-center truncate">
-                <span
-                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200">{{ Auth::user()->name }}</span>
-                <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
-                  <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                </svg>
-              </div>
-            </button>
-            <div
-              class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
-              @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
-              <ul>
-                <li class="hover:bg-gray-100">
-                  <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('pedidos') }}"
-                    @click="open = false" @focus="open = true" @focusout="open = false">Mis pedidos</a>
-                </li>
-                <li class="hover:bg-gray-100">
-                  <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('direccion') }}"
-                    @click="open = false" @focus="open = true" @focusout="open = false">Dirección</a>
-                </li>
-                <li class="hover:bg-gray-100">
-                  <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('micuenta') }}"
-                    @click="open = false" @focus="open = true" @focusout="open = false">Ajustes</a>
-                </li>
-                <li class="hover:bg-gray-100">
-                  <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <button type="submit" class="font-medium text-sm text-black flex items-center py-1 px-3"
-                      href="{{ route('logout') }}" @click.prevent="$root.submit(); open = false">
-                      {{ __('Cerrar sesión') }}
+                    {{-- <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button @click="open = !open"
+                        class="flex flex-row items-center w-full py-2 text-text16 font-satoshiRegular text-left bg-transparent md:w-auto md:inline focus:outline-none focus:shadow-outline text-white">
+                        <span>Propiedades</span>
+                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{ 'rotate-180': open, 'rotate-0': !open }"
+                            class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </button>
-                  </form>
-                </li>
-              </ul>
-            </div>
-          </div>
-        @endif
+                    <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="transform opacity-0 scale-95"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="transform opacity-100 scale-100"
+                        x-transition:leave-end="transform opacity-0 scale-95"
+                        class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg lg:w-48">
+                        <div class="px-2 py-2 bg-white rounded-md shadow w-full">
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{route('index')}}">Link #1sadad</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{route('index')}}">Link #2</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{route('index')}}">Link #3</a>
+                        </div>
+                    </div>
+                </div> --}}
 
+                    <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('nosotros') }}">Nosotros</a>
+                    <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('blog') }}">Blog</a>
+                    <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('contacto') }}">Contacto</a>
+                </div>
 
-
-
-
-
-
-        <div class="bg-[#EB5D2C] flex justify-center items-center rounded-full w-7 h-7">
-          <span id="itemsCount" class="text-white"></span>
+                <div class="flex justify-between items-center gap-5 w-11/12 lg:w-auto mx-auto lg:mx-0">
+                    <a href="{{ route('index') }}"
+                        class="text-white border-2 border-white text-text16 font-satoshiBold py-2 px-5 rounded-lg">Iniciar</a>
+                    <a href="{{ route('index') }}"
+                        class="text-white bg-[#2E609D] text-text16 font-satoshiBold py-3 px-8 rounded-lg bg_inscribir">Inscribirse</a>
+                </div>
+            </nav>
         </div>
-
-        <div class="flex justify-center items-center pl-2">
-          <label for="check" class="inline-block cursor-pointer">
-            <img src="{{ asset('images/svg/header_bag.svg') }}" alt="bag"
-              class="max-w-full h-auto cursor-pointer" id="openCarrito" />
-          </label>
-          <!-- ----- carritos  148 sad -->
-
-          <input type="checkbox" class="bag__modal" id="check" />
-          <!-- bag hidden  absolute -->
-          <div
-            class="bag hidden absolute top-0 right-0 z-[200] md:w-[450px] cartContainer border  shadow-2xl rounded-xl  ">
-            <!-- class="h-screen overflow-y-scroll " -->
-            <div class="p-4 flex flex-col h-screen justify-between">
-              <div class="flex justify-between ">
-                <h2 class="font-medium text-[28px] text-[#151515] pb-5">
-                  Carrito
-                </h2>
-                <div id="closeCarrito" class="cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                  </svg>
-
-                </div>
-
-
-              </div>
-
-              <div>
-
-              </div>
-              <div class="overflow-y-scroll h-auto scroll__carrito">
-                <div class="flex flex-col gap-10" id="itemsCarrito">
-
-
-
-                </div>
-              </div>
-
-              <div class="font-poppins flex flex-col gap-2 pt-24">
-
-                <div class="text-[#141718] font-medium text-[20px] flex justify-between items-center">
-                  <p>Total</p>
-                  <p id="itemsTotal">S/ 0.00</p>
-                </div>
-                <div>
-                  <a href="/carrito"
-                    class="font-semibold text-base bg-[#74A68D] py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">
-                    Checkout
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</header>
-<script>
-  function mostrarTotalItems() {
-    let articulos = Local.get('carrito')
-    let contarArticulos = articulos.reduce((total, articulo) => {
-      return total + articulo.cantidad;
-    }, 0);
 
-    $('#itemsCount').text(contarArticulos)
-  }
-  $(document).ready(function() {
-    mostrarTotalItems()
-  })
-</script>
-<script src="{{ asset('js/storage.extend.js') }}"></script>
+    <div class="flex justify-end w-11/12 mx-auto z-[200] relative">
+        <div class="fixed bottom-6 sm:bottom-[2rem] lg:bottom-[4rem] z-20">
+            <a target="_blank" href="#">
+                <img src="{{ asset('images/svg/imagen_49.svg') }}" alt="whatsapp" class="w-20 h-20 md:w-full md:h-full">
+            </a>
+        </div>
+    </div>
+
+</header>
