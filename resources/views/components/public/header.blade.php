@@ -27,7 +27,7 @@
                         </svg>
                     </div>
 
-                    <span>Dimensión lider</span>
+                    <span class="text-white">Dimensión lider</span>
                 </a>
                 <button class="lg:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="#fff" viewBox="0 0 20 20" class="w-8 h-8">
@@ -40,7 +40,7 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{ 'flex fixed inset-0 bg-slate-400 pt-20': open, 'hidden bg-transparent pt-0': !open }"
+            <nav :class="{ 'flex fixed inset-0 bg-slate-800 pt-20': open, 'hidden bg-transparent pt-0': !open }"
                 class="flex-col flex-grow pb-4 md:pb-0 hidden lg:flex lg:justify-between lg:flex-row gap-10 lg:gap-0 lg:items-center">
                 <div class="flex flex-col lg:flex-row gap-5 lg:gap-10 w-11/12 lg:w-auto mx-auto lg:mx-0">
                     <a class="py-2 text-text16 font-satoshiBold text-white focus:outline-none focus:shadow-outline cursor-pointer"
