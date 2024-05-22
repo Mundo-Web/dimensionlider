@@ -45,11 +45,11 @@
                 <div class="flex flex-col lg:flex-row gap-5 lg:gap-10 w-11/12 lg:w-auto mx-auto lg:mx-0">
                     <a class="py-2 text-text16 font-satoshiBold text-white focus:outline-none focus:shadow-outline cursor-pointer"
                         href="{{ route('index') }}">Inicio</a>
-                    <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
-                        href="{{ route('propiedades') }}">Propiedades</a>
+                    {{-- <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
+                        href="{{ route('propiedades') }}">Propiedades</a> --}}
 
 
-                    {{-- <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
                         class="flex flex-row items-center w-full py-2 text-text16 font-satoshiRegular text-left bg-transparent md:w-auto md:inline focus:outline-none focus:shadow-outline text-white">
                         <span>Propiedades</span>
@@ -76,7 +76,7 @@
                                 href="{{route('index')}}">Link #3</a>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                     <a class="py-2 text-text16 font-satoshiRegular text-white focus:outline-none focus:shadow-outline cursor-pointer"
                         href="{{ route('nosotros') }}">Nosotros</a>
