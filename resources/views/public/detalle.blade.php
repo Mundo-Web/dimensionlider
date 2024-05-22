@@ -445,11 +445,19 @@
                                 <p class="font-satoshiBold text-text18 text-[#000929]">R$ 7.872</p>
                             </div>
 
-                            <div class="w-full">
+                            <div class="w-full flex flex-col gap-5">
                                 <a href=""
                                     class="w-full flex justify-center items-center gap-2 bg-[#2E609D] text-white font-satoshiBold text-text16 py-4 px-8 rounded-lg">
                                     <div class="flex justify-center items-center">
                                         <img src="{{ asset('images/svg/imagen_35.svg') }}" alt="agendar">
+                                    </div>
+                                    Agendar visita
+                                </a>
+
+                                <a href=""
+                                    class="w-full flex justify-center items-center gap-2 border border-[#2E609D] text-[#2E609D] font-satoshiBold text-text16 py-4 px-8 rounded-lg">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_51.svg') }}" alt="agendar">
                                     </div>
                                     Agendar visita
                                 </a>
