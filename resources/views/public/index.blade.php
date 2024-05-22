@@ -252,9 +252,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -344,9 +346,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -436,9 +440,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -528,9 +534,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -620,9 +628,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -712,9 +722,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -804,9 +816,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -899,9 +913,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -989,9 +1005,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -1079,9 +1097,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -1169,9 +1189,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -1259,9 +1281,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -1349,9 +1373,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -1492,9 +1518,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -1584,9 +1612,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -1676,9 +1706,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -1768,9 +1800,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -1860,9 +1894,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -1952,9 +1988,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -2044,9 +2082,11 @@
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                            <a href="{{route('detalle')}}">
+                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
                                                 Cond. Las Brisas
-                                            </h2>
+                                                </h2>
+                                            </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                                 Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                             </p>
@@ -2139,9 +2179,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -2229,9 +2271,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -2319,9 +2363,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -2409,9 +2455,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -2499,9 +2547,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
@@ -2589,9 +2639,11 @@
                             </div>
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                <a href="{{route('detalle')}}">
+                                    <h2 class="text-[#000929] font-satoshiBold text-text32">
                                     Cond. Las Brisas
-                                </h2>
+                                    </h2>
+                                </a>
                                 <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
                                     Av. Los Aires 634, Puenta Piedra, Lima, Perú
                                 </p>
