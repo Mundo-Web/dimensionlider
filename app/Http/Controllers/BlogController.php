@@ -41,6 +41,17 @@ class BlogController extends Controller
   /**
    * Store a newly created resource in storage.
    */
+  public function saveImg($file, $route, $nombreImagen)
+  {
+    $manager = new ImageManager(new Driver());
+    $img = $manager->read($file);
+    if (!file_exists($route)) {
+      mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+    }
+    $img->save($route . $nombreImagen);
+  }
+
+
   public function store(Request $request)
   {
 
@@ -53,49 +64,20 @@ class BlogController extends Controller
 
     if ($request->hasFile("imagen")) {
 
-      $manager = new ImageManager(new Driver());
-
-      $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
-
-      $img =  $manager->read($request->file('imagen'));
-
-      //seteamos el tamaño de que deben de tener las imagenes que se suban
-      $qwidth = 808;
-      $qheight = 445;
-
-      // Obtener las dimensiones de la imagen que se esta subiendo
-      $width = $img->width();
-      $height = $img->height();
-
-      if ($width > $height) {
-        //dd('Horizontal');
-        //si es horizontal igualamos el alto de la imagen a alto que queremos
-        $img->resize(height: 445)->crop(808, 445);
-      } else {
-        //dd('Vertical');
-        //En caso sea vertical la imagen
-        //gualamos el ancho y cropeamos
-        $img->resize(width: 808)->crop(808, 445);
-      }
-
-
-      $ruta = storage_path() . '/app/public/images/posts/';
-
-      $img->save($ruta . $nombreImagen);
-
-
-      $post->url_image = $ruta;
-      $post->name_image = $nombreImagen;
+      $file = $request->file('imagen');
+        $routeImg = 'storage/images/imagen/';
+        $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+        $this->saveImg($file, $routeImg, $nombreImagen);
+        $post->url_image = $routeImg . $nombreImagen;
+        $post->name_image = $nombreImagen;
     }
 
     $post->category_id = $request->category_id;
-    $post->title = $request->title;
-    $post->description = $request->description;
-    $post->status = 1;
-    $post->visible = 1;
-
-
-
+      $post->title = $request->title;
+      $post->extracto = $request->extracto;
+      $post->description = $request->description;
+      $post->status = 1;
+      $post->visible = 1;
     $post->save();
 
     return redirect()->route('blog.index')->with('success', 'Publicación creado exitosamente.');
@@ -124,62 +106,34 @@ class BlogController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request)
+  public function update(Request $request, $id)
   {
 
-    $old_name = Blog::find($request->id)->name_image;
-
-    $post = Blog::find($request->id);
+    $blog = Blog::findOrfail($id);
+    $blog->title = $request->title;
+    $blog->extracto = $request->extracto;
+    $blog->description = $request->description;
 
 
     if ($request->hasFile("imagen")) {
 
-      $manager = new ImageManager(new Driver());
+      $file = $request->file('imagen');
+      $routeImg = 'storage/images/blogs/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
 
+      $this->saveImg($file, $routeImg, $nombreImagen);
 
-      $ruta = storage_path() . '/app/public/images/posts/' . $old_name;
-
-      // dd($ruta);
-      if (File::exists($ruta)) {
-        File::delete($ruta);
-      }
-
-      $rutanueva = storage_path() . '/app/public/images/posts/';
-      $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
-
-      $img =  $manager->read($request->file('imagen'));
-
-      $width = $img->width();
-      $height = $img->height();
-
-      $qwidth = 808;
-      $qheight = 445;
-
-      if ($width > $height) {
-        //dd('Horizontal');
-        //si es horizontal igualamos el alto de la imagen a alto que queremos
-        $img->resize(height: 445)->crop(808, 445);
-      } else {
-        //dd('Vertical');
-        //En caso sea vertical la imagen
-        //igualamos el ancho y cropeamos
-        $img->resize(width: 808)->crop(808, 445);
-      }
-
-
-      $img->save($rutanueva . $nombreImagen);
-
-
-      $post->url_image = $rutanueva;
-      $post->name_image = $nombreImagen;
+      $blog->url_image = $routeImg . $nombreImagen;
+      $blog->name_image = $nombreImagen;
     }
 
-    $post->category_id = $request->category_id;
-    $post->title = $request->title;
-    $post->description = $request->description;
-
-
-    $post->update();
+      $blog->category_id = $request->category_id;
+      $blog->title = $request->title;
+      $blog->extracto = $request->extracto;
+      $blog->description = $request->description;
+      
+      $blog->save();
+  
 
     return redirect()->route('blog.index')->with('success', 'Post actualizado');
   }

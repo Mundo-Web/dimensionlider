@@ -12,6 +12,7 @@ use App\Models\General;
 use App\Models\Index;
 use App\Models\Message;
 use App\Models\Products;
+use App\Models\Blog;
 use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
@@ -42,45 +43,95 @@ class IndexController extends Controller
     public function index()
     {
         // $productos = Products::all();
-        $general = General::all()->first();
+        $generales = General::all()->first();
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        $inmuebles = Products::where('visible', 1)->where('status', 1)->get();
 
-        return view('public.index', compact('general'));
+        return view('public.index', compact('generales', 'inmuebles', 'blogs'));
     }
 
     public function propiedades()
     {
-        $general = General::all()->first();
-        return view('public.propiedades', compact('general'));
+        $generales = General::all()->first();
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        return view('public.propiedades', compact('generales','blogs'));
     }
 
-    public function post()
+    public function post($id)
     {
-        $general = General::all()->first();
-        return view('public.post', compact('general'));
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        $generales = General::all()->first();
+        $blog = Blog::findOrFail($id);
+        /* $postById = Blog::where('category_id', $blog->category_id)->get(); */
+
+        $postAnterior = Blog::where('status', 1)->where('visible', 1)
+        ->where('id', '<', $blog->id)
+        ->orderBy('id', 'desc')
+        ->first();
+
+        $postSiguiente = Blog::where('status', 1)->where('visible', 1)
+            ->where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('public.post', compact('generales', 'blog', 'postSiguiente', 'postAnterior', 'blogs'));
     }
 
     public function nosotros()
     {
-        $general = General::all()->first();
-        return view('public.nosotros', compact('general'));
+        $generales = General::all()->first();
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        return view('public.nosotros', compact('generales', 'blogs'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
-        $general = General::all()->first();
-        return view('public.blog', compact('general'));
+        $generales = General::all()->first();
+        /* $blogs = Blog::where('visible', 1)->where('status', 1)->get(); */
+       
+
+        try {
+          $id = $request->id;
+          $categorias = Category::where('status', 1)->where('visible', 1)->select('id', 'name')->with('blogs')->get();
+          $categoria = Category::where('status', 1)->where('visible', 1)->select('id', 'name')->get();
+
+          
+          if($id == 0){
+            $blogs = Blog::where('status', 1)
+            ->where('visible', 1)->orderBy('created_at', 'desc')->get();
+
+            return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria'));
+          }else{
+            $blogs = Blog::where('status', 1)
+                        ->where('visible', 1)
+                        ->where('category_id', $id)
+                        ->orderBy('created_at', 'desc')->get();
+            $categoria = Category::where('status', 1)->where('visible', 1)->findOrFail($id);
+            return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria'));
+          }
+        
+          
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
+
+
     }
 
-    public function detalle()
+    public function detalle($id)
     {
-        $general = General::all()->first();
-        return view('public.detalle', compact('general'));
+        $generales = General::all()->first();
+        $inmueble = Products::findOrFail($id);
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+
+        return view('public.detalle', compact('generales', 'inmueble', 'blogs'));
     }
 
     public function contacto()
     {
-        $general = General::all()->first();
-        return view('public.contacto', compact('general'));
+        $generales = General::all()->first();
+        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        return view('public.contacto', compact('generales', 'blogs'));
     }
 
     public function micuenta()
@@ -144,11 +195,11 @@ class IndexController extends Controller
     public function guardarContacto(Request $request)
     {
         $data = $request->all();
-        $data['full_name'] = $request->name . ' ' . $request->last_name;
+        $data['full_name'] = $request->full_name;
 
         try {
             $reglasValidacion = [
-                'name' => 'required|string|max:255',
+                /* 'name' => 'required|string|max:255', */
                 'email' => 'required|email|max:255',
             ];
             $mensajes = [
@@ -181,167 +232,12 @@ class IndexController extends Controller
     private function envioCorreo($data)
     {
         $name = $data['full_name'];
-        $mensaje = 'Gracias por comunicarte con Decotab';
+        $mensaje = 'Gracias por comunicarte con Dimensión Lider';
         $mail = EmailConfig::config($name, $mensaje);
         // dd($mail);
         try {
             $mail->addAddress($data['email']);
-            $mail->Body =
-                '<html lang="es">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Mundo web</title>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-          />
-          <style>
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-          </style>
-        </head>
-        <body>
-          <main>
-            <table
-              style="
-                width: 600px;
-                height: 700px;
-                margin: 0 auto;
-                text-align: center;
-                background-image: url(https://decotab.pe/mail/ImagenFondo.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-              "
-            >
-              <thead>
-                <tr>
-                  <th
-                    style="
-                      display: flex;
-                      flex-direction: row;
-                      justify-content: center;
-                      align-items: center;
-                      margin: 40px;
-                    "
-                  >
-                    <img src="https://decotab.pe/mail/LogoP.png" alt="mundo web"  style="
-                    margin: auto;
-                  "/>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-weight: 500;
-                        font-size: 18px;
-                        text-align: center;
-                        width: 500px;
-                        margin: 0 auto;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 30px;
-                      "
-                    >
-                      <span style="display: block">Hola </span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-size: 40px;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 60px;
-                      "
-                    >
-                      <span style="display: block">' .
-                $name .
-                ' </span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #74a68d;
-                        font-size: 40px;
-                        font-family: Montserrat, sans-serif;
-                        font-weight: bold;
-                        line-height: 60px;
-                      "
-                    >
-                      !Gracias
-                      <span style="color: #ffffff">por escribirnos!</span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-weight: 500;
-                        font-size: 18px;
-                        text-align: center;
-                        width: 250px;
-                        margin: 0 auto;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 30px;
-                      "
-                    >
-                      En breve estaremos comunicandonos contigo.
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style="
-                      display: flex;
-                      align-items: start;
-                      justify-content: center;
-                      padding-top: 20px;
-                    "
-                  >
-                    <a
-                      href="https://decotab.pe/"
-                      style="
-                        text-decoration: none;
-                        background-color: #74a68d;
-                        color: white;
-                        padding: 10px 16px;
-                        display: inline-flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        font-weight: 600;
-                        font-family: Montserrat, sans-serif;
-                        font-size: 16px;
-                        border-radius: 30px;
-                      "
-                    >
-                      <span>Visita nuestra web</span>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </main>
-        </body>
-      </html>
-      ';
+            $mail->Body = 'Te acabas de inscribir';
             $mail->isHTML(true);
             $mail->send();
         } catch (\Throwable $th) {
@@ -349,171 +245,20 @@ class IndexController extends Controller
         }
     }
 
-    private function envioCorreoCompra($data)
+    /* private function envioCorreoInterno($data)
     {
-        $name = $data['nombre'];
-        $mensaje = 'Gracias por comprar en Decotab';
+      $name = $data['full_name'];
+        $mensaje = 'Tellego un nuevo mensaje';
         $mail = EmailConfig::config($name, $mensaje);
+        $emailCliente = General::all()->first();
+        // dd($mail);
         try {
-            $mail->addAddress($data['email']);
-            $mail->Body =
-                '<html lang="es">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Mundo web</title>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-          />
-          <style>
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-          </style>
-        </head>
-        <body>
-          <main>
-            <table
-              style="
-                width: 600px;
-                height: 700px;
-                margin: 0 auto;
-                text-align: center;
-                background-image: url(https://decotab.pe/mail/ImagenFondo.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-              "
-            >
-              <thead>
-                <tr>
-                  <th
-                    style="
-                      display: flex;
-                      flex-direction: row;
-                      justify-content: center;
-                      align-items: center;
-                      margin: 40px;
-                    "
-                  >
-                    <img src="https://decotab.pe/mail/Logo P.png" alt="mundo web" />
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-weight: 500;
-                        font-size: 18px;
-                        text-align: center;
-                        width: 500px;
-                        margin: 0 auto;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 30px;
-                      "
-                    >
-                      <span style="display: block">Hola </span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-size: 40px;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 60px;
-                      "
-                    >
-                      <span style="display: block">' .
-                $name .
-                ' </span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #74a68d;
-                        font-size: 40px;
-                        font-family: Montserrat, sans-serif;
-                        font-weight: bold;
-                        line-height: 60px;
-                      "
-                    >
-                      !Gracias
-                      <span style="color: #ffffff">por escribirnos!</span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height: 10px">
-                    <p
-                      style="
-                        color: #ffffff;
-                        font-weight: 500;
-                        font-size: 18px;
-                        text-align: center;
-                        width: 250px;
-                        margin: 0 auto;
-                        font-family: Montserrat, sans-serif;
-                        line-height: 30px;
-                      "
-                    >
-                      En breve estaremos comunicandonos contigo.
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style="
-                      display: flex;
-                      align-items: start;
-                      justify-content: center;
-                      padding-top: 20px;
-                    "
-                  >
-                    <a
-                      href="https://decotab.pe/"
-                      style="
-                        text-decoration: none;
-                        background-color: #74a68d;
-                        color: white;
-                        padding: 10px 16px;
-                        display: inline-flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        font-weight: 600;
-                        font-family: Montserrat, sans-serif;
-                        font-size: 16px;
-                        border-radius: 30px;
-                      "
-                    >
-                      <span>Visita nuestra web</span>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </main>
-        </body>
-      </html>
-      ';
+            $mail->addAddress($emailCliente->email);
+            $mail->Body = 'Hola, jordan tienes un nuevo mensaje de: ' . $name . '';
             $mail->isHTML(true);
             $mail->send();
         } catch (\Throwable $th) {
             //throw $th;
         }
-    }
+    } */
 }

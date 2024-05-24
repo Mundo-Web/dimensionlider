@@ -50,10 +50,18 @@ use App\Models\AboutUs;
 /* Las rutas publicas */
 Route::get('/', [IndexController::class, 'index'] )->name('index');
 Route::get('/propiedades', [IndexController::class, 'propiedades'] )->name('propiedades');
-Route::get('/detalle', [IndexController::class, 'detalle'] )->name('detalle');
+Route::get('/detalle/{id}', [IndexController::class, 'detalle'] )->name('detalle');
 Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
-Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
-Route::get('/post', [IndexController::class, 'post'] )->name('post');
+
+Route::get('/blog', function () {
+    return redirect()->route('blog', ['id' => 0]);
+});
+Route::get('/blog/{id}', [IndexController::class, 'blog'] )->name('blog');
+
+
+
+
+Route::get('/post/{id}', [IndexController::class, 'post'] )->name('post');
 Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
 
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos');

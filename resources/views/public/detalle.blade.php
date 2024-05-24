@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex justify-between md:justify-start items-center gap-3" data-aos="fade-up" data-aos-duration="150">
+                            {{-- <div class="flex justify-between md:justify-start items-center gap-3" data-aos="fade-up" data-aos-duration="150">
                                 <div
                                     class="flex justify-center items-center gap-2 bg-[#2E609D] py-2 px-3 rounded-lg border border-[#2E609D] cursor-pointer">
                                     <div>
@@ -138,16 +138,17 @@
                                     </div>
                                     <p class="font-satoshiMedium text-text16 text-center text-[#2E609D]">Mapa</p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-[#000929] font-satoshiBold text-text28 md:text-text32 leading-tight">Piso en
-                                    alquiler de 2 habitaciones, 65m²
+                                <h2 class="text-[#000929] font-satoshiBold text-text28 md:text-text32 leading-tight">
+                                    {{$inmueble->producto}}
                                 </h2>
                                 <div
                                     class="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2">
-                                    <p class="text-[#000929] font-satoshiRegular text-text16">Calle Leopoldo Couto 345, San
-                                        Isidro, Lima</p>
+                                    <p class="text-[#000929] font-satoshiRegular text-text16">
+                                       {{$inmueble->direction}}
+                                    </p>
                                     <div class="flex gap-2 items-center justify-center">
                                         <div>
                                             <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
@@ -158,7 +159,9 @@
                                             </svg>
 
                                         </div>
-                                        <p class="font-satoshiRegular text-text14 text-[#000000]">Cod. imóvel 58756</p>
+                                        <p class="font-satoshiRegular text-text14 text-[#000000]">
+                                            Cod. imóvel {{-- 58756 --}} {{$inmueble->codigo}}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -172,49 +175,71 @@
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_26.svg') }}" alt="metros">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">65m<sup>2</sup></p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">
+                                    {{-- 65m --}} {{$inmueble->area}}m
+                                    <sup>2</sup></p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_27.svg') }}" alt="metros">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">2 cuartos</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
+                                    {{$inmueble->cuartos}}
+                                    cuartos</p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_28.svg') }}" alt="baños">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">2 baños</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
+                                    {{$inmueble->banios}}
+                                     baños</p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_29.svg') }}" alt="vagas">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">2 vagas</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 vagas --}}
+                                    {{$inmueble->cochera}} cochera
+                                </p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_30.svg') }}" alt="andar">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">3° andar</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">
+                                    {{$inmueble->pisos}} pisos
+                                </p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_31.svg') }}" alt="aceita">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">Aceita</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929] text-center">{{-- Aceita --}}
+                                    @if ($inmueble->mascota == 1)
+                                        Mascotas
+                                    @else
+                                        No mascotas
+                                    @endif
+                                </p>
                             </div>
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
                                     <img src="{{ asset('images/svg/imagen_32.svg') }}" alt="mobiliado">
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">Mobiliado</p>
+                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- Mobiliado --}}
+                                    @if ($inmueble->mobiliado == 1)
+                                        Mobiliado
+                                    @else
+                                        No mobiliado
+                                    @endif
+                                </p>
                             </div>
 
                             <div class="flex flex-col gap-2">
@@ -227,9 +252,9 @@
 
                         </div>
 
-                        <div class="bg-[#FFFFFF] px-4 py-6 md:p-8 rounded-xl">
+                        <div class="bg-[#FFFFFF] px-4 py-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex flex-col gap-10">
-                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
+                                <div class="flex gap-5 justify-start items-start w-full" >
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -247,18 +272,9 @@
                                     <div class="flex flex-col gap-2">
                                         <h3 class="font-satoshiBold text-text24 leading-tight">Acerca de esta propiedad
                                         </h3>
-                                        <p class="text-[#808494] font-satoshiRegular text-text16">Se alquila acogedor piso
-                                            de 2
-                                            habitaciones, 1 suite y 2 baños en total.
-                                            Este apartamento es bueno para quienes buscan comodidad y conveniencia y está
-                                            ubicado en
-                                            el octavo piso. El condominio está bien equipado con diversas instalaciones y
-                                            está
-                                            ubicado en Calle Leopoldo Couto en el distrito de San Isidro en Lima. Está bien
-                                            ubicado,
-                                            cerca de puntos de interés de Itaim Bibi, como Hospital do Coração, Grupo
-                                            Escolar Martim
-                                            Francisco, Museu Casa Peruana, FMU, Colégio Maria Magdalena y Parque Nuevo.</p>
+                                        <div class="text-[#808494] font-satoshiRegular text-text16">
+                                        {!!$inmueble->description!!}    
+                                        </div>
                                     </div>
                                 </div>
 
@@ -281,28 +297,22 @@
                                         <div class="flex flex-col gap-5">
                                             <div class="flex flex-col gap-2">
                                                 <p class="font-satoshiBold text-text18 leading-tight">Incluye</p>
-                                                <p class="text-[#808494] font-satoshiRegular text-text16">Se alquila
-                                                    acogedor piso
-                                                    de 2 habitaciones, 1 suite y 2 baños en total.
-                                                    Caja de cristal, Armarios empotrados en el dormitorio, Armarios en los
-                                                    baños,
-                                                    Armarios en la cocina, Aire acondicionado, Ducha de gas, Frigorífico
-                                                    incluido.
-                                                </p>
+                                                <div class="text-[#808494] font-satoshiRegular text-text16">
+                                                    {!!$inmueble->incluye!!}    
+                                                    </div>
                                             </div>
 
                                             <div class="flex flex-col gap-2">
                                                 <p class="font-satoshiBold text-text18 leading-tight">No Incluye</p>
-                                                <p class="text-[#808494] font-satoshiRegular text-text16">Bañera de
-                                                    hidromasaje,
-                                                    Piscina privada, Cuarto de servicio, Baño de servicio, Balcón gourmet,
-                                                    Apartamento Penthouse, Habitación extra reversible, Estufa incluida.</p>
+                                                <div class="text-[#808494] font-satoshiRegular text-text16">
+                                                    {!!$inmueble->no_incluye!!}    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
+                                {{-- <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -345,9 +355,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="flex gap-5 justify-start items-start w-full bg-[#F7F7FD] p-5 rounded-xl" data-aos="fade-up" data-aos-duration="150">
+                                {{-- <div class="flex gap-5 justify-start items-start w-full bg-[#F7F7FD] p-5 rounded-xl" data-aos="fade-up" data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -373,7 +383,7 @@
                                         <p class="text-[#808494] font-satoshiRegular text-text16">También puedes comprar
                                             esta propiedad. Valor de compra: S/ 300.000</p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -386,7 +396,7 @@
                                     <p class="font-satoshiBold text-text18 text-[#000929]">R$ 5.700</p>
                                 </div>
 
-                                <div class="flex flex-col gap-1 pb-5">
+                               {{--  <div class="flex flex-col gap-1 pb-5">
                                     <div class="flex justify-between items-center">
                                         <div class="flex justify-center items-center gap-2">
                                             <p class="font-satoshiRegular text-text16 text-[#000929] text-opacity-50">
@@ -437,13 +447,13 @@
                                         </p>
                                     </div>
 
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <div class="border-t border-[#2E609D] py-5 flex justify-between items-center">
+                            {{-- <div class="border-t border-[#2E609D] py-5 flex justify-between items-center">
                                 <p class="font-satoshiBold text-text18 text-[#000929]">Total</p>
                                 <p class="font-satoshiBold text-text18 text-[#000929]">R$ 7.872</p>
-                            </div>
+                            </div> --}}
 
                             <div class="w-full flex flex-col gap-5">
                                 <a href=""
@@ -454,13 +464,13 @@
                                     Agendar visita
                                 </a>
 
-                                <a href=""
+                                {{-- <a href=""
                                     class="w-full flex justify-center items-center gap-2 border border-[#2E609D] text-[#2E609D] font-satoshiBold text-text16 py-4 px-8 rounded-lg">
                                     <div class="flex justify-center items-center">
                                         <img src="{{ asset('images/svg/imagen_51.svg') }}" alt="agendar">
                                     </div>
                                     Agendar visita
-                                </a>
+                                </a> --}}
                             </div>
 
                         </div>

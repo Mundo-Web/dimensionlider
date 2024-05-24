@@ -44,7 +44,21 @@ class ProductsController extends Controller
   {
     $manager = new ImageManager(new Driver());
     $img =  $manager->read($file);
-    $img->coverDown(340, 340, 'center');
+    $img->coverDown(416, 251, 'center'); /* recorte de imageness ->avisar */
+
+    if (!file_exists($route)) {
+      mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+    }
+
+    $img->save($route . $nombreImagen);
+  }
+
+
+  public function saveImgPropietario($file, $route, $nombreImagen)
+  {
+    $manager = new ImageManager(new Driver());
+    $img =  $manager->read($file);
+    $img->coverDown(32, 32, 'center'); /* recorte de imageness ->avisar */
 
     if (!file_exists($route)) {
       mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
@@ -78,7 +92,18 @@ class ProductsController extends Controller
       $this->saveImg($file, $routeImg, $nombreImagen);
 
       $data['imagen'] = $routeImg . $nombreImagen;
-      // $AboutUs->name_image = $nombreImagen;
+    }
+
+    /* foto del propietario */
+
+    if ($request->hasFile("imagen_propietario")) {
+      $file = $request->file('imagen_propietario');
+      $routeImg = 'storage/images/imagen/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+
+      $this->saveImgPropietario($file, $routeImg, $nombreImagen);
+
+      $data['imagen_propietario'] = $routeImg . $nombreImagen;
     }
 
 
@@ -110,6 +135,24 @@ class ProductsController extends Controller
     if (array_key_exists('recomendar', $data)) {
       if (strtolower($data['recomendar']) == 'on') $data['recomendar'] = 1;
     }
+
+    /* mascotas y mobiliado */
+    if (array_key_exists('mascota', $data)) {
+      if (strtolower($data['mascota']) == 'on') $data['mascota'] = 1;
+    }
+    if (array_key_exists('mobiliado', $data)) {
+      if (strtolower($data['mobiliado']) == 'on') $data['mobiliado'] = 1;
+    }
+
+    /* tipo de alquiler */
+   /*  if (array_key_exists('tipoPropiedad', $data)) {
+      $tipo = $data['tipoPropiedad'];
+      if ($tipo == 'alquiler') $data['tipoPropiedad'] = 0;
+      if ($tipo == 'comprar') $data['tipoPropiedad'] = 1; 
+    }
+
+ */
+
 
 
     $data['atributes'] = $jsonAtributos;
@@ -216,11 +259,6 @@ class ProductsController extends Controller
     $atributos = null;
     
 
-
-     
-    
-    
-
     $request->validate([
       'producto' => 'required',
     ]);
@@ -255,12 +293,7 @@ class ProductsController extends Controller
       }
     }
 
-    
-
-
-
-
-
+  
 
     $jsonAtributos = json_encode($atributos);
 
@@ -271,6 +304,13 @@ class ProductsController extends Controller
       if (strtolower($data['recomendar']) == 'on') $data['recomendar'] = 1;
     }
 
+    /* mascotas e inmobiliado */
+    if (array_key_exists('mascota', $data)) {
+      if (strtolower($data['mascota']) == 'on') $data['mascota'] = 1;
+    }
+    if (array_key_exists('mobiliado', $data)) {
+      if (strtolower($data['mobiliado']) == 'on') $data['mobiliado'] = 1;
+    }
 
 
     $data['atributes'] = $jsonAtributos;

@@ -31,7 +31,7 @@
 
                             @foreach($posts as $item)
                                 <tr>
-                                    <td class="px-3 py-2 dark:bg-slate-800"><img class="w-20" src="{{ asset('storage/images/posts/'.$item->name_image) }}" alt=""></td>
+                                    <td class="px-3 py-2 dark:bg-slate-800"><img class="w-20" src="{{ asset($item->url_image) }}" alt=""></td>
                                     <td class="dark:bg-slate-800">{{$item->title}}</td>
                                     <td class="dark:bg-slate-800">{{$item->categories->name}}</td>
                                     <td class="dark:bg-slate-800">

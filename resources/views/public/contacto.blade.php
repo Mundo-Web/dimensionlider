@@ -27,7 +27,8 @@
                 </div>
     
                 <div>
-                    <form action="" class="flex flex-col gap-5">
+                    <form action="" class="flex flex-col gap-5" id="formContactos">
+                        @csrf
                         <div class="flex flex-col justify-start gap-1" data-aos="fade-up" data-aos-duration="150">
                             <label for="full_name" class="text-[#000929] font-satoshiRegular text-text14">Nombre Completo</label>
                             <input required type="text" name="full_name" id="full_name" placeholder="Nombre Completo" class="font-satoshiMedium text-text18 placeholder:text-[#2E609D] placeholder:font-satoshiMedium py-3 px-5 w-full bg-white border-0 focus:outline-0 focus:ring-0 transition-all text-[#2E609D]">
@@ -40,13 +41,13 @@
 
                         <div class="flex flex-col justify-start gap-1" data-aos="fade-up" data-aos-duration="150">
                             <label for="message" class="text-[#000929] font-satoshiRegular text-text14">Mensaje</label>
-                            <textarea name="message" id="message" cols="30" rows="3" placeholder="Hola ..." class="font-satoshiMedium text-text18 placeholder:text-[#2E609D] placeholder:font-satoshiMedium py-3 px-5 w-full bg-white border-0 focus:outline-0 focus:ring-0 transition-all text-[#2E609D]"></textarea>
+                            <textarea required name="message" id="message" cols="30" rows="3" placeholder="Hola ..." class="font-satoshiMedium text-text18 placeholder:text-[#2E609D] placeholder:font-satoshiMedium py-3 px-5 w-full bg-white border-0 focus:outline-0 focus:ring-0 transition-all text-[#2E609D]"></textarea>
                         </div>
 
                         <div class="flex justify-start items-center pt-5" data-aos="fade-up" data-aos-duration="150">
-                            <a href="#" type="submit" class="bg-[#2E609D] text-white font-satoshiBold text-text18 py-3 px-5 rounded-lg">
+                            <button type="submit" class="bg-[#2E609D] text-white font-satoshiBold text-text18 py-3 px-5 rounded-lg">
                                 Enviar mensaje
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>

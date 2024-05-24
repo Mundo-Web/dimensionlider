@@ -9,21 +9,36 @@ class Products extends Model
 {
   use HasFactory;
   protected $fillable = [
-    'producto',
-    'precio',
-    'descuento',
-    'stock',
-    'imagen',
+    'codigo', //1
+    'producto',//2
+    'precio',//5
+    'descuento',//6
+    'stock',//7
+    'imagen',//10
     'destacar',
     'recomendar',
     'atributes',
     'visible',
     'status',
-    'extract',
-    'description',
-    'costo_x_art',
-    'peso',
-    'categoria_id'
+    'extract',//3
+    'description',//4
+    'costo_x_art',//8
+    'peso',//9
+    'categoria_id',
+    'cuartos',
+    'banios',
+    'area',
+    'cochera',
+    'mascota',
+    'mobiliado',
+    'incluye',
+    'no_incluye',
+    'direction',
+    'propietario',
+    'tipo_propietario',
+    'imagen_propietario',
+    'pisos',
+    'movilidad'
   ];
 
 

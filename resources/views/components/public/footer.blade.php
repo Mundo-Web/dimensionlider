@@ -234,14 +234,26 @@
     <div
       class="border-t-[1.5px] border-[#E8E6F9] w-11/12 mx-auto flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5 md:gap-0 py-10"
     >
-      <div class="font-satoshiMedium text-text16 text-[#000929] opacity-50">
+      <a href="http://mundoweb.pe/" target="_blank" class="font-satoshiMedium text-text16 text-[#000929] opacity-50">
         &copy;2024 Mundo Web, Reservados todos los derechos
-      </div>
+      </a>
       <div class="flex justify-center items-center gap-10">
-        <a href="#" target="_blank"><img src="./images/svg/imagen_12.svg" alt="facebook" /></a>
-        <a href="#" target="_blank"><img src="./images/svg/imagen_13.svg" alt="instagram" /></a>
-        <a href="#" target="_blank"><img src="./images/svg/imagen_14.svg" alt="twitter" /></a>
-        <a href="#" target="_blank"><img src="./images/svg/imagen_15.svg" alt="linkedin" /></a>
+        @if ($generales->facebook != null)
+        <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_12.svg')}}" alt="facebook" /></a>
+        @endif
+
+        @if ($generales->instagram != null)
+          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_13.svg')}}" alt="instagram" /></a>
+        @endif
+
+        @if ($generales->twitter != null)
+          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_14.svg')}}" alt="twitter" /></a>
+        @endif
+
+        @if ($generales->linkedin != null)
+          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_15.svg')}}" alt="linkedin" /></a>
+        @endif
+       
       </div>
     </div>
   </footer>
