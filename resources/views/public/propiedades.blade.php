@@ -43,7 +43,7 @@
                             </button>
                         </div>
                     </div>
-    
+
                     <div id="tab1"
                         class="py-8 px-4 tab-content bg-white flex justify-between gap-5 rounded-b-lg md:rounded-tr-lg max-w-[700px]">
                         <div class="w-full md:w-auto">
@@ -53,16 +53,17 @@
                             <p class="text-text18 font-satoshiBold hidden md:block">
                                 Puente Piedra, Lima, Perú
                             </p>
-    
+
                             <form action="" class="w-full">
-                                <input type="text" class="text-[#2E609D] block md:hidden py-3 bg-[#2E609D] bg-opacity-25 w-full rounded-lg placeholder:text-[#2E609D] font-satoshiMedium placeholder:font-satoshiMedium text-text18"
+                                <input type="text"
+                                    class="text-[#2E609D] block md:hidden py-3 bg-[#2E609D] bg-opacity-25 w-full rounded-lg placeholder:text-[#2E609D] font-satoshiMedium placeholder:font-satoshiMedium text-text18"
                                     placeholder="Ubicación de búsqueda" />
                             </form>
                         </div>
-    
+
                         <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
                         </div>
-    
+
                         <div class="hidden md:block">
                             <p class="text-[#001619] font-satoshiMedium text-text16">
                                 Categorías
@@ -73,12 +74,13 @@
                                         class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
                                         <span>Departamento</span>
                                         <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" class="group-hover:rotate-180 md:duration-300">
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
                                             <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
                                                 stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </button>
-    
+
                                     <div
                                         class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
                                         <div class="py-1">
@@ -96,10 +98,10 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
                         </div>
-    
+
                         <div class="flex justify-center items-center">
                             <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
                                 {{-- <div
@@ -129,16 +131,17 @@
                             Tab 3 Content
                         </h2>
                     </div>
-    
+
                 </div>
                 <div class="flex order-2 md:order-1">
-                    <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32" data-aos="fade-up" data-aos-duration="150">
+                    <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32" data-aos="fade-up"
+                        data-aos-duration="150">
                         <h2 class="text-[#000929] font-satoshiBold text-text52 leading-tight">Compra, alquila o vende tu
                             propiedad fácilmente</h2>
                         <p class="text-[#000929] font-satoshiRegular text-text20 text-opacity-50">Una gran plataforma para
                             comprar, vender o incluso alquilar tus propiedades sin comisiones.</p>
                     </div>
-    
+
                     <div class="flex justify-center items-center md:basis-1/2 w-full md:w-11/12 mx-auto ">
                         <img src="{{ asset('images/img/image_16.png') }}" alt="inmobiliaria" class="w-full hidden md:block">
                         <img src="{{ asset('images/img/image_30.png') }}" alt="inmobiliaria" class="w-full block md:hidden">
@@ -150,7 +153,186 @@
         <section>
             <div class="w-11/12 mx-auto pt-20 md:pt-44 pb-20">
                 <div class="pb-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5">
-                    <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
+
+                
+                    @foreach ($inmuebles as $item)
+                        @if ($item->destacar == 1)
+                            <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
+                                <div class="w-full flex justify-center items-center relative">
+                                    <img src="{{ asset($item->imagen) }}" alt="" class="rounded-t-2xl w-full" />
+                                    <div
+                                        class="flex gap-2 items-center justify-center absolute top-[10%] right-[5%] bg-[#2E609D] text-white font-satoshiBold text-text12 px-5 py-3 rounded-full">
+                                        <div class="flex justify-start items-center">
+                                            <img src="{{ asset('images/svg/imagen_6.svg') }}" alt="" />
+                                        </div>
+                                        <p>Popular</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-5 p-6">
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex gap-1 items-center">
+                                            <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
+                                                S/{{ $item->precio }}
+                                            </p>
+                                            <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                /mensual
+                                            </p>
+                                        </div>
+
+                                        <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            Condomínio: R$ 150,00
+                                        </p>
+                                    </div>
+
+                                    <div class="flex flex-col gap-2">
+                                        <a href="{{ route('detalle', $item->id) }}">
+                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                                {{-- Cond. Las Brisas --}} {{ $item->producto }}
+                                            </h2>
+                                        </a>
+                                        <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
+                                            {{ $item->direction }}
+                                        </p>
+                                        <p class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                            {{ $item->extract }}
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-between gap-5">
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->cuartos }} Cuartos
+                                            </p>
+                                        </div>
+
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->banios }} Baños
+                                            </p>
+                                        </div>
+
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->area }}m<sup>2</sup>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex gap-2 items-center justify-start border-t border-[#100A55] border-opacity-15 pt-5">
+                                        <div class="flex justify-start items-center">
+                                            <img src="{{ asset($item->imagen_propietario) }}" alt=""
+                                                class="rounded-full" />
+                                        </div>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            {{ $item->propietario }}
+                                        </p>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            |
+                                        </p>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            {{ $item->tipo_propietario }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
+                                <div class="w-full flex justify-center items-center relative">
+                                    <img src="{{ asset($item->imagen) }}" alt="" class="rounded-t-lg w-full" />
+                                </div>
+
+                                <div class="flex flex-col gap-5 p-6">
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex gap-1 items-center">
+                                            <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
+                                                S/{{ $item->precio }}
+                                            </p>
+                                            <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                /mensual
+                                            </p>
+                                        </div>
+
+                                        <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                                            Condomínio: R$ 150,00
+                                        </p>
+                                    </div>
+
+                                    <div class="flex flex-col gap-2">
+                                        <a href="{{ route('detalle', $item->id) }}">
+                                            <h2 class="text-[#000929] font-satoshiBold text-text32">
+                                                {{-- Cond. Las Brisas --}} {{ $item->producto }}
+                                            </h2>
+                                        </a>
+                                        <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
+                                            {{ $item->direction }}
+                                        </p>
+                                        <p class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                            {{ $item->extract }}
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-between gap-5">
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->cuartos }} Cuartos
+                                            </p>
+                                        </div>
+
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->banios }} Baños
+                                            </p>
+                                        </div>
+
+                                        <div class="flex gap-3">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                            </div>
+                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                {{ $item->area }}m<sup>2</sup>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex gap-2 items-center justify-start border-t border-[#100A55] border-opacity-15 pt-5">
+                                        <div class="flex justify-start items-center">
+                                            <img src="{{ asset($item->imagen_propietario) }}" alt=""
+                                                class="rounded-full" />
+                                        </div>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            {{ $item->propietario }}
+                                        </p>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            |
+                                        </p>
+                                        <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                                            {{ $item->tipo_propietario }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+
+                    {{-- <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
                         <div class="w-full flex justify-center items-center relative">
                             <img src="{{ asset('images/img/image_4.png') }}" alt="" class="rounded-t-lg w-full" />
                             <div
@@ -957,11 +1139,13 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 {{-- revisar este boton --}}
                 <div class="flex justify-center items-center">
-                    <a href="#" class="border-[#2E609D] border rounded-lg font-satoshiBold text-text18 text-[#2E609D] px-5 md:px-10 py-3 text-center">Ver mas propiedades</a>
+                    <a href="#"
+                        class="border-[#2E609D] border rounded-lg font-satoshiBold text-text18 text-[#2E609D] px-5 md:px-10 py-3 text-center">Ver
+                        mas propiedades</a>
                 </div>
                 {{-- revisar este boton --}}
             </div>

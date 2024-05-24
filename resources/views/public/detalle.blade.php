@@ -389,11 +389,11 @@
                     </div>
 
                     <div class="bg-[#FAFAFA] order-2 lg:order-2 col-span-1 row-span-1 lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-duration="150">
-                        <div class="bg-[#F7F7FD] md:bg-[#FFFFFF]  rounded-xl px-4 py-6 md:p-8 ">
+                        <div class="bg-[#F7F7FD] md:bg-[#FFFFFF]  rounded-xl px-4 py-6 md:p-8 flex flex-col gap-5">
                             <div class="flex flex-col gap-10">
                                 <div class="flex justify-between items-center">
-                                    <p class="font-satoshiBold text-text16 text-[#000929]">Alquiler</p>
-                                    <p class="font-satoshiBold text-text18 text-[#000929]">R$ 5.700</p>
+                                    <p class="font-satoshiBold text-text16 text-[#000929] capitalize">{{$inmueble->tipo_propiedad}} </p>
+                                    <p class="font-satoshiBold text-text18 text-[#000929]">{{-- R$ 5.700 --}} R$ {{$inmueble->precio}}</p>
                                 </div>
 
                                {{--  <div class="flex flex-col gap-1 pb-5">

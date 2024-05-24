@@ -92,9 +92,9 @@
                         href="{{ route('contacto') }}">Contacto</a>
                 </div>
 
-                <div class="flex justify-between items-center gap-5 w-11/12 lg:w-auto mx-auto lg:mx-0">
-                    <a href="{{ route('index') }}"
-                        class="text-white border-2 border-white text-text16 font-satoshiBold py-2 px-5 rounded-lg">Iniciar</a>
+                <div class="flex justify-start items-center gap-5 w-11/12 lg:w-auto mx-auto lg:mx-0">
+                    {{-- <a href="{{ route('index') }}"
+                        class="text-white border-2 border-white text-text16 font-satoshiBold py-2 px-5 rounded-lg">Iniciar</a> --}}
                     <a href="{{ route('index') }}"
                         class="text-white bg-[#2E609D] text-text16 font-satoshiBold py-3 px-8 rounded-lg bg_inscribir">Inscribirse</a>
                 </div>

@@ -45,16 +45,20 @@ class IndexController extends Controller
         // $productos = Products::all();
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
-        $inmuebles = Products::where('visible', 1)->where('status', 1)->get();
 
-        return view('public.index', compact('generales', 'inmuebles', 'blogs'));
+        $inmueblesComprar = Products::where('visible', 1)->where('status', 1)->where('tipo_propiedad', 'comprar')->get();
+
+        $inmueblesAlquilar = Products::where('visible', 1)->where('status', 1)->where('tipo_propiedad', 'alquiler')->get();
+
+        return view('public.index', compact('generales', 'inmueblesComprar','inmueblesAlquilar', 'blogs'));
     }
 
     public function propiedades()
     {
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
-        return view('public.propiedades', compact('generales','blogs'));
+        $inmuebles = Products::where('visible', 1)->where('status', 1)->orderBy('created_at', 'desc')->get();
+        return view('public.propiedades', compact('generales','blogs','inmuebles'));
     }
 
     public function post($id)

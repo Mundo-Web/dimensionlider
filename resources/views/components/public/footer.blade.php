@@ -239,19 +239,19 @@
       </a>
       <div class="flex justify-center items-center gap-10">
         @if ($generales->facebook != null)
-        <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_12.svg')}}" alt="facebook" /></a>
+        <a href="https://{{$generales->facebook}}" target="_blank"><img src="{{asset('images/svg/imagen_12.svg')}}" alt="facebook" /></a>
         @endif
 
         @if ($generales->instagram != null)
-          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_13.svg')}}" alt="instagram" /></a>
+          <a href="https://{{$generales->instagram}}" target="_blank"><img src="{{asset('images/svg/imagen_13.svg')}}" alt="instagram" /></a>
         @endif
 
         @if ($generales->twitter != null)
-          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_14.svg')}}" alt="twitter" /></a>
+          <a href="https://{{$generales->twitter}}" target="_blank"><img src="{{asset('images/svg/imagen_14.svg')}}" alt="twitter" /></a>
         @endif
 
         @if ($generales->linkedin != null)
-          <a href="#" target="_blank"><img src="{{asset('images/svg/imagen_15.svg')}}" alt="linkedin" /></a>
+          <a href="https://{{$generales->linkedin}}" target="_blank"><img src="{{asset('images/svg/imagen_15.svg')}}" alt="linkedin" /></a>
         @endif
        
       </div>

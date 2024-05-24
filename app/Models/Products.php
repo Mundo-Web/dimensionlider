@@ -38,7 +38,8 @@ class Products extends Model
     'tipo_propietario',
     'imagen_propietario',
     'pisos',
-    'movilidad'
+    'movilidad',
+    'tipo_propiedad'
   ];
 
 

@@ -145,13 +145,13 @@ class ProductsController extends Controller
     }
 
     /* tipo de alquiler */
-   /*  if (array_key_exists('tipoPropiedad', $data)) {
-      $tipo = $data['tipoPropiedad'];
-      if ($tipo == 'alquiler') $data['tipoPropiedad'] = 0;
-      if ($tipo == 'comprar') $data['tipoPropiedad'] = 1; 
+    if (array_key_exists('tipo_propiedad', $data)) {
+      $tipo = $data['tipo_propiedad'];
+      if ($tipo == 'alquiler') $data['tipo_propiedad'] = 'alquiler';
+      if ($tipo == 'comprar') $data['tipo_propiedad'] = 'comprar'; 
     }
 
- */
+
 
 
 
@@ -198,8 +198,6 @@ class ProductsController extends Controller
       }else{
         $espect->save();
       }
-
-      
 
     }
 
@@ -274,6 +272,17 @@ class ProductsController extends Controller
       // $AboutUs->name_image = $nombreImagen;
     }
 
+    if ($request->hasFile("imagen_propietario")) {
+      $file = $request->file('imagen_propietario');
+      $routeImg = 'storage/images/imagen/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+
+      $this->saveImgPropietario($file, $routeImg, $nombreImagen);
+
+      $data['imagen_propietario'] = $routeImg . $nombreImagen;
+      // $AboutUs->name_image = $nombreImagen;
+    }
+
     foreach ($request->all() as $key => $value) {
       
       if (strstr($key, ':')) {
@@ -310,6 +319,13 @@ class ProductsController extends Controller
     }
     if (array_key_exists('mobiliado', $data)) {
       if (strtolower($data['mobiliado']) == 'on') $data['mobiliado'] = 1;
+    }
+
+    /* aluiler - compra */
+    if (array_key_exists('tipo_propiedad', $data)) {
+      $tipo = $data['tipo_propiedad'];
+      if ($tipo == 'alquiler') $data['tipo_propiedad'] = 'alquiler';
+      if ($tipo == 'comprar') $data['tipo_propiedad'] = 'comprar'; 
     }
 
 

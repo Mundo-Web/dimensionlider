@@ -45,6 +45,9 @@ return new class extends Migration
             $table->boolean('mobiliado')->default(false);
             $table->text('incluye')->nullable();
             $table->text('no_incluye')->nullable();
+            
+            $table->string('tipo_propiedad')->nullable();
+            
 
 
 
