@@ -35,7 +35,7 @@
         <section class="bg-[#F7F7FD] pt-32">
             <div class="z-[100] w-11/12 mx-auto flex flex-col gap-10 relative">
                 <div class="order-1 md:order-2 relative md:absolute md:-bottom-[18%] z-[500] w-full md:max-w-[750px]">
-                    <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-w-[388px]">
+                    <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-[388px]">
                         <div class="flex justify-between items-center">
                             <button
                                 class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"

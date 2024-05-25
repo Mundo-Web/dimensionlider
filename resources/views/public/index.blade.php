@@ -59,7 +59,7 @@
                     <!--  -->
                     <div class="z-[0]">
                         <!-- Tab Buttons -->
-                        <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-w-[388px]">
+                        <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-[388px]">
                             <div class="flex justify-between items-center">
                                 <button
                                     class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"

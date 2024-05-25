@@ -271,7 +271,7 @@ class IndexController extends Controller
           height: 700px;
           margin: 0 auto;
           text-align: center;
-          background-image: url(./Fondo.png);
+          background-image: url(https://dimensionlider.mundoweb.pe/mailing/Fondo.png);
           background-repeat: no-repeat;
           background-position: center;
           background-size: cover;
