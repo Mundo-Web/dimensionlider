@@ -11,6 +11,7 @@ class NewsletterSubscriber extends Model
     protected $fillable =
   [
     'email',
-    'active'
+    'active',
+    'tipo'
   ];
 }

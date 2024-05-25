@@ -167,6 +167,9 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/galerie/updateVisible', [GalerieController::class, 'updateVisible'])->name('galerie.updateVisible');
         Route::post('/galerie/borrar', [GalerieController::class, 'borrar'])->name('galerie.borrar');
 
+        /* subscripciones */
+        Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones') ;
+
         
         Route::fallback(function() {
             return view('pages/utility/404');

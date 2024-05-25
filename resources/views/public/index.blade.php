@@ -1879,11 +1879,13 @@
                         <form action="" id="formInscripcion" class=" w-11/12 mx-auto">
                             @csrf
                             <div class="bg-[#FFFFFF] flex flex-row justify-between px-3 md:px-5 py-5 items-center">
-                                <input type="email" name="email"
+                                <input type="email" name="email" id="email"
                                     class="appearance-none font-satoshiMedium text-[#000929] w-full h-full border-none outline-none focus:outline-none focus:ring-0 transition-all opacity-45"
                                     placeholder="Introduce tu correo electrónico" />
+
+                                <input type="text" name="tipo" value="inscripcion" hidden />
                                 <div class="flex justify-end items-center">
-                                    
+
                                     <button type="submit"
                                         class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-5 md:px-10 py-3 text-center">
                                         Enviar
@@ -2079,12 +2081,23 @@
 @section('scripts_importados')
 
     <script>
-        $('#formInscripcion').submit(function(e) {
-            console.log('precionando para ')
+        function validarEmail(value) {
+            const regex =
+                /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
-            e.preventDefault()
-            let data = $('#inscribirseMailDesk').serialize()
-            console.log(data)
+            if (!regex.test(value)) {
+                alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
+                return false;
+            }
+            return true;
+        }
+
+
+
+        $('#formInscripcion').submit(function(e) {
+
+
+            e.preventDefault();
             Swal.fire({
 
                 title: 'Procesando información',
@@ -2105,6 +2118,10 @@
                 }
             });
 
+            if (!validarEmail($('#email').val())) {
+                return;
+            };
+
             $.ajax({
                 url: '{{ route('guardarUserNewsLetter') }}',
                 method: 'POST',
@@ -2115,6 +2132,7 @@
                         title: response.message,
                         icon: "success",
                     });
+                    $('#formInscripcion')[0].reset();
                 },
                 error: function(response) {
                     let message = ''

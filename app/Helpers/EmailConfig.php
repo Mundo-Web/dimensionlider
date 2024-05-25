@@ -19,7 +19,7 @@ class EmailConfig
         $mail->Port = 465;
         $mail->Subject = '' . $name . ', '.$mensaje. '';
         $mail->CharSet = 'UTF-8';
-        $mail->setFrom('info@decotab.com', 'Decotab');
+        $mail->setFrom('hola@mundoweb.pe', 'Dimensión Lider');
         return $mail;
     }
 }
