@@ -81,7 +81,7 @@
 
                         <!-- Tab Content -->
                         <div id="tab1"
-                            class="py-8 px-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                            class="py-8 px-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg w-full md:max-w-[750px]">
                             <div class="w-full ">
                                 <div class="relative w-full text-left">
                                     <div class="group">
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div id="tab2"
-                            class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                            class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg w-full md:max-w-[750px]">
                             <div class="w-full ">
                                 <div class="relative w-full text-left">
                                     <div class="group">
@@ -256,7 +256,7 @@
                             </div>
                         </div>
                         <div id="tab3"
-                            class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                            class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg w-full md:max-w-[750px]">
                             <div class="w-full ">
                                 <div class="relative w-full text-left">
                                     <div class="group">
