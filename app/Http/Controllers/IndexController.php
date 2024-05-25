@@ -17,6 +17,7 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
+use App\Models\CategoryBlog;
 use App\Models\Specifications;
 use App\Models\User;
 use App\Models\UserDetails;
@@ -45,12 +46,12 @@ class IndexController extends Controller
         // $productos = Products::all();
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        $inmuebles = Products::where('visible', 1)->where('status', 1)->orderBy('created_at', 'desc')->get();
 
-        $inmueblesComprar = Products::where('visible', 1)->where('status', 1)->where('tipo_propiedad', 'comprar')->get();
+        
 
-        $inmueblesAlquilar = Products::where('visible', 1)->where('status', 1)->where('tipo_propiedad', 'alquiler')->get();
 
-        return view('public.index', compact('generales', 'inmueblesComprar','inmueblesAlquilar', 'blogs'));
+        return view('public.index', compact('generales', 'inmuebles', 'blogs'));
     }
 
     public function propiedades()
@@ -96,8 +97,8 @@ class IndexController extends Controller
 
         try {
           $id = $request->id;
-          $categorias = Category::where('status', 1)->where('visible', 1)->select('id', 'name')->with('blogs')->get();
-          $categoria = Category::where('status', 1)->where('visible', 1)->select('id', 'name')->get();
+          $categorias = CategoryBlog::where('status', 1)->where('visible', 1)->select('id', 'name')->with('blogs')->get();
+          $categoria = CategoryBlog::where('status', 1)->where('visible', 1)->select('id', 'name')->get();
 
           
           if($id == 0){
@@ -110,7 +111,7 @@ class IndexController extends Controller
                         ->where('visible', 1)
                         ->where('category_id', $id)
                         ->orderBy('created_at', 'desc')->get();
-            $categoria = Category::where('status', 1)->where('visible', 1)->findOrFail($id);
+            $categoria = CategoryBlog::where('status', 1)->where('visible', 1)->findOrFail($id);
             return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria'));
           }
         

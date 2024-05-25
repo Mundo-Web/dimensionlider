@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_tag', function (Blueprint $table) {
+        Schema::create('newsletter_subscribers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tag_id');
-            $table->unsignedBigInteger('taggable_id');
-            $table->string('taggable_type');
-        
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
-            $table->index(['taggable_id', 'taggable_type']);
-
+            $table->string('email')->unique();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_tag');
+        Schema::dropIfExists('newsletter_subscribers');
     }
 };

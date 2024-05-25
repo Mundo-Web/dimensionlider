@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('blogs', function (Blueprint $table) {
+
             $table->id();
             $table->unsignedBigInteger('category_id');
 
@@ -25,7 +26,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('category_blogs'); // nombre de la tabla de la migracion
         });
     }
 

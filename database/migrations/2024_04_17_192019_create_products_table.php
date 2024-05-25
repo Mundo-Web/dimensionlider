@@ -38,7 +38,11 @@ return new class extends Migration
 
             $table->integer('banios')->nullable();
             $table->string('area')->nullable();
-            $table->string('direction')->nullable();
+            $table->string('address')->nullable();
+            $table->string('inside')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
             
             $table->integer('cochera')->nullable();
             $table->boolean('mascota')->default(false);

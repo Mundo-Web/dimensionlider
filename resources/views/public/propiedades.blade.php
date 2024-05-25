@@ -15,6 +15,17 @@
             background-color: #FAFAFA;
             color: #000929;
         }
+
+        .scroll_ubicacion::-webkit-scrollbar, .scroll_categoria::-webkit-scrollbar {
+            width: 5px;
+            background-color: white;
+            border-radius: 1rem;
+        }
+
+        .scroll_ubicacion::-webkit-scrollbar-thumb, .scroll_categoria::-webkit-scrollbar-thumb {
+            background-color: #393f53;
+            border-radius: 1rem;
+        }
     </style>
 @stop
 
@@ -23,7 +34,7 @@
     <main class="bg-[#FAFAFA]">
         <section class="bg-[#F7F7FD] pt-32">
             <div class="z-[100] w-11/12 mx-auto flex flex-col gap-10 relative">
-                <div class="order-1 md:order-2 relative md:absolute md:-bottom-[18%]">
+                <div class="order-1 md:order-2 relative md:absolute md:-bottom-[18%] z-[500] w-full md:max-w-[750px]">
                     <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-w-[388px]">
                         <div class="flex justify-between items-center">
                             <button
@@ -44,55 +55,36 @@
                         </div>
                     </div>
 
+                    <!-- Tab Content -->
                     <div id="tab1"
-                        class="py-8 px-4 tab-content bg-white flex justify-between gap-5 rounded-b-lg md:rounded-tr-lg max-w-[700px]">
-                        <div class="w-full md:w-auto">
-                            <p class="text-[#001619] font-satoshiMedium text-text16 hidden md:block">
-                                Ubicación
-                            </p>
-                            <p class="text-text18 font-satoshiBold hidden md:block">
-                                Puente Piedra, Lima, Perú
-                            </p>
-
-                            <form action="" class="w-full">
-                                <input type="text"
-                                    class="text-[#2E609D] block md:hidden py-3 bg-[#2E609D] bg-opacity-25 w-full rounded-lg placeholder:text-[#2E609D] font-satoshiMedium placeholder:font-satoshiMedium text-text18"
-                                    placeholder="Ubicación de búsqueda" />
-                            </form>
-                        </div>
-
-                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
-                        </div>
-
-                        <div class="hidden md:block">
-                            <p class="text-[#001619] font-satoshiMedium text-text16">
-                                Categorías
-                            </p>
-                            <div class="relative inline-block text-left">
+                        class="py-8 px-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                        <div class="w-full ">
+                            <div class="relative w-full text-left">
                                 <div class="group">
                                     <button type="button"
                                         class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
-                                        <span>Departamento</span>
+                                        <span>Ubicación</span>
                                         <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
                                             class="group-hover:rotate-180 md:duration-300">
-                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
-                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
                                         </svg>
                                     </button>
 
                                     <div
                                         class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                                        <div class="py-1">
+                                        <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
                                             <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Option
-                                                1</a>
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
                                             <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Option
-                                                2</a>
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
                                             <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Option
-                                                3</a>
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
                                         </div>
                                     </div>
                                 </div>
@@ -102,16 +94,48 @@
                         <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
                         </div>
 
-                        <div class="flex justify-center items-center">
+                        <div class="hidden md:block w-full">
+                            <div class="relative w-full text-left">
+                                <div class="group">
+                                    <button type="button"
+                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
+                                        <span>Categorías</span>
+                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div
+                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                                        <div class="overflow-y-scroll h-[100px] scroll_categoria">
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+                        </div>
+
+                        <div class="flex justify-center items-center md:w-full">
                             <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
-                                {{-- <div
-                                            class="flex justify-center items-center border border-[#2E609D] p-4 rounded-lg cursor-pointer w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
-                                            <img src="{{ asset('images/svg/imagen_16.svg') }}" alt="filtro" />
-                                        </div> --}}
-                                <div class="flex justify-start items-center">
+                                <div class="flex justify-start items-center w-full">
                                     <a href="{{ route('propiedades') }}"
                                         class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
-                                        <span class="hidden md:flex">Explorar propiedades</span>
+                                        <span class="hidden md:flex w-full">Explorar propiedades</span>
                                         <div
                                             class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
                                             <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
@@ -121,15 +145,183 @@
                             </div>
                         </div>
                     </div>
-                    <div id="tab2" class="p-4 tab-content bg-white hidden rounded-b-lg md:rounded-tr-lg max-w-[865px]">
-                        <h2 class="text-2xl font-semibold mb-2 text-blue-700">
-                            Tab 2 Content
-                        </h2>
+                    <div id="tab2"
+                        class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                        <div class="w-full ">
+                            <div class="relative w-full text-left">
+                                <div class="group">
+                                    <button type="button"
+                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
+                                        <span>Ubicación</span>
+                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div
+                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                                        <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+                        </div>
+
+                        <div class="hidden md:block w-full">
+                            <div class="relative w-full text-left">
+                                <div class="group">
+                                    <button type="button"
+                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
+                                        <span>Categorías</span>
+                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div
+                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                                        <div class="overflow-y-scroll h-[100px] scroll_categoria">
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+                        </div>
+
+                        <div class="flex justify-center items-center md:w-full">
+                            <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
+                                <div class="flex justify-start items-center w-full">
+                                    <a href="{{ route('propiedades') }}"
+                                        class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
+                                        <span class="hidden md:flex w-full">Explorar propiedades</span>
+                                        <div
+                                            class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
+                                            <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab3" class="p-4 tab-content bg-white hidden rounded-b-lg md:rounded-tr-lg max-w-[865px]">
-                        <h2 class="text-2xl font-semibold mb-2 text-blue-700">
-                            Tab 3 Content
-                        </h2>
+                    <div id="tab3"
+                        class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+                        <div class="w-full ">
+                            <div class="relative w-full text-left">
+                                <div class="group">
+                                    <button type="button"
+                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
+                                        <span>Ubicación</span>
+                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div
+                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                                        <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+                        </div>
+
+                        <div class="hidden md:block w-full">
+                            <div class="relative w-full text-left">
+                                <div class="group">
+                                    <button type="button"
+                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
+                                        <span>Categorías</span>
+                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="group-hover:rotate-180 md:duration-300">
+                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748"
+                                                stroke="#000929" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div
+                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                                        <div class="overflow-y-scroll h-[100px] scroll_categoria">
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfosss</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                            <a href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
+                                                María del Triunfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+                        </div>
+
+                        <div class="flex justify-center items-center md:w-full">
+                            <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
+                                <div class="flex justify-start items-center w-full">
+                                    <a href="{{ route('propiedades') }}"
+                                        class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
+                                        <span class="hidden md:flex w-full">Explorar propiedades</span>
+                                        <div
+                                            class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
+                                            <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -143,8 +335,10 @@
                     </div>
 
                     <div class="flex justify-center items-center md:basis-1/2 w-full md:w-11/12 mx-auto ">
-                        <img src="{{ asset('images/img/image_16.png') }}" alt="inmobiliaria" class="w-full hidden md:block">
-                        <img src="{{ asset('images/img/image_30.png') }}" alt="inmobiliaria" class="w-full block md:hidden">
+                        <img src="{{ asset('images/img/image_16.png') }}" alt="inmobiliaria"
+                            class="w-full hidden md:block">
+                        <img src="{{ asset('images/img/image_30.png') }}" alt="inmobiliaria"
+                            class="w-full block md:hidden">
                     </div>
                 </div>
             </div>
@@ -154,7 +348,7 @@
             <div class="w-11/12 mx-auto pt-20 md:pt-44 pb-20">
                 <div class="pb-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5">
 
-                
+
                     @foreach ($inmuebles as $item)
                         @if ($item->destacar == 1)
                             <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">

@@ -25,7 +25,10 @@ use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\LogosClientController;
+use App\Http\Controllers\CategoryBlogController;
 
+
+use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SliderController;
@@ -59,13 +62,11 @@ Route::get('/blog', function () {
 Route::get('/blog/{id}', [IndexController::class, 'blog'] )->name('blog');
 
 
-
-
 Route::get('/post/{id}', [IndexController::class, 'post'] )->name('post');
 Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
 
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos');
-
+Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
 
 
 
@@ -95,6 +96,11 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/categorias/updateVisible', [CategoryController::class, 'updateVisible'] )->name('categorias.updateVisible');
         Route::get('/categorias/contarCategorias', [CategoryController::class, 'contarCategoriasDestacadas'] )->name('categorias.contarCategoriasDestacadas');
 
+        //CATEGORIAS BLOGS
+        Route::resource('/categoriasBlog', CategoryBlogController::class);
+        Route::post('/categoriasBlog/deleteCategory', [CategoryBlogController::class, 'deleteCategory'] )->name('categoriasBlog.deleteCategory');
+        Route::post('/categoriasBlog/updateVisible', [CategoryBlogController::class, 'updateVisible'] )->name('categoriasBlog.updateVisible');
+        Route::get('/categoriasBlog/contarCategorias', [CategoryBlogController::class, 'contarCategoriasDestacadas'] )->name('categoriasBlog.contarCategoriasDestacadas');
 
 
         //Servicios

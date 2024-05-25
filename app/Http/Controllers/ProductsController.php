@@ -149,10 +149,8 @@ class ProductsController extends Controller
       $tipo = $data['tipo_propiedad'];
       if ($tipo == 'alquiler') $data['tipo_propiedad'] = 'alquiler';
       if ($tipo == 'comprar') $data['tipo_propiedad'] = 'comprar'; 
+      if ($tipo == 'vender') $data['tipo_propiedad'] = 'vender'; 
     }
-
-
-
 
 
     $data['atributes'] = $jsonAtributos;

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category_blogs', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->string('name');
             $table->string('slug')->nullable();
@@ -24,6 +24,8 @@ return new class extends Migration
             $table->boolean('visible')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();    
+
+            
         });
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category_blogs');
     }
 };

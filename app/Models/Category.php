@@ -15,13 +15,14 @@ class Category extends Model
     //     return $this->hasMany(Subcategory::class, 'category_id');
     // }
 
-    public function blogs()
+    /* ----comentar para blog */
+    /* public function blogs()
      {
          return $this->hasMany(Blog::class, 'category_id');
-    }
+    } */
 
-    /* public function productos()
+    public function productos()
     {
         return $this->hasMany(Products::class);
-    } */
+    }
 }
