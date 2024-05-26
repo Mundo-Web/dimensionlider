@@ -84,7 +84,22 @@ class ProductsController extends Controller
       'producto' => 'required',
       'precio' => 'min:0|required|numeric', 
       'descuento' => 'lt:' . $request->input('precio'),
-      'tipo_propiedad' => 'required'
+      'tipo_propiedad' => 'required',
+      'cuartos' => 'required',
+      'codigo' => 'required',
+      'banios' =>'required',
+      'pisos' =>'required',
+      'area' =>'required',
+      'cochera' =>'required',
+      'movilidad' =>'required',
+      'address' =>'required',
+      'inside' =>'required',
+      'incluye' =>'required',
+      'no_incluye' =>'required',
+      'propietario' =>'required',
+      'tipo_propietario' =>'required',
+      'imagen_propietario' =>'required',
+
     ]);
 
     if ($request->hasFile("imagen")) {

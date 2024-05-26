@@ -468,38 +468,45 @@
                                                 </div>
 
                                                 <div class="flex justify-between gap-5">
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_3.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->cuartos != 0)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_3.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->cuartos }} Cuartos
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->cuartos }} Cuartos
-                                                        </p>
-                                                    </div>
+                                                    @endif
 
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_4.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->banios != 0)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_4.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->banios }} Baños
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->banios }} Baños
-                                                        </p>
-                                                    </div>
+                                                    @endif
 
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_5.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->area)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_5.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->area }}m<sup>2</sup>
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->area }}m<sup>2</sup>
-                                                        </p>
-                                                    </div>
+                                                    @endif
+
                                                 </div>
 
                                                 <div
@@ -582,32 +589,39 @@
                                     </div>
 
                                     <div class="flex justify-between gap-5">
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                        @if ($item->cuartos != 0)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->cuartos }} Cuartos
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->cuartos }} Cuartos
-                                            </p>
-                                        </div>
+                                        @endif
 
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                        @if ($item->banios != 0)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->banios }} Baños
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->banios }} Baños
-                                            </p>
-                                        </div>
+                                        @endif
 
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                        @if ($item->area)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->area }}m<sup>2</sup>
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->area }}m<sup>2</sup>
-                                            </p>
-                                        </div>
+                                        @endif
+
                                     </div>
 
                                     <div
@@ -653,7 +667,7 @@
                         </p>
                     </div>
                     <div class="flex justify-start items-center w-full md:w-auto">
-                        <a href="#"
+                        <a href="{{ route('propiedades') }}"
                             class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-6 py-3 w-full md:w-auto text-center">
                             Explorar propiedades
                         </a>
@@ -742,38 +756,45 @@
                                                 </div>
 
                                                 <div class="flex justify-between gap-5">
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_3.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->cuartos != 0)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_3.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->cuartos }} Cuartos
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->cuartos }} Cuartos
-                                                        </p>
-                                                    </div>
+                                                    @endif
 
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_4.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->banios != 0)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_4.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->banios }} Baños
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->banios }} Baños
-                                                        </p>
-                                                    </div>
+                                                    @endif
 
-                                                    <div class="flex gap-3">
-                                                        <div class="flex justify-center items-center">
-                                                            <img src="{{ asset('images/svg/imagen_5.svg') }}"
-                                                                alt="" />
+                                                    @if ($item->area)
+                                                        <div class="flex gap-3">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="{{ asset('images/svg/imagen_5.svg') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <p
+                                                                class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                                {{ $item->area }}m<sup>2</sup>
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                            {{ $item->area }}m<sup>2</sup>
-                                                        </p>
-                                                    </div>
+                                                    @endif
+
                                                 </div>
 
                                                 <div
@@ -857,32 +878,39 @@
                                     </div>
 
                                     <div class="flex justify-between gap-5">
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                        @if ($item->cuartos != 0)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->cuartos }} Cuartos
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->cuartos }} Cuartos
-                                            </p>
-                                        </div>
+                                        @endif
 
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                        @if ($item->banios != 0)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->banios }} Baños
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->banios }} Baños
-                                            </p>
-                                        </div>
+                                        @endif
 
-                                        <div class="flex gap-3">
-                                            <div class="flex justify-center items-center">
-                                                <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                        @if ($item->area)
+                                            <div class="flex gap-3">
+                                                <div class="flex justify-center items-center">
+                                                    <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                                                </div>
+                                                <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                                                    {{ $item->area }}m<sup>2</sup>
+                                                </p>
                                             </div>
-                                            <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                {{ $item->area }}m<sup>2</sup>
-                                            </p>
-                                        </div>
+                                        @endif
+
                                     </div>
 
                                     <div
@@ -960,9 +988,9 @@
 
 
         <section class="bg-[#F7F7FD]">
-            <div class="flex flex-col gap-10 items-center w-11/12 mx-auto pt-10 md:pt-20 pb-20">
-                <div class="flex flex-col gap-10" data-aos="fade-up" data-aos-duration="150">
-                    <div class="flex flex-col gap-3 items-center">
+            <div class=" items-center w-11/12 mx-auto pt-10 md:pt-20 pb-20">
+                <div data-aos="fade-up" data-aos-duration="150">
+                    <div class="flex flex-col gap-2 items-center">
                         <h2 class="text-[#000929] font-satoshiBold text-text40 text-center w-full md:w-[544px]">
                             Testimonios <span class="text-[#2E609D]">Reales</span>
                         </h2>
@@ -972,32 +1000,42 @@
                             e inquilinos tienen que decir
                         </p>
                     </div>
-                    <p
-                        class="text-[##000929] font-satoshiMedium text-[20px] md:text-[27px] text-center w-full md:w-[736px]">
-                        “La plataforma de Dimensión Líder es a la que acudo casi a diario
-                        para comprar una segunda casa y un condominio para vacaciones, o
-                        simplemente para buscar casas de mis sueños en nuevas áreas.
-                        ¡Gracias por divertirte comprando casas y analizando
-                        comparativamente, Estatery!
-                    </p>
                 </div>
 
-                <p class="text-[#2E609D] text-text16 font-jakarta font-extrabold">
-                    Alejandra Neyra,
-                    <span class="text-[#6C727F] font-normal">Inquilino</span>
-                </p>
+                <div class="mt-10">
+                    <div class="swiper testimonios">
+                        <div class="swiper-wrapper pb-24 ">
+                            @foreach ($testimonios as $item)
+                                <div class="swiper-slide">
+                                    <div class="flex flex-col gap-5 items-center">
+                                        <p
+                                            class="text-[#000929] font-satoshiMedium text-[20px] md:text-[27px] text-center w-full md:w-[1000px]">
+                                            {{ $item->testimonie }}
+                                        </p>
 
-                <div class="flex justify-center items-center gap-10">
-                    <div class="flex justify-center items-center">
-                        <img src="{{ asset('images/img/image_12.png') }}" alt="" class="rounded-full" />
+                                        <p class="text-[#2E609D] text-text16 font-jakarta font-extrabold">
+                                            {{ $item->name }},
+                                            <span class="text-[#6C727F] font-normal"> {{ $item->ocupation }}</span>
+                                        </p>
+
+                                        <div class="flex justify-center items-center gap-10">
+                                            <div class="flex justify-center items-center">
+                                                <img src="{{ asset($item->imagen_testimonio) }}" alt=""
+                                                    class="rounded-full" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="flex justify-center items-center">
-                        <img src="{{ asset('images/img/image_12.png') }}" alt="" class="rounded-full" />
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <img src="{{ asset('images/img/image_12.png') }}" alt="" class="rounded-full" />
-                    </div>
+
                 </div>
+
+
             </div>
         </section>
 
@@ -1013,7 +1051,7 @@
                             propiedades enumeradas.
                         </p>
                         <div class="flex justify-end items-center">
-                            <a href="#"
+                            <a href="{{ route('propiedades') }}"
                                 class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-6 py-3 text-center">
                                 Ver propiedades
                             </a>
@@ -1026,7 +1064,22 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 place-content-center gap-10 md:gap-20 basis-4/6">
-                    <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
+
+                    @foreach ($beneficios as $item)
+                        <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
+                            <div class="flex justify-start items-center">
+                                <img src="{{ asset($item->icono) }}" alt="" class="w-[56px] h-[56px]" />
+                            </div>
+                            <h2 class="text-[#000929] font-jakarta font-bold text-text24">
+                                {{ $item->titulo }}
+                            </h2>
+                            <p class="text-[#4D5461] font-jakarta font-normal text-text16">
+                                {{ $item->descripcionshort }}
+                            </p>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-duration="150">
                         <div class="flex justify-start items-center">
                             <img src="{{ asset('images/svg/imagen_7.svg') }}" alt=""
                                 class="w-[56px] h-[56px]" />
@@ -1080,7 +1133,7 @@
                             Aenean interdum, ipsum dignissim facilisis viverra, velit nibh
                             iaculis est, non aliquam. Cras eleifend,
                         </p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -1216,6 +1269,24 @@
                 0: {
                     slidesPerView: 1,
                 },
+            },
+        });
+
+
+        var testimonio = new Swiper(".testimonios", {
+            slidesPerView: 1,
+            spaceBetween: 50,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
+            initialSlide: 0,
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                }
+            },
+            pagination: {
+                el: ".swiper-pagination",
             },
         });
     </script>

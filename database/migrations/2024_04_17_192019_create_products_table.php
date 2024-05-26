@@ -46,7 +46,7 @@ return new class extends Migration
             
             $table->integer('cochera')->nullable();
             $table->boolean('mascota')->default(false);
-            $table->boolean('mobiliado')->default(false);
+            $table->boolean('mobiliado')->default(false); /* preguntar */
             $table->text('incluye')->nullable();
             $table->text('no_incluye')->nullable();
             

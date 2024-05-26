@@ -43,7 +43,8 @@
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <input type="text" id="producto" name="producto" value="{{old('producto')}}"
+                                            <input type="text" id="producto" name="producto"
+                                                value="{{ old('producto') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Producto">
 
@@ -166,11 +167,17 @@
                                                 </svg>
 
                                             </div>
-                                            <input type="text" id="codigo" name="codigo" value=""
+                                            <input type="text" id="codigo" name="codigo"
+                                                value="{{ old('codigo') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Código inmobiliario">
                                         </div>
+
+                                        @error('codigo')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
+
                                 </div>
 
                                 {{-- <div class="md:col-span-5 flex flex-col justify-start gap-2">
@@ -206,7 +213,8 @@
                                                 </svg>
 
                                             </div>
-                                            <input type="number" id="precio" name="precio" value=""
+                                            <input type="number" id="precio" name="precio"
+                                                value="{{ old('precio') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="precio">
                                         </div>
@@ -228,7 +236,8 @@
                                                         d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                             </div>
-                                            <input type="number" id="descuento" name="descuento" value=""
+                                            <input type="number" id="descuento" name="descuento"
+                                                value="{{ old('descuento') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="descuento">
                                         </div>
@@ -255,10 +264,15 @@
                                                 </svg>
 
                                             </div>
-                                            <input type="number" id="cuartos" name="cuartos" value=""
+                                            <input type="number" id="cuartos" name="cuartos"
+                                                value="{{ old('cuartos') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="cuartos">
                                         </div>
+
+                                        @error('cuartos')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="w-full">
                                         <label for="banios">Baños</label>
@@ -273,11 +287,14 @@
                                                         d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                             </div>
-                                            <input type="number" id="banios" name="banios" value=""
+                                            <input type="number" id="banios" name="banios"
+                                                value="{{ old('banios') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="baños">
                                         </div>
-
+                                        @error('banios')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -301,10 +318,15 @@
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <input type="text" id="area" name="area" value=""
+                                            <input type="text" id="area" name="area"
+                                                value="{{ old('area') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Área">
                                         </div>
+
+                                        @error('area')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
 
                                     </div>
                                     <div class="w-full">
@@ -321,10 +343,14 @@
                                                 </svg>
 
                                             </div>
-                                            <input type="number" id="cochera" name="cochera" value=""
+                                            <input type="number" id="cochera" name="cochera"
+                                                value="{{ old('cochera') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Cochera">
                                         </div>
+                                        @error('cochera')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -348,10 +374,15 @@
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <input type="number" id="pisos" name="pisos" value=""
+                                            <input type="number" id="pisos" name="pisos"
+                                                value="{{ old('pisos') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Número de pisos">
                                         </div>
+
+                                        @error('pisos')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
 
                                     </div>
                                     <div class="w-full">
@@ -373,10 +404,15 @@
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <input type="text" id="movilidad" name="movilidad" value=""
+                                            <input type="text" id="movilidad" name="movilidad"
+                                                value="{{ old('movilidad') }}"
                                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Movilidad">
                                         </div>
+
+                                        @error('movilidad')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -441,7 +477,7 @@
                                             <label for="alquiler">Alquiler</label>
                                             <input type="radio" name="tipo_propiedad" value="alquiler">
                                         </div>
-                                        
+
 
                                         <div class="flex justify-start gap-2 items-center">
                                             <label for="comprar">Comprar</label>
@@ -453,10 +489,10 @@
                                             <input type="radio" name="tipo_propiedad" value="vender">
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 @error('tipo_propiedad')
-                                        <span class="text-red-500">{{$message}}</span>
+                                    <span class="text-red-500">{{ $message }}</span>
                                 @enderror
 
 
@@ -474,10 +510,14 @@
                                                 </path>
                                             </svg>
                                         </div>
-                                        <input type="text" id="address" name="address" value=""
+                                        <input type="text" id="address" name="address"
+                                            value="{{ old('address') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Dirección de la propiedad">
                                     </div>
+                                    @error('address')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5 mt-2">
@@ -494,10 +534,15 @@
                                                 </path>
                                             </svg>
                                         </div>
-                                        <input type="text" id="inside" name="inside" value=""
+                                        <input type="text" id="inside" name="inside"
+                                            value="{{ old('inside') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Interior Oficina 204 - Piso 4">
                                     </div>
+
+                                    @error('inside')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5 mt-2">
@@ -534,8 +579,7 @@
                                                 </path>
                                             </svg>
                                         </div>
-                                        <input type="text" id="country" name="country"
-                                            value=""
+                                        <input type="text" id="country" name="country" value=""
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Páis">
                                     </div>
@@ -564,12 +608,17 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <input type="text" id="incluye" name="incluye" value=""
+                                        <input type="text" id="incluye" name="incluye"
+                                            value="{{ old('incluye') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Incluye">
 
 
                                     </div>
+
+                                    @error('incluye')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5 mt-2">
@@ -593,12 +642,17 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <input type="text" id="no_incluye" name="no_incluye" value=""
+                                        <input type="text" id="no_incluye" name="no_incluye"
+                                            value="{{ old('no_incluye') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="No incluye">
 
 
                                     </div>
+
+                                    @error('no_incluye')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5 mt-2">
@@ -622,12 +676,17 @@
                                                 </g>
                                             </svg>
                                         </div>
-                                        <input type="text" id="propietario" name="propietario" value=""
+                                        <input type="text" id="propietario" name="propietario"
+                                            value="{{ old('propietario') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Nombre del propietario">
 
 
                                     </div>
+
+                                    @error('propietario')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5 mt-2">
@@ -651,11 +710,14 @@
                                             </svg>
                                         </div>
                                         <input type="text" id="tipo_propietario" name="tipo_propietario"
-                                            value=""
+                                            value="{{ old('tipo_propietario') }}"
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Tipo de propietario">
                                     </div>
 
+                                    @error('tipo_propietario')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
 
                                 </div>
 
@@ -666,6 +728,10 @@
                                             class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                             aria-describedby="user_avatar_help" id="user_avatar" type="file">
                                     </div>
+
+                                    @error('imagen_propietario')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="md:col-span-5">
