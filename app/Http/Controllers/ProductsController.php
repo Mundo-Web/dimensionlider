@@ -23,8 +23,9 @@ class ProductsController extends Controller
    */
   public function index()
   {
+    
     $products =  Products::where("status", "=", true)->get();
-
+    
     return view('pages.products.index', compact('products'));
   }
 
@@ -72,6 +73,7 @@ class ProductsController extends Controller
    */
   public function store(Request $request)
   {
+    /* dd($request->tags_id); */
     $especificaciones = [];
     $data = $request->all();
     $atributos = null;
@@ -82,6 +84,7 @@ class ProductsController extends Controller
       'producto' => 'required',
       'precio' => 'min:0|required|numeric', 
       'descuento' => 'lt:' . $request->input('precio'),
+      'tipo_propiedad' => 'required'
     ]);
 
     if ($request->hasFile("imagen")) {
@@ -161,9 +164,12 @@ class ProductsController extends Controller
 
     $producto = Products::create($cleanedData);
     $this->GuardarEspecificaciones($producto->id, $especificaciones);
-    if(!is_null($tagsSeleccionados)){
+    /* if(!is_null($tagsSeleccionados)){
       $this->TagsXProducts($producto->id, $tagsSeleccionados);
-    }
+    } */
+
+    /* --------  */
+    $producto->tags()->sync($tagsSeleccionados);
     
     return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
   }
