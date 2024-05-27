@@ -47,6 +47,7 @@ class Products extends Model
         'departamento_id',
         'provincia_id',
         'distrito_id',
+        'frecuencia'
     ];
 
     public function categoria()

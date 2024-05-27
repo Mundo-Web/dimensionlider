@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('district')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->string('frecuencia')->nullable();
             
             $table->integer('cochera')->nullable();
             $table->boolean('mascota')->default(false);

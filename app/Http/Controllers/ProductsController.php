@@ -124,6 +124,7 @@ class ProductsController extends Controller
       'propietario' =>'required',
       'tipo_propietario' =>'required',
       'imagen_propietario' =>'required',
+      'frecuencia' => 'required'
 
     ]);
 

@@ -65,7 +65,7 @@ class IndexController extends Controller
     {
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
-        $inmuebles = Products::where('visible', 1)->where('status', 1)->orderBy('created_at', 'desc')->get();
+        $inmuebles = Products::where('visible', 1)->where('status', 1)->with('tags')->orderBy('created_at', 'desc')->get();
         return view('public.propiedades', compact('generales', 'blogs', 'inmuebles'));
     }
 
