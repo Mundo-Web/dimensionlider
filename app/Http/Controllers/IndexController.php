@@ -336,9 +336,7 @@ class IndexController extends Controller
                             font-family: Montserrat, sans-serif;
                           "
                         >
-                          <span style="display: block">' .
-                $name .
-                ' </span>
+                          ' .$name . ' 
                         </p>
                       </td>
                     </tr>
@@ -394,6 +392,7 @@ class IndexController extends Controller
                             font-weight: 600;
                             font-family: Montserrat, sans-serif;
                             font-size: 16px;
+                            margin-bottom: 350px;
                           "
                         >
                           <span>Visita nuestra web</span>

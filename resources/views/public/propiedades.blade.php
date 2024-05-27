@@ -351,17 +351,16 @@
                                 <div class="w-full flex justify-center items-center relative">
                                     <img src="{{ asset($item->imagen) }}" alt="" class="rounded-t-2xl w-full" />
                                     @foreach ($item->tags as $tag)
-                                                        @if ($tag->name == 'Popular')
-                                                            <div
-                                                                class="flex gap-2 items-center justify-center absolute top-[10%] right-[5%] bg-[#2E609D] text-white font-satoshiBold text-text12 px-5 py-3 rounded-full">
-                                                                <div class="flex justify-start items-center">
-                                                                    <img src="{{ asset('images/svg/imagen_6.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <p>{{ $tag->name }} </p>
-                                                            </div>
-                                                        @endif
-                                                    @endforeach
+                                        @if ($tag->name == 'Popular')
+                                            <div
+                                                class="flex gap-2 items-center justify-center absolute top-[10%] right-[5%] bg-[#2E609D] text-white font-satoshiBold text-text12 px-5 py-3 rounded-full">
+                                                <div class="flex justify-start items-center">
+                                                    <img src="{{ asset('images/svg/imagen_6.svg') }}" alt="" />
+                                                </div>
+                                                <p>{{ $tag->name }} </p>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
 
                                 <div class="flex flex-col gap-5 p-6">
