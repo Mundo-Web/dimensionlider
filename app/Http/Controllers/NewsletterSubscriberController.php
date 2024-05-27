@@ -86,7 +86,7 @@ class NewsletterSubscriberController extends Controller
 
     private function envioCorreo($data)
     {
-        $name = 'Usuario';
+        $name = '';
         $mensaje = 'Gracias por comunicarte con Dimensión Lider';
         $mail = EmailConfig::config($name, $mensaje);
         $generales = General::all()->first();
@@ -285,7 +285,7 @@ class NewsletterSubscriberController extends Controller
     private function envioCorreoInterno($data)
     {
         /* $name = $data['full_name']; */
-        $name = 'Usuario';
+        $name = '';
         $mensaje = 'Gracias por comunicarte con Dimensión Lider';
         $mail = EmailConfig::config($name, $mensaje);
         $emailCliente = General::all()->first();
