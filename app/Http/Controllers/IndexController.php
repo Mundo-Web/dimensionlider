@@ -49,26 +49,14 @@ class IndexController extends Controller
 
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
 
+        $inmuebles = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->orderBy('created_at', 'desc')->activeDestacado()->get();
 
-      $inmuebles = Products::where('destacar', '=', 1)
-                              ->where('status', '=', 1)
-                              ->where('visible', '=', 1)
-                              ->with('tags')
-                              ->orderBy('created_at', 'desc')
-                              ->activeDestacado()->get();
+        $inmueblesAlquiler = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->where('tipo_propiedad', 'alquiler')->get();
 
-      $inmueblesAlquiler = Products::where('destacar', '=', 1)
-                              ->where('status', '=', 1)
-                              ->where('visible', '=', 1)
-                              ->where('tipo_propiedad', 'alquiler')->get();
-
-      $inmueblesComprar = Products::where('destacar', '=', 1)
-                              ->where('status', '=', 1)
-                              ->where('visible', '=', 1)
-                              ->where('tipo_propiedad', 'comprar')->get();
+        $inmueblesComprar = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->where('tipo_propiedad', 'comprar')->get();
 
         $beneficios = Strength::where('status', '=', 1)->get();
-        $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();                     
+        $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();
 
         return view('public.index', compact('generales', 'inmuebles', 'blogs', 'beneficios', 'testimonios', 'inmueblesAlquiler', 'inmueblesComprar'));
     }
@@ -253,6 +241,7 @@ class IndexController extends Controller
         $name = $data['full_name'];
         $mensaje = 'Gracias por comunicarte con Dimensión Lider';
         $mail = EmailConfig::config($name, $mensaje);
+        $generales = General::all()->first();
         // dd($mail);
         try {
             $mail->addAddress($data['email']);
@@ -336,7 +325,9 @@ class IndexController extends Controller
                             font-family: Montserrat, sans-serif;
                           "
                         >
-                          ' .$name . ' 
+                          ' .
+                $name .
+                '
                         </p>
                       </td>
                     </tr>
@@ -411,31 +402,41 @@ class IndexController extends Controller
           
                     <tr>
                     <td>
-                    <a href="https://www.facebook.com/" target="_blank">
+                    <a href="https://' .
+                                  htmlspecialchars($generales->facebook, ENT_QUOTES, 'UTF-8') .
+                '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_1.png"
                         alt=""
                     /></a>
       
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="https://' .
+                    htmlspecialchars($generales->instagram, ENT_QUOTES, 'UTF-8') .
+  '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_2.png"
                         alt=""
                     /></a>
       
-                    <a href="https://x.com/" target="_blank">
+                    <a href="https://' .
+                    htmlspecialchars($generales->twitter, ENT_QUOTES, 'UTF-8') .
+  '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_3.png"
                         alt=""
                     /></a>
       
-                    <a href="https://www.linkedin.com/" target="_blank">
+                    <a href="https://' .
+                    htmlspecialchars($generales->linkedin, ENT_QUOTES, 'UTF-8') .
+  '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_4.png"
                         alt=""
                     /></a>
       
-                    <a href="https://www.youtube.com/" target="_blank">
+                    <a href="https://' .
+                    htmlspecialchars($generales->youtube, ENT_QUOTES, 'UTF-8') .
+  '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_5.png"
                         alt=""
@@ -457,15 +458,16 @@ class IndexController extends Controller
 
     private function envioCorreoInterno($data)
     {
-        $name = $data['full_name'];
-        $mensaje = 'Gracias por comunicarte con Dimensión Lider';
+        /* $name = $data['full_name']; */
+        $name = 'Hola';
+        /* $mensaje = 'Gracias por comunicarte con Dimensión Lider'; */
+        $mensaje = 'Tienes un nuevo mensaje';
         $mail = EmailConfig::config($name, $mensaje);
         $emailCliente = General::all()->first();
 
         try {
             $mail->addAddress($emailCliente->email);
-            $mail->Body =
-                '<html lang="en">
+            $mail->Body = '<html lang="en">
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -491,7 +493,7 @@ class IndexController extends Controller
                     width: 600px;
                     margin: 0 auto;
                     text-align: center;
-                    background-image: url(https://dimensionlider.mundoweb.pe/mailing/Fondo.png);
+                    background-image: url(https://dimensionlider.mundoweb.pe/mailing/fondo_lider.png);
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: cover;
@@ -531,27 +533,11 @@ class IndexController extends Controller
                           "
                         >
                           <span style="display: block">Hola Dimensión Lider</span>
-                          <span style="display: block">Tienes un nuevo mensaje de:</span>
+                          <span style="display: block">Tienes un nuevo mensaje</span>
                         </p>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <p
-                          style="
-                            color: #ffffff;
-                            font-size: 40px;
-                            line-height: 20px;
-                            font-family: Montserrat, sans-serif;
-                            margin: 30px 0;
-                          "
-                        >
-                          <span style="display: block">' .
-                $name .
-                ' </span>
-                        </p>
-                      </td>
-                    </tr>
+                    
                     <tr>
                       <td>
                         <a
@@ -570,6 +556,7 @@ class IndexController extends Controller
                             font-weight: 600;
                             font-family: Montserrat, sans-serif;
                             font-size: 16px;
+                            margin-bottom: 350px;
                           "
                         >
                           <span>Visita nuestra web</span>
@@ -587,31 +574,31 @@ class IndexController extends Controller
                     </tr> -->
                     <tr style="margin-top: 300px">
                       <td>
-                        <a href="https://www.facebook.com/" target="_blank">
+                        <a href="https://www.facebook.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_1.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.instagram.com/" target="_blank">
+                        <a href="https://www.instagram.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_2.png"
                             alt=""
                         /></a>
           
-                        <a href="https://x.com/" target="_blank">
+                        <a href="https://x.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_3.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.linkedin.com/" target="_blank">
+                        <a href="https://www.linkedin.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_4.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.youtube.com/" target="_blank">
+                        <a href="https://www.youtube.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_5.png"
                             alt=""
