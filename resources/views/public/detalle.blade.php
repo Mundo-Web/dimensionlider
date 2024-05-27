@@ -508,9 +508,20 @@
                                 <p class="font-satoshiBold text-text18 text-[#000929]">R$ 7.872</p>
                             </div> --}}
 
+                           {{--  pppp
+
+                            @foreach ($distrito as $item)
+                            {{$item}} pppp
+                                
+                            @endforeach --}}
+
+                            {{-- {{$distrito[0]}}
+                            
+ --}}
+ 
                             <div class="w-full flex flex-col gap-5">
                                 <a target="_blank"
-                                    href="https://api.whatsapp.com/send?phone=51934464915&text={{ $generales->mensaje_whatsapp }}"
+                                    href="https://api.whatsapp.com/send?phone={{$generales->whatsapp}}&text=Hola! Estoy interesado en {{$inmueble->producto}} del distrito de los {{ $distrito[0]->description }}"
                                     class="w-full flex justify-center items-center gap-2 bg-[#2E609D] text-white font-satoshiBold text-text16 py-4 px-8 rounded-lg">
                                     <div class="flex justify-center items-center">
                                         <img src="{{ asset('images/svg/imagen_35.svg') }}" alt="agendar">

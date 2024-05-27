@@ -17,7 +17,7 @@ class EmailConfig
         $mail->Password = 'uohombtocndviqyz';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
-        $mail->Subject = '' . $name . ', '.$mensaje. '';
+        $mail->Subject = '' . $name . ' '.$mensaje. '';
         $mail->CharSet = 'UTF-8';
         $mail->setFrom('hola@mundoweb.pe', 'Dimensión Lider');
         return $mail;

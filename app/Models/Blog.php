@@ -14,7 +14,7 @@ class Blog extends Model
     
     public function categories()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(CategoryBlog::class, 'category_id');
     }
 
 

@@ -47,6 +47,15 @@ class ProductsController extends Controller
         return response()->json($provincias);
     }
 
+    public function getDistritos($id)
+    {
+      
+        $distritos = DB::table('districts')->where('province_id', $id)->get();
+        
+
+        return response()->json($distritos);
+    }
+
     
   public function create()
   {
@@ -286,8 +295,19 @@ class ProductsController extends Controller
     $especificacion = Specifications::where("product_id", "=" , $id)->get();
     $allTags = Tag::all();
     $categoria = Category::all();
+
+    /* editar para combos */
+    /* depa-prov-dist */
+/*     $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
+    $provincias = DB::select('select * from provinces where active = ? order by 3', [1]); */
+    $departamentos = DB::select('select * from departments where active = ? order by 2', [1]);
+
+    $provincias = DB::select('select * from provinces where active = ? order by 3', [1]);
+
+    $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
+   
     
-    return view('pages.products.edit', compact('product', 'atributos', 'valorAtributo', 'allTags', 'categoria','especificacion'));
+    return view('pages.products.edit', compact('product', 'atributos', 'valorAtributo', 'allTags', 'categoria','especificacion', 'departamentos', 'provincias', 'distritos'));
   }
 
   /**

@@ -100,7 +100,7 @@
                                         <div
                                             class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
                                             <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
-                                                <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
+                                                {{-- <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
                                                     <a href="#"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
                                                         María del Triunfosss</a>
@@ -110,7 +110,16 @@
                                                     <a href="#"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
                                                         María del Triunfo</a>
-                                                </div>
+                                                </div> --}}
+
+                                                <select name="departamento_id" id="departamento_id" class="w-full py-3 px-5">
+                                                    <option value="">Seleccionar un Departamento </option>
+                                                    {{-- @foreach ($departamentos as $depa)
+                                                        <option value="{{ $depa->id }}">
+                                                            
+                                                        </option>
+                                                    @endforeach --}}
+                                                </select>
 
 
 

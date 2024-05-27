@@ -57,6 +57,7 @@ class Products extends Model
 
     public function galeria()
     {
+        //Uno a muchos
         return $this->hasMany(Galerie::class, 'product_id');
     }
 
@@ -76,4 +77,9 @@ class Products extends Model
     {
         return $this->hasMany(Specifications::class, 'product_id');
     }
+
+    /* public function departamentos()
+    {
+        return $this->belongsTo(Department::class);
+    } */
 }

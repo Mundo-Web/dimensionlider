@@ -156,6 +156,8 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         /* depa - prov - district */
         Route::get('/products/provincias/{id}', [ProductsController::class, 'getProvincias'])->name('products.getProvincias');
 
+        Route::get('/products/distritos/{id}', [ProductsController::class, 'getDistritos'])->name('products.getDistritos');
+
         //Preguntas frecuentes
         Route::resource('/faqs', FaqsController::class);
         Route::post('/faqs/updateVisible', [FaqsController::class, 'updateVisible'])->name('faqs.updateVisible');

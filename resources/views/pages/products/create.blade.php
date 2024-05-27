@@ -1,4 +1,3 @@
-
 <x-app-layout>
 
 
@@ -578,30 +577,91 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-                                <div class="md:col-span-5 mt-2">
-                                    <select name="provincia_id" id="provincia_id" class="w-full py-3 px-5">
-                                        <option value="">Seleccionar una Provincia </option>
-                                        @foreach ($provincias as $item)
-                                            <option value="{{ $item->id }}">{{ $item->description }} </option>
-                                        @endforeach
-                                    </select>
+                                {{-- provincias --}}
+                                <div class="md:col-span-5 mt-2" id="provincia-container">
+                                </div>
+                                {{-- distrito --}}
+                                <div class="md:col-span-5 mt-2" id="distrito-container">
                                 </div>
 
-                                
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#departamento_id').change(function() {
+                                            var departamento_id = $(this).val();
+                                            if (departamento_id) {
+                                                $.ajax({
+                                                    url: '/admin/products/provincias/' + departamento_id,
+                                                    type: 'GET',
+                                                    dataType: 'json',
+                                                    success: function(data) {
 
-                                
+                                                        // Crear el combo de provincia con la opción inicial y las opciones obtenidas
+                                                        var provinciaSelect =
+                                                            '<select name="provincia_id" id="provincia_id" class="w-full py-3 px-5">' +
+                                                            '<option value="">Seleccionar una Provincia </option>';
+                                                        $.each(data, function(key, value) {
+                                                            provinciaSelect += '<option value="' + value.id + '">' +
+                                                                value.description + '</option>';
+                                                        });
+
+                                                        provinciaSelect += '</select>';
+
+                                                        // Reemplazar el contenido del contenedor con el nuevo select
+                                                        $('#provincia-container').html(provinciaSelect);
+
+                                                    },
+                                                    error: function(xhr, status, error) {
+                                                        console.error('Error: ' + status + ' ' + error);
+                                                    }
+                                                })
+                                            } else {
+                                                $('#provincia-container').empty();
+                                                $('#distrito-container').empty();
+                                            }
+
+                                        })
 
 
 
-                                <div class="md:col-span-5 mt-2">
-                                    <select name="distrito_id" id="distrito_id" class="w-full py-3 px-5">
-                                        <option value="">Seleccionar un Distrito </option>
-                                        @foreach ($distritos as $item)
-                                            <option value="{{ $item->id }}">{{ $item->description }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                    })
+
+                                    $(document).on('change', '#provincia_id', function() {
+                                        var provincia_id = $(this).val();
+                                        if (provincia_id) {
+                                            $.ajax({
+                                                url: '/admin/products/distritos/' + provincia_id,
+                                                type: 'GET',
+                                                dataType: 'json',
+                                                success: function(data) {
+
+                                                    // Crear el combo de provincia con la opción inicial y las opciones obtenidas
+                                                    var distritoSelect =
+                                                        '<select name="distrito_id" id="distrito_id" class="w-full py-3 px-5">' +
+                                                        '<option value="">Seleccionar una Distrito </option>';
+                                                    $.each(data, function(key, value) {
+                                                        distritoSelect += '<option value="' + value.id + '">' +
+                                                            value.description + '</option>';
+                                                    });
+                                                    distritoSelect += '</select>';
+
+                                                    // Reemplazar el contenido del contenedor con el nuevo select
+                                                    $('#distrito-container').html(distritoSelect);
+
+                                                },
+                                                error: function(xhr, status, error) {
+                                                    console.error('Error: ' + status + ' ' + error);
+                                                }
+                                            })
+                                        } else {
+                                            $('#distrito-container').empty();
+                                        }
+
+                                    });
+                                </script>
+
+
+
+
 
                                 {{-- incluye/no incluye --}}
                                 <div class="md:col-span-5 mt-2">

@@ -58,6 +58,8 @@ class IndexController extends Controller
         $beneficios = Strength::where('status', '=', 1)->get();
         $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();
 
+        /* $inmueblesExiste = Products::where() */
+
         return view('public.index', compact('generales', 'inmuebles', 'blogs', 'beneficios', 'testimonios', 'inmueblesAlquiler', 'inmueblesComprar'));
     }
 
@@ -111,12 +113,17 @@ class IndexController extends Controller
 
             if ($id == 0) {
                 $blogs = Blog::where('status', 1)->where('visible', 1)->orderBy('created_at', 'desc')->get();
+                $latestBlog = Blog::where('status', 1)->where('visible', 1)->orderBy('created_at', 'desc')->first();
 
-                return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria'));
+                return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria', 'latestBlog'));
             } else {
                 $blogs = Blog::where('status', 1)->where('visible', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->get();
+
+                $latestBlog = Blog::where('status', 1)->where('visible', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->first();
+
+
                 $categoria = CategoryBlog::where('status', 1)->where('visible', 1)->findOrFail($id);
-                return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria'));
+                return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria', 'latestBlog'));
             }
         } catch (\Throwable $th) {
             //throw $th;
@@ -128,9 +135,13 @@ class IndexController extends Controller
         $generales = General::all()->first();
         /* $inmueble = Products::where('id', $id)->with('specificaciones')->first(); */
         $inmueble = Products::findOrFail($id);
+        $distrito_id = $inmueble->distrito_id;
+       
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+        $distrito = DB::select('SELECT * FROM districts WHERE id = ? ', [$distrito_id]);
 
-        return view('public.detalle', compact('generales', 'inmueble', 'blogs'));
+
+        return view('public.detalle', compact('generales', 'inmueble', 'blogs', 'distrito'));
     }
 
     public function contacto()
@@ -238,7 +249,7 @@ class IndexController extends Controller
 
     private function envioCorreo($data)
     {
-        $name = $data['full_name'];
+        $name = $data['full_name'] . ',';
         $mensaje = 'Gracias por comunicarte con Dimensión Lider';
         $mail = EmailConfig::config($name, $mensaje);
         $generales = General::all()->first();
@@ -460,7 +471,7 @@ class IndexController extends Controller
     private function envioCorreoInterno($data)
     {
         /* $name = $data['full_name']; */
-        $name = 'Hola';
+        $name = 'Hola, ';
         /* $mensaje = 'Gracias por comunicarte con Dimensión Lider'; */
         $mensaje = 'Tienes un nuevo mensaje';
         $mail = EmailConfig::config($name, $mensaje);

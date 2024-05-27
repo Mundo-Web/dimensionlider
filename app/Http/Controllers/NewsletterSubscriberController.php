@@ -229,7 +229,7 @@ class NewsletterSubscriberController extends Controller
                     <td>
                     <a href="https://' .
                     htmlspecialchars($generales->facebook, ENT_QUOTES, 'UTF-8') .
-                    '" target="_blank">
+                    '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_1.png"
                         alt=""
@@ -237,7 +237,7 @@ class NewsletterSubscriberController extends Controller
       
                     <a href="https://' .
                     htmlspecialchars($generales->instagram, ENT_QUOTES, 'UTF-8') .
-                    '" target="_blank">
+                    '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_2.png"
                         alt=""
@@ -245,7 +245,7 @@ class NewsletterSubscriberController extends Controller
       
                     <a href="https://' .
                     htmlspecialchars($generales->twitter, ENT_QUOTES, 'UTF-8') .
-                    '" target="_blank">
+                    '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_3.png"
                         alt=""
@@ -253,7 +253,7 @@ class NewsletterSubscriberController extends Controller
       
                     <a href="https://' .
                     htmlspecialchars($generales->linkedin, ENT_QUOTES, 'UTF-8') .
-                    '" target="_blank">
+                    '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_4.png"
                         alt=""
@@ -261,7 +261,7 @@ class NewsletterSubscriberController extends Controller
       
                     <a href="https://' .
                     htmlspecialchars($generales->youtube, ENT_QUOTES, 'UTF-8') .
-                    '" target="_blank">
+                    '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                       <img
                         src="https://dimensionlider.mundoweb.pe/mailing/image_5.png"
                         alt=""
