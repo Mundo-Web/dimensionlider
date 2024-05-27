@@ -29,9 +29,10 @@
                 <th>Descripcion</th> --}}
                 <th>Precio</th>
                 <th>Descuento</th>
-                <th>Costo por articulo</th>
+                {{-- <th>Costo por articulo</th>
                 <th>Stock</th>
-                <th>Peso</th>
+                <th>Peso</th> --}}
+                <th>Tipo</th>
                 <th>Imagen</th>
                 <th>Destacar</th>
                 {{-- <th>Recomendar</th> --}}
@@ -46,11 +47,13 @@
                   <td>{{ $item->producto }}</td>
                   {{-- <td>{{ $item->extract }}</td>
                   <td>{{ $item->description }}</td> --}}
+                  
                   <td>{{ $item->precio }}</td>
                   <td>{{ $item->descuento }}</td>
-                  <td>{{ $item->costo_x_art }}</td>
+                  <td>{{ $item->tipo_propiedad }}</td>
+                  {{-- <td>{{ $item->costo_x_art }}</td>
                   <td>{{ $item->stock }}</td>
-                  <td>{{ $item->peso }}</td>
+                  <td>{{ $item->peso }}</td> --}}
                   <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->imagen) }}" alt=""></td>
                   <td>
                     <form method="POST" action="">
@@ -134,9 +137,10 @@
                 <th>Descripcion</th> --}}
                 <th>Precio</th>
                 <th>Descuento</th>
-                <th>Costo por articulo</th>
+                <th>Tipo</th>
+                {{-- <th>Costo por articulo</th>
                 <th>Stock</th>
-                <th>Peso</th>
+                <th>Peso</th> --}}
                 <th>Imagen</th>
                 <th>Destacar</th>
                {{--  <th>Recomendar</th> --}}
