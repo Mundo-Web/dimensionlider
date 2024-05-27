@@ -72,7 +72,10 @@
                     </div>
                     <h3 class="text-[#082252] font-satoshiBold text-text32">Email</h3>
                     <p class="text-[#082252] font-satoshiRegular text-text16">Escríbenos para recibir atención personalizada y resolver tus dudas.</p>
-                    <a href="#" class="font-satoshiMedium text-text16 text-[#2E609D]">hola@inmobiliarialider.pe</a>
+                    <p class="font-satoshiMedium text-text16 text-[#2E609D]">
+                        {{$generales->email}}
+
+                    </p>
                 </div>
 
                 <div class="order-1 md:order-1 md:col-span-1 flex flex-col gap-3 bg-[#FFFFFF] p-6 rounded-xl" data-aos="fade-up" data-aos-duration="150">
@@ -81,7 +84,9 @@
                     </div>
                     <h3 class="text-[#082252] font-satoshiBold text-text32">Teléfono</h3>
                     <p class="text-[#082252] font-satoshiRegular text-text16">Llámanos para obtener soporte inmediato y asistencia profesional.</p>
-                    <a href="#" class="font-satoshiMedium text-text16 text-[#2E609D]">+1(51) 000-0000</a>
+                    <p class="font-satoshiMedium text-text16 text-[#2E609D]">
+                        {{$generales->office_phone}}
+                    </p>
                 </div>
 
 
@@ -91,7 +96,9 @@
                     </div>
                     <h3 class="text-[#082252] font-satoshiBold text-text32">Oficina</h3>
                     <p class="text-[#082252] font-satoshiRegular text-text16">Visítanos en nuestra oficina para conocer nuestras soluciones de tratamiento de agua en persona.</p>
-                    <a href="#" class="font-satoshiMedium text-text16 text-[#2E609D]">Pasaje 47 Mz. D Lt. 2 N.120 Urb. Retablo Etapa 2 Comas - Lima</a>
+                    <p  class="font-satoshiMedium text-text16 text-[#2E609D]">
+                        {{$generales->address}} {{$generales->inside}} {{$generales->district}}, {{$generales->country}}
+                    </p>
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ class StrengthController extends Controller
     {
         $request->validate([
             'titulo' => 'required',
-            'descripcionshort' => 'required',
+            'descripcionshort' => 'required|max:255',
             'icono' => 'required',
         ]);
 

@@ -27,42 +27,42 @@
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
                                     class="rounded-xl w-full h-[400px] object-cover">
                             </div>
                         </div>
-    
+
                         <div class="swiper-slide">
                             <div class="flex justify-center items-center">
                                 <img src="{{ asset('images/img/image_18.png') }}" alt="inmobiliaria"
@@ -74,7 +74,7 @@
             </div>
 
             <div class="hidden">
-                <img src="{{asset('images/img/image_31.png')}}" alt="mapa">
+                <img src="{{ asset('images/img/image_31.png') }}" alt="mapa">
             </div>
         </section>
 
@@ -142,12 +142,12 @@
 
                             <div class="flex flex-col gap-2">
                                 <h2 class="text-[#000929] font-satoshiBold text-text28 md:text-text32 leading-tight">
-                                    {{$inmueble->producto}}
+                                    {{ $inmueble->producto }}
                                 </h2>
                                 <div
                                     class="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-2">
                                     <p class="text-[#000929] font-satoshiRegular text-text16">
-                                       {{$inmueble->direction}}
+                                        {{ $inmueble->direction }}
                                     </p>
                                     <div class="flex gap-2 items-center justify-center">
                                         <div>
@@ -160,7 +160,7 @@
 
                                         </div>
                                         <p class="font-satoshiRegular text-text14 text-[#000000]">
-                                            Cod. imóvel {{-- 58756 --}} {{$inmueble->codigo}}
+                                            Cod. imóvel {{-- 58756 --}} {{ $inmueble->codigo }}
                                         </p>
                                     </div>
                                 </div>
@@ -170,51 +170,64 @@
 
                     <div
                         class="order-3 lg:order-3 col-span-1 row-span-1 lg:col-span-4 lg:row-span-1 bg-[#FAFAFA] flex flex-col gap-5">
-                        <div class="bg-[#FFFFFF] flex flex-wrap justify-between items-center gap-5 rounded-xl p-4 md:p-8" data-aos="fade-up" data-aos-duration="150">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('images/svg/imagen_26.svg') }}" alt="metros">
+                        <div class="bg-[#FFFFFF] flex flex-wrap justify-between items-center gap-5 rounded-xl p-4 md:p-8"
+                            data-aos="fade-up" data-aos-duration="150">
+                            @if ($inmueble->area)
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_26.svg') }}" alt="metros">
+                                    </div>
+                                    <p class="font-satoshiRegular text-text16 text-[#000929]">
+                                        {{ $inmueble->area }}m
+                                        <sup>2</sup>
+                                    </p>
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">
-                                    {{-- 65m --}} {{$inmueble->area}}m
-                                    <sup>2</sup></p>
-                            </div>
+                            @endif
 
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('images/svg/imagen_27.svg') }}" alt="metros">
+                            @if ($inmueble->cuartos != 0)
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_27.svg') }}" alt="metros">
+                                    </div>
+                                    <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
+                                        {{ $inmueble->cuartos }}
+                                        cuartos</p>
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
-                                    {{$inmueble->cuartos}}
-                                    cuartos</p>
-                            </div>
+                            @endif
 
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('images/svg/imagen_28.svg') }}" alt="baños">
+                            @if ($inmueble->banios != 0)
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_28.svg') }}" alt="baños">
+                                    </div>
+                                    <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
+                                        {{ $inmueble->banios }}
+                                        baños</p>
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 --}}
-                                    {{$inmueble->banios}}
-                                     baños</p>
-                            </div>
+                            @endif
 
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('images/svg/imagen_29.svg') }}" alt="vagas">
+                            @if ($inmueble->cochera != 0)
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_29.svg') }}" alt="vagas">
+                                    </div>
+                                    <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 vagas --}}
+                                        {{ $inmueble->cochera }} cochera
+                                    </p>
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">{{-- 2 vagas --}}
-                                    {{$inmueble->cochera}} cochera
-                                </p>
-                            </div>
+                            @endif
 
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('images/svg/imagen_30.svg') }}" alt="andar">
+
+                            @if ($inmueble->pisos != 0)
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/svg/imagen_30.svg') }}" alt="andar">
+                                    </div>
+                                    <p class="font-satoshiRegular text-text16 text-[#000929]">
+                                        {{ $inmueble->pisos }} pisos
+                                    </p>
                                 </div>
-                                <p class="font-satoshiRegular text-text16 text-[#000929]">
-                                    {{$inmueble->pisos}} pisos
-                                </p>
-                            </div>
+                            @endif
 
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-center items-center">
@@ -254,7 +267,7 @@
 
                         <div class="bg-[#FFFFFF] px-4 py-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-duration="150">
                             <div class="flex flex-col gap-10">
-                                <div class="flex gap-5 justify-start items-start w-full" >
+                                <div class="flex gap-5 justify-start items-start w-full">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -273,12 +286,13 @@
                                         <h3 class="font-satoshiBold text-text24 leading-tight">Acerca de esta propiedad
                                         </h3>
                                         <div class="text-[#808494] font-satoshiRegular text-text16">
-                                        {!!$inmueble->description!!}    
+                                            {!! $inmueble->description !!}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up" data-aos-duration="150">
+                                <div class="flex gap-5 justify-start items-start w-full" data-aos="fade-up"
+                                    data-aos-duration="150">
                                     <div class="flex justify-center items-center">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -298,14 +312,14 @@
                                             <div class="flex flex-col gap-2">
                                                 <p class="font-satoshiBold text-text18 leading-tight">Incluye</p>
                                                 <div class="text-[#808494] font-satoshiRegular text-text16">
-                                                    {!!$inmueble->incluye!!}    
-                                                    </div>
+                                                    {!! $inmueble->incluye !!}
+                                                </div>
                                             </div>
 
                                             <div class="flex flex-col gap-2">
                                                 <p class="font-satoshiBold text-text18 leading-tight">No Incluye</p>
                                                 <div class="text-[#808494] font-satoshiRegular text-text16">
-                                                    {!!$inmueble->no_incluye!!}    
+                                                    {!! $inmueble->no_incluye !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -388,15 +402,54 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#FAFAFA] order-2 lg:order-2 col-span-1 row-span-1 lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-duration="150">
+                    <div class="bg-[#FAFAFA] order-2 lg:order-2 col-span-1 row-span-1 lg:col-span-2 lg:row-span-2"
+                        data-aos="fade-up" data-aos-duration="150">
                         <div class="bg-[#F7F7FD] md:bg-[#FFFFFF]  rounded-xl px-4 py-6 md:p-8 flex flex-col gap-5">
                             <div class="flex flex-col gap-10">
                                 <div class="flex justify-between items-center">
-                                    <p class="font-satoshiBold text-text16 text-[#000929] capitalize">{{$inmueble->tipo_propiedad}} </p>
-                                    <p class="font-satoshiBold text-text18 text-[#000929]">{{-- R$ 5.700 --}} R$ {{$inmueble->precio}}</p>
+                                    <p class="font-satoshiBold text-text16 text-[#000929] capitalize">
+                                        {{ $inmueble->tipo_propiedad }} </p>
+                                    <p class="font-satoshiBold text-text18 text-[#000929]">{{-- R$ 5.700 --}} R$
+                                        {{ $inmueble->precio }}</p>
                                 </div>
 
-                               {{--  <div class="flex flex-col gap-1 pb-5">
+                                <div class="w-full">
+                                    <div class="flex flex-col gap-5  w-full">
+                                        <div class="flex justify-start items-center gap-5">
+                                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="40" height="40" rx="20" fill="#2E609D" />
+                                                <path d="M23.8281 18.4685H13.1074" stroke="white" stroke-width="1.53153"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M26.8912 15.4053H13.1074" stroke="white" stroke-width="1.53153"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M26.8912 21.5315H13.1074" stroke="white" stroke-width="1.53153"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M23.8281 24.5945H13.1074" stroke="white" stroke-width="1.53153"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <h3 class="font-satoshiBold text-text24 leading-tight">Especificaciones</h3>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                           
+                                            <table class="border-collapse border border-slate-500 w-full  text-[#000929] font-satoshiMedium text-text20">
+                                                @foreach ($inmueble->specificaciones as $item)
+                                                    <tr>
+                                                        <td class="border border-slate-700 text-left pl-2">
+                                                            {{ $item->tittle }}
+                                                        </td>
+                                                        <td class="border border-slate-700 text-center">
+                                                            {{ $item->specifications }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                                {{--  <div class="flex flex-col gap-1 pb-5">
                                     <div class="flex justify-between items-center">
                                         <div class="flex justify-center items-center gap-2">
                                             <p class="font-satoshiRegular text-text16 text-[#000929] text-opacity-50">
@@ -456,7 +509,8 @@
                             </div> --}}
 
                             <div class="w-full flex flex-col gap-5">
-                                <a href=""
+                                <a target="_blank"
+                                    href="https://api.whatsapp.com/send?phone=51934464915&text={{ $generales->mensaje_whatsapp }}"
                                     class="w-full flex justify-center items-center gap-2 bg-[#2E609D] text-white font-satoshiBold text-text16 py-4 px-8 rounded-lg">
                                     <div class="flex justify-center items-center">
                                         <img src="{{ asset('images/svg/imagen_35.svg') }}" alt="agendar">
@@ -623,7 +677,8 @@
                                             </p>
                                         </div>
 
-                                        <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
+                                        <p
+                                            class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
                                             Hasta 30% de descuento programa...
                                         </p>
                                     </div>
@@ -715,7 +770,8 @@
                                             </p>
                                         </div>
 
-                                        <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
+                                        <p
+                                            class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
                                             Hasta 30% de descuento programa...
                                         </p>
                                     </div>
@@ -807,7 +863,8 @@
                                             </p>
                                         </div>
 
-                                        <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
+                                        <p
+                                            class="text-[#100A55] opacity-40 font-satoshiMedium text-text12 text-opacity-40">
                                             Hasta 30% de descuento programa...
                                         </p>
                                     </div>

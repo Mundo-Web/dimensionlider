@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\EmailConfig;
 use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
+use App\Models\AboutUs;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Faqs;
@@ -56,11 +57,23 @@ class IndexController extends Controller
                               ->orderBy('created_at', 'desc')
                               ->activeDestacado()->get();
 
+      $inmueblesAlquiler = Products::where('destacar', '=', 1)
+                              ->where('status', '=', 1)
+                              ->where('visible', '=', 1)
+                              ->where('tipo_propiedad', 'alquiler')->get();
+
+      $inmueblesComprar = Products::where('destacar', '=', 1)
+                              ->where('status', '=', 1)
+                              ->where('visible', '=', 1)
+                              ->where('tipo_propiedad', 'comprar')->get();
+
         $beneficios = Strength::where('status', '=', 1)->get();
         $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();
+
+
                           
 
-        return view('public.index', compact('generales', 'inmuebles', 'blogs', 'beneficios', 'testimonios'));
+        return view('public.index', compact('generales', 'inmuebles', 'blogs', 'beneficios', 'testimonios', 'inmueblesAlquiler', 'inmueblesComprar'));
     }
 
     public function propiedades()
@@ -97,7 +110,8 @@ class IndexController extends Controller
     {
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
-        return view('public.nosotros', compact('generales', 'blogs'));
+        $nosotros = AboutUs::where('status', 1)->get();
+        return view('public.nosotros', compact('generales', 'blogs', 'nosotros'));
     }
 
     public function blog(Request $request)
@@ -127,6 +141,7 @@ class IndexController extends Controller
     public function detalle($id)
     {
         $generales = General::all()->first();
+        /* $inmueble = Products::where('id', $id)->with('specificaciones')->first(); */
         $inmueble = Products::findOrFail($id);
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
 

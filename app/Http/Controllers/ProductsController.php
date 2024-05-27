@@ -25,20 +25,45 @@ class ProductsController extends Controller
   {
     
     $products =  Products::where("status", "=", true)->get();
+
+    
     
     return view('pages.products.index', compact('products'));
   }
 
+
+
+
   /**
    * Show the form for creating a new resource.
    */
+
+   public function getProvincias($id)
+    {
+      
+        $provincias = DB::table('provinces')->where('department_id', $id)->get();
+        
+
+        return response()->json($provincias);
+    }
+
+    
   public function create()
   {
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::all();
-    return view('pages.products.create', compact('atributos', 'valorAtributo', 'categoria','tags'));
+
+    /* depa-prov-dist */
+    $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
+    $provincias = DB::select('select * from provinces where active = ? order by 3', [1]);
+    $departamentos = DB::select('select * from departments where active = ? order by 2', [1]);
+
+
+
+
+    return view('pages.products.create', compact('atributos', 'valorAtributo', 'categoria','tags', 'distritos', 'provincias', 'departamentos'));
   }
 
   public function saveImg($file, $route, $nombreImagen)

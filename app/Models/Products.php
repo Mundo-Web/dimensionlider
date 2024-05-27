@@ -43,7 +43,10 @@ class Products extends Model
         'inside',
         'district',
         'city',
-        'country'
+        'country',
+        'departamento_id',
+        'provincia_id',
+        'distrito_id',
     ];
 
     public function categoria()
@@ -64,5 +67,12 @@ class Products extends Model
     public function scopeActiveDestacado($query)
     {
         return $query->where('status', true)->where('destacar', true);
+    }
+
+    /* -----specificationes */
+
+    public function specificaciones()
+    {
+        return $this->hasMany(Specifications::class, 'product_id');
     }
 }

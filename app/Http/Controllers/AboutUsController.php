@@ -48,6 +48,8 @@ class AboutUsController extends Controller
   {
     $request->validate([
       'titulo' => 'required',
+      'descripcion' => 'required|max:255',
+      'imagen' => 'required',
     ]);
 
     $AboutUs = new AboutUs();

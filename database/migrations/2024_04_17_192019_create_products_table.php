@@ -62,6 +62,15 @@ return new class extends Migration
 
             $table->boolean('visible')->default(true);
             $table->boolean('status')->default(true);
+
+            /* depa-prov-dist */
+            $table->unsignedBigInteger('departamento_id')->nullable();
+            $table->unsignedBigInteger('provincia_id')->nullable();
+            $table->unsignedBigInteger('distrito_id')->nullable();
+
+
+
+
             $table->timestamps();
 
             $table->foreign('categoria_id')->references('id')->on('categories');

@@ -16,4 +16,10 @@ class Specifications extends Model
         'visible',
         'status',
     ];
+
+    /* --- */
+    /* public function product()
+    {
+        return $this->belongsTo(Products::class);
+    } */
 }

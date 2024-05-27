@@ -74,30 +74,28 @@
 
                 <div class="lg:basis-4/6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300"
-                            data-aos="fade-up" data-aos-duration="150">
-                            <div class="flex gap-4 justify-start items-center">
-                                <div>
-                                    <svg width="74" height="75" viewBox="0 0 74 75" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect y="0.52002" width="74" height="74" rx="37" fill="#5880B1"
-                                            class="group-hover:fill-fillWithe md:duration-300" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M35.2835 25.0684C35.9187 23.5413 38.082 23.5413 38.7171 25.0684L41.6666 32.1598L49.3224 32.7736C50.971 32.9058 51.6395 34.9632 50.3835 36.0391L44.5506 41.0357L46.3326 48.5064C46.7164 50.1152 44.9662 51.3867 43.5548 50.5246L37.0003 46.5212L30.4459 50.5246C29.0345 51.3867 27.2843 50.1152 27.6681 48.5064L29.4501 41.0357L23.6172 36.0391C22.3611 34.9632 23.0296 32.9058 24.6783 32.7736L32.3341 32.1598L35.2835 25.0684Z"
-                                            fill="#F7F7FD" class="group-hover:fill-fillAzul md:duration-300" />
-                                    </svg>
-                                </div>
-                                <h3
-                                    class="text-[#000929] font-satoshiBold text-text20 md:text-text24 group-hover:text-white md:duration-300">
-                                    Confianza</h3>
-                            </div>
-                            <p
-                                class="text-[#000929] text-opacity-50 text-text18 font-satoshiRegular group-hover:text-white md:duration-300">
-                                La confianza es la piedra angular de toda transacción inmobiliaria exitosa.
-                            </p>
-                        </div>
+                        @foreach ($nosotros as $item)
+                            <div class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300"
+                                data-aos="fade-up" data-aos-duration="150">
 
-                        <div class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300"
+                                <div class="flex gap-4 justify-start items-center">
+                                    <div class="flex justify-start items-center">
+                                        <img src="{{ asset($item->imagen) }}" alt="" class="w-[74px] h-[74px] rounded-full">
+                                    </div>
+                                    <h3
+                                        class="text-[#000929] font-satoshiBold text-text20 md:text-text24 group-hover:text-white md:duration-300">
+                                        {{ $item->titulo }} </h3>
+                                </div>
+                                <p
+                                    class="text-[#000929] text-opacity-50 text-text18 font-satoshiRegular group-hover:text-white md:duration-300">
+                                    {{ $item->descripcion }}
+                                </p>
+                            </div>
+                        @endforeach
+
+
+
+                        {{--  <div class="flex flex-col gap-3 bg-[#F7F7FD] rounded-xl p-5 group hover:bg-[#2E609D] md:duration-300"
                             data-aos="fade-up" data-aos-duration="150">
                             <div class="flex gap-4 justify-start items-center">
                                 <div>
@@ -190,7 +188,7 @@
                                 class="text-[#000929] text-opacity-50 text-text18 font-satoshiRegular group-hover:text-white md:duration-300">
                                 Estamos dedicados a brindarle el más alto nivel de servicio, profesionalismo y soporte.
                             </p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -248,8 +246,7 @@
 
         <section class="bg-[#F7F7FD]">
             <div class="w-11/12 mx-auto py-20 flex flex-col gap-10 ">
-                <div class="flex flex-col gap-3 w-full md:max-w-[830px] mx-auto" data-aos="fade-up"
-                    data-aos-duration="150">
+                <div class="flex flex-col gap-3 w-full md:max-w-[830px] mx-auto" data-aos="fade-up" data-aos-duration="150">
                     <h3 class="text-[#000929] font-satoshiBold text-text40 leading-tight text-center">Nuestros <span
                             class="text-[#2E609D]">logros</span> </h3>
                     <p class="text-[#000929] font-satoshiRegular text-text20 text-center text-opacity-50">Nuestra historia

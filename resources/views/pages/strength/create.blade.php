@@ -43,7 +43,9 @@
                             </div>
 
                             <div class="md:col-span-5">
-                                <label for="titulo">Descripción corta</label>
+                                <label for="titulo">Descripción corta
+                                    <span class="text-red-500">(Máximo 255 carácteres)</span>
+                                </label>
                                 <div class="relative mb-2  mt-2">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <svg class="w-5 h-5 text-gray-500 dark:text-gray-400"

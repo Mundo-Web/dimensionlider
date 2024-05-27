@@ -68,6 +68,8 @@ Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto')
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos');
 Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
 
+/* ---- */
+
 
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
@@ -151,6 +153,8 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::resource('/products', ProductsController::class);
         Route::post('/products/updateVisible', [ProductsController::class, 'updateVisible'])->name('products.updateVisible');
         Route::post('/products/borrar', [ProductsController::class, 'borrar'])->name('products.borrar');
+        /* depa - prov - district */
+        Route::get('/products/provincias/{id}', [ProductsController::class, 'getProvincias'])->name('products.getProvincias');
 
         //Preguntas frecuentes
         Route::resource('/faqs', FaqsController::class);

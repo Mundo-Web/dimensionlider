@@ -80,7 +80,7 @@
             </a>
             
         </div>
-        <p>{{$generales->mensaje_whatsapp}}</p>
+       {{--  <p>{{$generales->mensaje_whatsapp}}</p> --}}
     </div>
 
 </header>
