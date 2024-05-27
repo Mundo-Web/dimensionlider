@@ -68,10 +68,7 @@ class IndexController extends Controller
                               ->where('tipo_propiedad', 'comprar')->get();
 
         $beneficios = Strength::where('status', '=', 1)->get();
-        $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();
-
-
-                          
+        $testimonios = Testimony::where('status', 1)->where('visible', 1)->get();                     
 
         return view('public.index', compact('generales', 'inmuebles', 'blogs', 'beneficios', 'testimonios', 'inmueblesAlquiler', 'inmueblesComprar'));
     }
