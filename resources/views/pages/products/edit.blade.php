@@ -367,7 +367,8 @@
 
               {{-- alquiler - comprar --}}
 
-              <div class="md:col-span-5 flex justify-between gap-4">
+              <div class="md:col-span-5 flex flex-col justify-between gap-4">
+                <span>Tipo de Propiedad</span>
                 <div class="w-full flex justify-start gap-5">
                     <div class="flex justify-start gap-2 items-center">
                         <label for="alquiler">Alquiler</label>
