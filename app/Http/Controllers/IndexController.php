@@ -50,7 +50,7 @@ class IndexController extends Controller
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
 
 
-        $inmuebles = Products::where('destacar', '=', 1)
+      $inmuebles = Products::where('destacar', '=', 1)
                               ->where('status', '=', 1)
                               ->where('visible', '=', 1)
                               ->with('tags')
