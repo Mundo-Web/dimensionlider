@@ -283,7 +283,7 @@ class IndexController extends Controller
                     width: 600px;
                     margin: 0 auto;
                     text-align: center;
-                    background-image: url(https://dimensionlider.mundoweb.pe/mailing/Fondo.png);
+                    background-image: url(https://dimensionlider.mundoweb.pe/mailing/fondo_lider.png);
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: cover;
@@ -302,7 +302,7 @@ class IndexController extends Controller
                       >
                         <img
                           src="https://dimensionlider.mundoweb.pe/mailing/logo.png"
-                          alt="kewin"
+                          alt="lider"
                         />
                       </th>
                     </tr>
