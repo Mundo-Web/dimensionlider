@@ -464,6 +464,7 @@ class IndexController extends Controller
         $mensaje = 'Tienes un nuevo mensaje';
         $mail = EmailConfig::config($name, $mensaje);
         $emailCliente = General::all()->first();
+        $generales = General::all()->first();
 
         try {
             $mail->addAddress($emailCliente->email);
@@ -574,31 +575,41 @@ class IndexController extends Controller
                     </tr> -->
                     <tr style="margin-top: 300px">
                       <td>
-                        <a href="https://www.facebook.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
+                        <a href="https://' .
+                        htmlspecialchars($generales->facebook, ENT_QUOTES, 'UTF-8') .
+      '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_1.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.instagram.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
+                        <a href="https://' .
+                        htmlspecialchars($generales->instagram, ENT_QUOTES, 'UTF-8') .
+      '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_2.png"
                             alt=""
                         /></a>
           
-                        <a href="https://x.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
+                        <a href="https://' .
+                        htmlspecialchars($generales->twitter, ENT_QUOTES, 'UTF-8') .
+      '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_3.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.linkedin.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
+                        <a href="https://' .
+                        htmlspecialchars($generales->linkedin, ENT_QUOTES, 'UTF-8') .
+      '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_4.png"
                             alt=""
                         /></a>
           
-                        <a href="https://www.youtube.com/" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
+                        <a href="https://' .
+                        htmlspecialchars($generales->youtube, ENT_QUOTES, 'UTF-8') .
+      '" target="_blank" style="padding: 0 5px 30px 0; display: inline-block">
                           <img
                             src="https://dimensionlider.mundoweb.pe/mailing/image_5.png"
                             alt=""
