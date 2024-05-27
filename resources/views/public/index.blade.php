@@ -451,10 +451,11 @@
                                                                 class="text-[#2E609D] font-jakarta font-extrabold text-text24">
                                                                 S/{{-- 2,095 --}} {{ $item->precio }}
                                                             </p>
-                                                            <p
-                                                                class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                                /mensual
-                                                            </p>
+                                                            @if ($item->frecuencia)
+                                                <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                    / {{$item->frecuencia}}
+                                                </p>
+                                            @endif
                                                         </div>
 
                                                         <p
@@ -583,9 +584,11 @@
                                                 <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
                                                     S/{{-- 2,095 --}} {{ $item->precio }}
                                                 </p>
+                                                @if ($item->frecuencia)
                                                 <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                    /mensual
+                                                    / {{$item->frecuencia}}
                                                 </p>
+                                            @endif
                                             </div>
 
                                             <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">

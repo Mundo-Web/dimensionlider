@@ -367,9 +367,12 @@
                                             <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
                                                 S/{{ $item->precio }}
                                             </p>
-                                            <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                /mensual
-                                            </p>
+                                            @if ($item->frecuencia)
+                                                <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                    / {{$item->frecuencia}}
+                                                </p>
+                                            @endif
+                                            
                                         </div>
 
                                         <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
