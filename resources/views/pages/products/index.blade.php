@@ -34,7 +34,7 @@
                 <th>Peso</th>
                 <th>Imagen</th>
                 <th>Destacar</th>
-                <th>Recomendar</th>
+                {{-- <th>Recomendar</th> --}}
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>
@@ -70,7 +70,7 @@
 
 
                   </td>
-                  <td>
+                  {{-- <td>
                     <form method="POST" action="">
                       @csrf
                       <input type="checkbox" id="hs-basic-usage"
@@ -87,7 +87,7 @@
 
 
 
-                  </td>
+                  </td> --}}
 
 
                   <td>
@@ -139,7 +139,7 @@
                 <th>Peso</th>
                 <th>Imagen</th>
                 <th>Destacar</th>
-                <th>Recomendar</th>
+               {{--  <th>Recomendar</th> --}}
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>
