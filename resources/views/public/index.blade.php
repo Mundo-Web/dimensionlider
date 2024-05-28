@@ -112,7 +112,8 @@
                                                         María del Triunfo</a>
                                                 </div> --}}
 
-                                                <select name="departamento_id" id="departamento_id" class="w-full py-3 px-5">
+                                                <select name="departamento_id" id="departamento_id"
+                                                    class="w-full py-3 px-5">
                                                     <option value="">Seleccionar un Departamento </option>
                                                     {{-- @foreach ($departamentos as $depa)
                                                         <option value="{{ $depa->id }}">
@@ -438,6 +439,7 @@
                                                 <div class="w-full flex justify-center items-center relative">
                                                     <img src="{{ asset($item->imagen) }}" alt=""
                                                         class="rounded-t-2xl w-full" />
+
                                                     @foreach ($item->tags as $tag)
                                                         @if ($tag->name == 'Popular')
                                                             <div
@@ -458,13 +460,14 @@
                                                         <div class="flex gap-1 items-center">
                                                             <p
                                                                 class="text-[#2E609D] font-jakarta font-extrabold text-text24">
-                                                                S/{{-- 2,095 --}} {{ $item->precio }}
+                                                                S/ {{ $item->precio }}
                                                             </p>
                                                             @if ($item->frecuencia)
-                                                <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                    / {{$item->frecuencia}}
-                                                </p>
-                                            @endif
+                                                                <p
+                                                                    class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                                    / {{ $item->frecuencia }}
+                                                                </p>
+                                                            @endif
                                                         </div>
 
                                                         <p
@@ -481,17 +484,17 @@
                                                         </a>
                                                         <p
                                                             class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
-                                                            {{ $item->address }}, {{ $item->inside }} -
-                                                            {{ $item->district }},
-                                                            {{ $item->country }}
+                                                            {{ $item->address }}, {{$item->district_description}},
+                                                        {{$item->province_description}},
+                                                        {{$item->department_description}}, Perú
                                                         </p>
                                                         <p
-                                                            class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                                            class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
                                                             {{ $item->extract }}
                                                         </p>
                                                     </div>
 
-                                                    <div class="flex justify-between gap-5">
+                                                    <div class="flex justify-between gap-5 items-center">
                                                         @if ($item->cuartos != 0)
                                                             <div class="flex gap-3">
                                                                 <div class="flex justify-center items-center">
@@ -526,7 +529,7 @@
                                                                 </div>
                                                                 <p
                                                                     class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                                    {{ $item->area }}m<sup>2</sup>
+                                                                    {{ $item->area }}
                                                                 </p>
                                                             </div>
                                                         @endif
@@ -594,10 +597,11 @@
                                                     S/{{-- 2,095 --}} {{ $item->precio }}
                                                 </p>
                                                 @if ($item->frecuencia)
-                                                <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                    / {{$item->frecuencia}}
-                                                </p>
-                                            @endif
+                                                    <p
+                                                        class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                                                        / {{ $item->frecuencia }}
+                                                    </p>
+                                                @endif
                                             </div>
 
                                             <p class="text-[#100A55] opacity-40 font-satoshiMedium text-text12">
@@ -612,15 +616,16 @@
                                                 </h2>
                                             </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
-                                                {{ $item->address }}, {{ $item->inside }} - {{ $item->district }},
-                                                {{ $item->country }}
+                                                {{ $item->address }}, {{$item->district_description}},
+                                                {{$item->province_description}},
+                                                {{$item->department_description}}, Perú
                                             </p>
-                                            <p class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                            <p class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
                                                 {{ $item->extract }}
                                             </p>
                                         </div>
 
-                                        <div class="flex justify-between gap-5">
+                                        <div class="flex justify-between gap-5 items-center">
                                             @if ($item->cuartos != 0)
                                                 <div class="flex gap-3">
                                                     <div class="flex justify-center items-center">
@@ -652,7 +657,7 @@
                                                             alt="" />
                                                     </div>
                                                     <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                        {{ $item->area }}m<sup>2</sup>
+                                                        {{ $item->area }}
                                                     </p>
                                                 </div>
                                             @endif
@@ -788,17 +793,17 @@
                                                         <p
                                                             class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
 
-                                                            {{ $item->address }}, {{ $item->inside }} -
-                                                            {{ $item->district }},
-                                                            {{ $item->country }}
+                                                            {{ $item->address }}, {{$item->district_description}},
+                                                        {{$item->province_description}},
+                                                        {{$item->department_description}}, Perú
                                                         </p>
                                                         <p
-                                                            class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                                            class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
                                                             {{ $item->extract }}
                                                         </p>
                                                     </div>
 
-                                                    <div class="flex justify-between gap-5">
+                                                    <div class="flex justify-between gap-5 items-center">
                                                         @if ($item->cuartos != 0)
                                                             <div class="flex gap-3">
                                                                 <div class="flex justify-center items-center">
@@ -833,7 +838,7 @@
                                                                 </div>
                                                                 <p
                                                                     class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                                    {{ $item->area }}m<sup>2</sup>
+                                                                    {{ $item->area }}
                                                                 </p>
                                                             </div>
                                                         @endif
@@ -918,15 +923,16 @@
                                             </a>
                                             <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
 
-                                                {{ $item->address }}, {{ $item->inside }} - {{ $item->district }},
-                                                {{ $item->country }}
+                                                {{ $item->address }}, {{$item->district_description}},
+                                                {{$item->province_description}},
+                                                {{$item->department_description}}, Perú
                                             </p>
-                                            <p class="font-satoshiRegular text-text14 text-[#000929] opacity-50">
+                                            <p class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
                                                 {{ $item->extract }}
                                             </p>
                                         </div>
 
-                                        <div class="flex justify-between gap-5">
+                                        <div class="flex justify-between gap-5 items-center">
                                             @if ($item->cuartos != 0)
                                                 <div class="flex gap-3">
                                                     <div class="flex justify-center items-center">
@@ -958,7 +964,7 @@
                                                             alt="" />
                                                     </div>
                                                     <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                        {{ $item->area }}m<sup>2</sup>
+                                                        {{ $item->area }}
                                                     </p>
                                                 </div>
                                             @endif

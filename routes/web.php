@@ -155,7 +155,6 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/products/borrar', [ProductsController::class, 'borrar'])->name('products.borrar');
         /* depa - prov - district */
         Route::get('/products/provincias/{id}', [ProductsController::class, 'getProvincias'])->name('products.getProvincias');
-
         Route::get('/products/distritos/{id}', [ProductsController::class, 'getDistritos'])->name('products.getDistritos');
 
         //Preguntas frecuentes

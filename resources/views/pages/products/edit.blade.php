@@ -1,4 +1,19 @@
 <x-app-layout>
+    @section('css')
+        <link rel="stylesheet" href="{{ asset('/css/vendor/dropzone.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/css/cssDropzone.css') }}" />
+    @endsection
+
+    @section('js_vendor')
+        <script src="{{ asset('/js/cs/scrollspy.js') }}"></script>
+        <script src="{{ asset('/js/vendor/dropzone.min.js') }}"></script>
+        <script src="{{ asset('/js/vendor/singleimageupload.js') }}"></script>
+    @endsection
+
+    @section('js_page')
+        <script src="{{ asset('/js/cs/dropzone.templates.js') }}"></script>
+        <script src="{{ asset('/js/forms/controls.dropzone.js') }}"></script>
+    @endsection
 
 
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -89,9 +104,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="md:col-span-5">
                                         <label for="imagen">Impagen Principal</label>
                                         <div class="relative mb-2  mt-2">
@@ -102,6 +114,29 @@
                                                 aria-describedby="user_avatar_help" id="user_avatar" type="file">
                                         </div>
                                     </div>
+
+                                    <div class="md:col-span-5 mt-2">
+                                        <section class="scroll-section overflow-y-auto" id="uploadedFiles">
+                                            <h2 class="small-title">Uploaded Files Portada</h2>
+
+
+                                            <div class="card mb-5">
+                                                <div class="card-body">
+
+                                                    <div class="dropzone border-gray-300  " id="dropzoneServerFiles">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                    {{-- <div>
+                                        {{$inmuebleGaleria[0]->galeria}}
+                                    </div> --}}
+
+
 
 
                                     <div class="">
@@ -502,37 +537,112 @@
                                     </select>
                                 </div>
                                 {{-- editar provincias --}}
-                                <div class="md:col-span-5 mt-2">
-                                  <select name="provincia_id" id="departamento_id" class="w-full py-3 px-5">
-                                      <option value="">Seleccionar un Provincia </option>
-                                      @foreach ($provincias as $prov)
-                                          <option value="{{ $prov->id }}"
-                                              {{ $prov->id == $product->provincia_id ? 'selected' : '' }}>
-                                              {{ $prov->description }}
-                                          </option>
-                                      @endforeach
-                                  </select>
+                                <div class="md:col-span-5 mt-2" id="provincia-container">
+                                    <select name="provincia_id" id="departamento_id" class="w-full py-3 px-5">
+                                        <option value="">Seleccionar un Provincia </option>
+                                        @foreach ($provincias as $prov)
+                                            <option value="{{ $prov->id }}"
+                                                {{ $prov->id == $product->provincia_id ? 'selected' : '' }}>
+                                                {{ $prov->description }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 {{-- editar distritos --}}
-                                <div class="md:col-span-5 mt-2">
-                                  <select name="distrito_id" id="departamento_id" class="w-full py-3 px-5">
-                                      <option value="">Seleccionar un Distrito </option>
-                                      @foreach ($distritos as $dist)
-                                          <option value="{{ $prov->id }}"
-                                              {{ $dist->id == $product->distrito_id ? 'selected' : '' }}>
-                                              {{ $dist->description }}
-                                          </option>
-                                      @endforeach
-                                  </select>
+                                <div class="md:col-span-5 mt-2" id="distrito-container">
+                                    <select name="distrito_id" id="departamento_id" class="w-full py-3 px-5">
+                                        <option value="">Seleccionar un Distrito </option>
+                                        @foreach ($distritos as $dist)
+                                            <option value="{{ $prov->id }}"
+                                                {{ $dist->id == $product->distrito_id ? 'selected' : '' }}>
+                                                {{ $dist->description }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#departamento_id').change(function() {
+                                            var departamento_id = $(this).val();
+                                            if (departamento_id) {
+                                                $.ajax({
+                                                    url: '/admin/products/provincias/' + departamento_id,
+                                                    type: 'GET',
+                                                    dataType: 'json',
+                                                    success: function(data) {
+
+                                                        // Crear el combo de provincia con la opción inicial y las opciones obtenidas
+                                                        var provinciaSelect =
+                                                            '<select name="provincia_id" id="provincia_id" class="w-full py-3 px-5">' +
+                                                            '<option value="">Seleccionar una Provincia </option>';
+                                                        $.each(data, function(key, value) {
+                                                            provinciaSelect += '<option value="' + value.id + '">' +
+                                                                value.description + '</option>';
+                                                        });
+
+                                                        provinciaSelect += '</select>';
+
+                                                        // Reemplazar el contenido del contenedor con el nuevo select
+                                                        $('#provincia-container').html(provinciaSelect);
+
+                                                    },
+                                                    error: function(xhr, status, error) {
+                                                        console.error('Error: ' + status + ' ' + error);
+                                                    }
+                                                })
+                                            } else {
+                                                $('#provincia-container').empty();
+                                                $('#distrito-container').empty();
+                                            }
+
+                                        })
+
+
+
+                                    })
+
+                                    $(document).on('change', '#provincia_id', function() {
+                                        var provincia_id = $(this).val();
+                                        if (provincia_id) {
+                                            $.ajax({
+                                                url: '/admin/products/distritos/' + provincia_id,
+                                                type: 'GET',
+                                                dataType: 'json',
+                                                success: function(data) {
+
+                                                    // Crear el combo de provincia con la opción inicial y las opciones obtenidas
+                                                    var distritoSelect =
+                                                        '<select name="distrito_id" id="distrito_id" class="w-full py-3 px-5">' +
+                                                        '<option value="">Seleccionar una Distrito </option>';
+                                                    $.each(data, function(key, value) {
+                                                        distritoSelect += '<option value="' + value.id + '">' +
+                                                            value.description + '</option>';
+                                                    });
+                                                    distritoSelect += '</select>';
+
+                                                    // Reemplazar el contenido del contenedor con el nuevo select
+                                                    $('#distrito-container').html(distritoSelect);
+
+                                                },
+                                                error: function(xhr, status, error) {
+                                                    console.error('Error: ' + status + ' ' + error);
+                                                }
+                                            })
+                                        } else {
+                                            $('#distrito-container').empty();
+                                        }
+
+                                    });
+                                </script>
 
 
 
 
 
-                                <div class="md:col-span-5 mt-2">
+
+                                {{-- <div class="md:col-span-5 mt-2">
                                     <label for="district">Distrito</label>
                                     <div class="relative mb-2">
                                         <div
@@ -551,9 +661,9 @@
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Distrito">
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="md:col-span-5 mt-2">
+                                {{--  <div class="md:col-span-5 mt-2">
                                     <label for="country">País</label>
                                     <div class="relative mb-2">
                                         <div
@@ -572,7 +682,7 @@
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Páis">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- incluye/no incluye --}}
                                 <div class="md:col-span-5 mt-2">
@@ -707,7 +817,7 @@
                                 {{-- <div class="md:col-span-5">
 
                 </div> --}}
-                                <div class="md:col-span-5">
+                                {{-- <div class="md:col-span-5">
                                     <label for="costo_x_art">Costo por articulo</label>
                                     <div class="relative mb-2  mt-2">
                                         <div
@@ -725,7 +835,7 @@
                                             class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Costo por articulo">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="md:col-span-5">
                                     <label for="costo_x_art">Categoria</label>
@@ -814,7 +924,7 @@
                                     @endforeach
                                 </div>
 
-                                <div class="md:col-span-5">
+                                {{-- <div class="md:col-span-5">
                                     <label for="producto">Atributos</label>
                                     <div class="flex gap-2 mt-2 relative mb-2 ">
                                         @foreach ($atributos as $item)
@@ -856,7 +966,7 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
 
@@ -1067,6 +1177,7 @@
 
 
     <script>
+
         $('document').ready(function() {
             let valorInput = 1
 
@@ -1133,4 +1244,20 @@
             })
         })
     </script>
+
+    <script>
+        File.toBase64 = function(blob) {
+            return new Promise((resolve, reject) => {
+                let reader = new FileReader();
+                reader.onloadend = () => {
+                    resolve(reader.result);
+                }
+                reader.onerror = () => {
+                    reject(new Error('No se pudo convertir el archivo en base64'));
+                }
+                reader.readAsDataURL(blob);
+            });
+        }
+    </script>
+    @include('_layout.scripts')
 </x-app-layout>

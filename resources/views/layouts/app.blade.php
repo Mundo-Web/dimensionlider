@@ -55,6 +55,11 @@
   <!-- Styles -->
   @livewireStyles
 
+  {{-- --- estilos dropzone --}}
+  @yield('css')
+  @yield('js_vendor')
+  @yield('js_page')
+
   <script>
     if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
       document.querySelector('html').classList.remove('dark');
@@ -64,6 +69,8 @@
       document.querySelector('html').style.colorScheme = 'dark';
     }
   </script>
+
+@yield('css_importados')
 
 </head>
 

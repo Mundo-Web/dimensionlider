@@ -1,4 +1,19 @@
 <x-app-layout>
+    @section('css')
+        <link rel="stylesheet" href="{{ asset('/css/vendor/dropzone.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/css/cssDropzone.css') }}" />
+    @endsection
+
+    @section('js_vendor')
+        <script src="{{ asset('/js/cs/scrollspy.js') }}"></script>
+        <script src="{{ asset('/js/vendor/dropzone.min.js') }}"></script>
+        <script src="{{ asset('/js/vendor/singleimageupload.js') }}"></script>
+    @endsection
+
+    @section('js_page')
+        <script src="{{ asset('/js/cs/dropzone.templates.js') }}"></script>
+        <script src="{{ asset('/js/forms/controls.dropzone.js') }}"></script>
+    @endsection
 
 
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -96,9 +111,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="md:col-span-5">
                                         <label for="imagen">Imagen Principal</label>
                                         <div class="relative mb-2  mt-2">
@@ -107,6 +119,21 @@
                                                 aria-describedby="user_avatar_help" id="user_avatar" type="file">
                                         </div>
                                     </div>
+
+                                    {{-- ---- dropzone --- --}}
+
+                                    <div class="md:col-span-5 mt-2">
+                                        <section class="scroll-section overflow-y-auto" id="uploadedFiles">
+                                          <h2 class="small-title">Uploaded Files Portada</h2>
+                                          <div class="card mb-5">
+                                            <div class="card-body">
+                      
+                                              <div class="dropzone border-gray-300  " id="dropzoneServerFiles"></div>
+                      
+                                            </div>
+                                          </div>
+                                        </section>
+                                      </div>
 
 
 
@@ -477,7 +504,7 @@
 
                                             </div>
                                             <input type="checkbox" id="mascota" name="mascota"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{ old('mascota') ? 'checked' : '' }}>
                                         </div>
                                     </div>
                                     <div class="w-full">
@@ -489,7 +516,7 @@
 
                                             </div>
                                             <input type="checkbox" id="mobiliado" name="mobiliado"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{ old('mobiliado') ? 'checked' : '' }}>
                                         </div>
                                     </div>
                                 </div>
@@ -499,18 +526,18 @@
                                     <div class="w-full flex justify-start gap-5">
                                         <div class="flex justify-start gap-2 items-center">
                                             <label for="alquiler">Alquiler</label>
-                                            <input type="radio" name="tipo_propiedad" value="alquiler">
+                                            <input type="radio" name="tipo_propiedad" value="alquiler" {{ old('tipo_propiedad') == 'alquiler' ? 'checked' : '' }}>
                                         </div>
 
 
                                         <div class="flex justify-start gap-2 items-center">
                                             <label for="comprar">Comprar</label>
-                                            <input type="radio" name="tipo_propiedad" value="comprar">
+                                            <input type="radio" name="tipo_propiedad" value="comprar" {{ old('tipo_propiedad') == 'comprar' ? 'checked' : '' }}>
                                         </div>
 
                                         <div class="flex justify-start gap-2 items-center">
                                             <label for="vender">Vender</label>
-                                            <input type="radio" name="tipo_propiedad" value="vender">
+                                            <input type="radio" name="tipo_propiedad" value="vender" {{ old('tipo_propiedad') == 'vender' ? 'checked' : '' }}>
                                         </div>
                                     </div>
 
@@ -1195,12 +1222,12 @@
              */
 
 
-            Dropzone.options.myFormDropzone = {
+            /* Dropzone.options.myFormDropzone = {
                 autoProcessQueue: false,
                 uploadMultiple: true,
                 maxFilezise: 10,
                 maxFiles: 4,
-            }
+            } */
         })
     </script>
     <script>
@@ -1237,6 +1264,22 @@
             document.getElementById('menu-button').setAttribute('aria-expanded', !isExpanded);
         }
     </script>
+
+<script>
+    File.toBase64 = function(blob) {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result);
+        }
+        reader.onerror = () => {
+          reject(new Error('No se pudo convertir el archivo en base64'));
+        }
+        reader.readAsDataURL(blob);
+      });
+    }
+  </script>
+  @include('_layout.scripts')
 
 
 

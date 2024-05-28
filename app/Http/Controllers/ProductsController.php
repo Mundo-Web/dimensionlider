@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Category;
+use App\Models\Galerie;
 use App\Models\Products;
 use App\Models\Specifications;
 use App\Models\Tag;
@@ -15,6 +16,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use SoDe\Extend\File as ExtendFile;
 
 class ProductsController extends Controller
 {
@@ -163,6 +165,8 @@ class ProductsController extends Controller
 
     foreach ($data as $key => $value) {
 
+     /*  dd($data); */
+
       if (strstr($key, ':')) {
         // Separa el nombre del atributo y su valor
         $atributos = $this->stringToObject($key, $atributos);
@@ -176,6 +180,11 @@ class ProductsController extends Controller
         } elseif (strpos($key, 'specifications-') === 0) {
           $num = substr($key, strrpos($key, '-') + 1); // Obtener el número de la especificación
           $especificaciones[$num]['specifications'] = $value; // Agregar las especificaciones al array asociativo
+
+          /* solo guardamos aquellos que son diferentes de nullo */
+          $especificaciones = array_filter($especificaciones, function($item) {
+            return $item['tittle'] !== null && $item['specifications'] !== null;
+          });
         }
       }
     }
@@ -220,6 +229,43 @@ class ProductsController extends Controller
 
     /* --------  */
     $producto->tags()->sync($tagsSeleccionados);
+
+
+    /* dropzone */
+    if (isset($data['files'])) {
+
+      foreach ($data['files'] as $file) {
+        # code...
+        /* agregando intervencion */
+        /* $file->coverDown(600, 400, 'center'); */
+        /*  */
+        // data:image/png; base64,code
+        [$first, $code] = explode(';base64,', $file);
+        $imageData = base64_decode($code);  
+        
+        
+        
+
+
+        $routeImg = 'storage/images/imagen/';
+
+        $ext = ExtendFile::getExtention(str_replace("data:", '', $first));
+
+        $nombreImagen = Str::random(10) . '.' . $ext;
+
+        // Verificar si la ruta no existe y crearla si es necesario
+        if (!file_exists($routeImg)) {
+          mkdir($routeImg, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+        }
+
+        // Guardar los datos binarios en un archivo
+        file_put_contents($routeImg . $nombreImagen, $imageData);
+        $dataGalerie['imagen'] = $routeImg . $nombreImagen;
+        $dataGalerie['product_id'] = $producto->id;
+        $dataGalerie['type_img'] = 'portada';
+        Galerie::create($dataGalerie);
+      }
+    }
     
     return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
   }
@@ -290,16 +336,15 @@ class ProductsController extends Controller
   { 
     
     $product =  Products::with('tags')->find($id);
+
+    /* $inmuebleGaleria = Products::where('id', $id)->with('galeria')->get(); */
+
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $especificacion = Specifications::where("product_id", "=" , $id)->get();
     $allTags = Tag::all();
     $categoria = Category::all();
 
-    /* editar para combos */
-    /* depa-prov-dist */
-/*     $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
-    $provincias = DB::select('select * from provinces where active = ? order by 3', [1]); */
     $departamentos = DB::select('select * from departments where active = ? order by 2', [1]);
 
     $provincias = DB::select('select * from provinces where active = ? order by 3', [1]);
@@ -349,12 +394,13 @@ class ProductsController extends Controller
     }
 
     foreach ($request->all() as $key => $value) {
-      
+      /* dd($request->all()); */
       if (strstr($key, ':')) {
         // Separa el nombre del atributo y su valor
         $atributos = $this->stringToObject($key, $atributos);
         unset($request[$key]);
       }elseif (strstr($key, '-')) {
+       /*  dd($key); */
         //strpos primera ocurrencia que enuentre
         if (strpos($key, 'tittle-') === 0 || strpos($key, 'title-') === 0) {
           $num = substr($key, strrpos($key, '-') + 1); // Obtener el número de la especificación
@@ -363,6 +409,13 @@ class ProductsController extends Controller
           
           $num = substr($key, strrpos($key, '-') + 1); // Obtener el número de la especificación
           $especificaciones[$num]['specifications'] = $value; // Agregar las especificaciones al array asociativo
+
+          /* dd($especificaciones); */
+
+          /* solo guardamos aquellos que son diferentes de nullo */
+          $especificaciones = array_filter($especificaciones, function($item) {
+            return $item['tittle'] !== null && $item['specifications'] !== null;
+          });
         }
       }
     }
@@ -404,6 +457,37 @@ class ProductsController extends Controller
       $this->TagsXProducts($id, $tagsSeleccionados);
     }
     $this->actualizarEspecificacion($especificaciones);
+
+
+  /*   if (isset($data['files'])) {
+
+      foreach ($data['files'] as $file) {
+
+        [$first, $code] = explode(';base64,', $file);
+        $imageData = base64_decode($code);
+        $routeImg = 'storage/images/imagen/';
+
+        $ext = ExtendFile::getExtention(str_replace("data:", '', $first));
+
+
+
+        $nombreImagen = Str::random(10) . '.' . $ext;
+
+        if (!file_exists($routeImg)) {
+          mkdir($routeImg, 0777, true); 
+        }
+
+        file_put_contents($routeImg . $nombreImagen, $imageData);
+        $dataGalerie['imagen'] = $routeImg . $nombreImagen;
+        $dataGalerie['product_id'] = $id;
+        $dataGalerie['type_img'] = 'portada';
+        Galerie::create($dataGalerie);
+      }
+    } */
+
+
+
+
      return redirect()->route('products.index')->with('success', 'Producto editado exitosamente.');
   }
 

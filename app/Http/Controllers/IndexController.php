@@ -49,7 +49,19 @@ class IndexController extends Controller
 
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
 
-        $inmuebles = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->orderBy('created_at', 'desc')->activeDestacado()->get();
+        /* $inmuebles = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->orderBy('created_at', 'desc')->activeDestacado()->get(); */
+
+        $inmuebles = Products::select('products.*', 'departments.description as department_description', 'provinces.description as province_description', 'districts.description as district_description')
+            ->join('departments', 'products.departamento_id', '=', 'departments.id')
+            ->join('provinces', 'products.provincia_id', '=', 'provinces.id')
+            ->join('districts', 'products.distrito_id', '=', 'districts.id')
+            ->where('products.destacar', '=', 1)
+            ->where('products.status', '=', 1)
+            ->where('products.visible', '=', 1)
+            ->with('tags')
+            ->orderBy('products.created_at', 'desc')
+            ->activeDestacado()
+            ->get();
 
         $inmueblesAlquiler = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->where('tipo_propiedad', 'alquiler')->get();
 
@@ -67,7 +79,26 @@ class IndexController extends Controller
     {
         $generales = General::all()->first();
         $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
-        $inmuebles = Products::where('visible', 1)->where('status', 1)->with('tags')->orderBy('created_at', 'desc')->get();
+        /* $inmuebles = Products::where('visible', 1)->where('status', 1)->with('tags')->orderBy('created_at', 'desc')->get(); */
+
+        $inmuebles = Products::select('products.*', 'departments.description as department_description', 'provinces.description as province_description', 'districts.description as district_description')
+            ->join('departments', 'products.departamento_id', '=', 'departments.id')
+            ->join('provinces', 'products.provincia_id', '=', 'provinces.id')
+            ->join('districts', 'products.distrito_id', '=', 'districts.id')
+            ->where('products.destacar', '=', 1)
+            ->where('products.status', '=', 1)
+            ->where('products.visible', '=', 1)
+            ->with('tags')
+            ->orderBy('products.created_at', 'desc')
+            ->activeDestacado()
+            ->get();
+
+
+
+
+
+
+
         return view('public.propiedades', compact('generales', 'blogs', 'inmuebles'));
     }
 
@@ -121,7 +152,6 @@ class IndexController extends Controller
 
                 $latestBlog = Blog::where('status', 1)->where('visible', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->first();
 
-
                 $categoria = CategoryBlog::where('status', 1)->where('visible', 1)->findOrFail($id);
                 return view('public.blog', compact('generales', 'blogs', 'id', 'categorias', 'categoria', 'latestBlog'));
             }
@@ -135,13 +165,26 @@ class IndexController extends Controller
         $generales = General::all()->first();
         /* $inmueble = Products::where('id', $id)->with('specificaciones')->first(); */
         $inmueble = Products::findOrFail($id);
+        $inmuebleGaleria = Products::where('id', $id)->with('galeria')->get();
+        /* dd($inmuebleGaleria); */
+
         $distrito_id = $inmueble->distrito_id;
-       
-        $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
+
+        $inmuebleWithTag = Products::where('visible', 1)->where('status', 1)->where('id', $id)->with('tags')->orderBy('created_at', 'desc')->first();
+
+        /* $inmuebles = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'desc')->activeDestacado()->get(); */ /* ->with('tags') */ $blogs = Blog::where('status', '=', true)->where('visible', '=', 1)->get();
         $distrito = DB::select('SELECT * FROM districts WHERE id = ? ', [$distrito_id]);
+        /* --- */
 
+        $inmuebles = Products::select('products.*', 'departments.description as department_description', 'provinces.description as province_description', 'districts.description as district_description')
+            ->join('departments', 'products.departamento_id', '=', 'departments.id')
+            ->join('provinces', 'products.provincia_id', '=', 'provinces.id')
+            ->join('districts', 'products.distrito_id', '=', 'districts.id')
+            ->where('products.id', '!=', $inmueble->id)
+            ->with('tags')
+            ->get();
 
-        return view('public.detalle', compact('generales', 'inmueble', 'blogs', 'distrito'));
+        return view('public.detalle', compact('generales', 'inmueble', 'blogs', 'distrito', 'inmuebles', 'inmuebleWithTag', 'inmuebleGaleria'));
     }
 
     public function contacto()
