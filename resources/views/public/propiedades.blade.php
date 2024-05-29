@@ -49,11 +49,11 @@
                                 onclick="showTab('tab2')">
                                 Comprar
                             </button>
-                            <button
+                            {{-- <button
                                 class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
                                 onclick="showTab('tab3')">
                                 Vender
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
 
@@ -232,7 +232,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="tab3"
+                    {{-- <div id="tab3"
                         class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
                         <div class="w-full ">
                             <div class="relative w-full text-left">
@@ -318,7 +318,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="flex order-2 md:order-1">
