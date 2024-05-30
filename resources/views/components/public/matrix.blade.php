@@ -50,7 +50,7 @@
     </style>
 </head>
 
-<body>
+<body class="scroll__hidden_explorar">
     @include('components.public.header')
 
     <div>
@@ -151,6 +151,8 @@
             });
         })
     </script>
+
+
 
 </body>
 
