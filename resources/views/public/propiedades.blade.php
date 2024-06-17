@@ -1,238 +1,190 @@
 @extends('components.public.matrix')
 
 @section('css_importados')
-    <style>
-        .bg_color {
-            background-color: #2E609D;
-        }
+  <style>
+    .bg_color {
+      background-color: #2E609D;
+    }
 
-        .tab-button.active {
-            border-color: #2e609d;
-            color: #2e609d;
-        }
+    .tab-button.active {
+      border-color: #2e609d;
+      color: #2e609d;
+    }
 
-        .bg_inscribir {
-            background-color: #FAFAFA;
-            color: #000929;
-        }
+    .bg_inscribir {
+      background-color: #FAFAFA;
+      color: #000929;
+    }
 
-        .scroll_ubicacion::-webkit-scrollbar,
-        .scroll_categoria::-webkit-scrollbar {
-            width: 5px;
-            background-color: white;
-            border-radius: 1rem;
-        }
+    .scroll_ubicacion::-webkit-scrollbar,
+    .scroll_categoria::-webkit-scrollbar {
+      width: 5px;
+      background-color: white;
+      border-radius: 1rem;
+    }
 
-        .scroll_ubicacion::-webkit-scrollbar-thumb,
-        .scroll_categoria::-webkit-scrollbar-thumb {
-            background-color: #393f53;
-            border-radius: 1rem;
-        }
-    </style>
+    .scroll_ubicacion::-webkit-scrollbar-thumb,
+    .scroll_categoria::-webkit-scrollbar-thumb {
+      background-color: #393f53;
+      border-radius: 1rem;
+    }
+  </style>
 @stop
 
 
 @section('content')
-    <main class="bg-[#FAFAFA]">
-        <section class="bg-[#F7F7FD] pt-32">
-            <div class="z-[100] w-11/12 mx-auto flex flex-col gap-10 relative">
-                <div class="order-1 md:order-2 relative md:absolute md:-bottom-[18%] z-[500] w-full md:max-w-[750px]">
-                    <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-[388px]">
-                        <div class="flex justify-between items-center">
-                            <button
-                                class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
-                                onclick="showTab('tab1')">
-                                Alquilar
-                            </button>
-                            <button
-                                class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
-                                onclick="showTab('tab2')">
-                                Comprar
-                            </button>
-                            {{-- <button
+  <main class="bg-[#FAFAFA]">
+    <section class="bg-[#F7F7FD] pt-32">
+      <div class="z-[100] w-11/12 mx-auto flex flex-col gap-10 relative">
+        <div class="order-1 md:order-2 relative md:absolute md:-bottom-[18%] z-[500] w-full md:max-w-[750px]">
+          <div class="bg-white rounded-t-lg inline-block w-[343px] md:max-w-[388px]">
+            <div class="flex justify-between items-center">
+              <button
+                class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
+                onclick="showTab('tab1')">
+                Alquilar
+              </button>
+              <button
+                class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
+                onclick="showTab('tab2')">
+                Comprar
+              </button>
+              {{-- <button
                                 class="px-4 pt-4 pb-3 text-[#000929] font-satoshiBold border-b-2 focus:outline-none tab-button text-text18 flex-1"
                                 onclick="showTab('tab3')">
                                 Vender
                             </button> --}}
-                        </div>
+            </div>
+          </div>
+
+          <!-- Tab Content -->
+          <div id="tab1"
+            class="py-8 px-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+            <div class="w-full ">
+              <div class="relative w-full text-left">
+                <div class="group">
+                  <div>
+                    <select name="departamento_id" id="departamento_id2"
+                      class="w-full py-3 px-5 text-text18 text-[#000929] border-0">
+                      <option value="">Ubicacion</option>
+                      @foreach ($ubicacion as $depa)
+                        @if ($depa->tipo_propiedad == 'alquiler')
+                          <option value="{{ $depa->id }}">
+                            {{ $depa->description }}
+                          </option>
+                        @endif
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+            </div>
+
+            <div class="hidden md:block w-full">
+              <div class="relative w-full text-left">
+                <div class="group">
+                  <div>
+                    <select name="categoria_id" id="categoria_id2"
+                      class="w-full py-3 px-5 text-text18 text-[#000929] border-0">
+                      <option value="">Categorias</option>
+                      @foreach ($categorias as $categoria)
+                        @if ($categoria->tipo_propiedad == 'alquiler')
+                          <option value="{{ $categoria->id }}">
+                            {{ $categoria->name }}
+                          </option>
+                        @endif
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+            </div>
+
+            <div class="flex justify-center items-center md:w-full">
+              <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
+                <div class="flex justify-start items-center w-full">
+                  <button id="linkExplirarAlquileres"
+                    class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
+                    <span class="hidden md:flex w-full">Explorar propiedades</span>
+                    <div
+                      class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
+                      <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
                     </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tab2"
+            class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
+            <div class="w-full ">
+              <div class="relative w-full text-left">
+                <div class="group">
+                  <div>
+                    <select name="departamento_id" id="departamento_id"
+                      class="w-full py-3 px-5 text-text18 text-[#000929] border-0">
+                      <option value="">Ubicacion</option>
+                      @foreach ($ubicacion as $depa)
+                        @if ($depa->tipo_propiedad !== 'alquiler')
+                          <option value="{{ $depa->id }}">
+                            {{ $depa->description }}
+                          </option>
+                        @endif
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <!-- Tab Content -->
-                    <div id="tab1"
-                        class="py-8 px-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
-                        <div class="w-full ">
-                            <div class="relative w-full text-left">
-                                <div class="group">
-                                    <button type="button"
-                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
-                                        <span>Ubicación</span>
-                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="group-hover:rotate-180 md:duration-300">
-                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
-                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
+            <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+            </div>
 
-                                    <div
-                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                                        <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfosss</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="hidden md:block w-full">
+              <div class="relative w-full text-left">
+                <div class="group">
+                  <div>
+                    <select name="categoria_id" id="categoria_id"
+                      class="w-full py-3 px-5 text-text18 text-[#000929] border-0">
+                      <option value="">Categorias</option>
+                      @foreach ($categorias as $categoria)
+                        @if ($categoria->tipo_propiedad !== 'alquiler')
+                          <option value="{{ $categoria->id }}">
+                            {{ $categoria->name }}
+                          </option>
+                        @endif
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
-                        </div>
+            <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
+            </div>
 
-                        <div class="hidden md:block w-full">
-                            <div class="relative w-full text-left">
-                                <div class="group">
-                                    <button type="button"
-                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
-                                        <span>Categorías</span>
-                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="group-hover:rotate-180 md:duration-300">
-                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
-                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-
-                                    <div
-                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                                        <div class="overflow-y-scroll h-[100px] scroll_categoria">
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfosss</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
-                        </div>
-
-                        <div class="flex justify-center items-center md:w-full">
-                            <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
-                                <div class="flex justify-start items-center w-full">
-                                    <a href="{{ route('propiedades') }}"
-                                        class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
-                                        <span class="hidden md:flex w-full">Explorar propiedades</span>
-                                        <div
-                                            class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
-                                            <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="flex justify-center items-center md:w-full">
+              <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
+                <div class="flex justify-start items-center w-full">
+                  <button id="linkExplirarCompras"
+                    class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
+                    <span class="hidden md:flex w-full">Explorar propiedades</span>
+                    <div
+                      class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
+                      <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
                     </div>
-                    <div id="tab2"
-                        class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
-                        <div class="w-full ">
-                            <div class="relative w-full text-left">
-                                <div class="group">
-                                    <button type="button"
-                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
-                                        <span>Ubicación</span>
-                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="group-hover:rotate-180 md:duration-300">
-                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
-                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-
-                                    <div
-                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                                        <div class="overflow-y-scroll h-[100px] scroll_ubicacion">
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfosss</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
-                        </div>
-
-                        <div class="hidden md:block w-full">
-                            <div class="relative w-full text-left">
-                                <div class="group">
-                                    <button type="button"
-                                        class="inline-flex items-center w-full text-text18 text-[#000929] focus:outline-none font-satoshiBold justify-between gap-5">
-                                        <span>Categorías</span>
-                                        <svg width="13" height="13" viewBox="0 0 8 5" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="group-hover:rotate-180 md:duration-300">
-                                            <path d="M0.666016 0.666748L3.99989 3.72008L7.33268 0.666748" stroke="#000929"
-                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-
-                                    <div
-                                        class="absolute left-0 w-full origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                                        <div class="overflow-y-scroll h-[100px] scroll_categoria">
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfosss</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                            <a href="#"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Villa
-                                                María del Triunfo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden md:block">
-                        </div>
-
-                        <div class="flex justify-center items-center md:w-full">
-                            <div class="flex flex-row-reverse 2md:flex-row justify-center items-center gap-5">
-                                <div class="flex justify-start items-center w-full">
-                                    <a href="{{ route('propiedades') }}"
-                                        class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
-                                        <span class="hidden md:flex w-full">Explorar propiedades</span>
-                                        <div
-                                            class="flex justify-center items-center p-4 md:hidden w-[48px] h-[48px] 2md:w-[50px] 2md:h-[50px]">
-                                            <img src="{{ asset('images/svg/imagen_18.svg') }}" alt="busqueda" />
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <div id="tab3"
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- <div id="tab3"
                         class="py-8 p-4 tab-content bg-white flex justify-between items-center gap-5 rounded-b-lg md:rounded-tr-lg max-w-[750px]">
                         <div class="w-full ">
                             <div class="relative w-full text-left">
@@ -320,148 +272,138 @@
                         </div>
                     </div> --}}
 
-                </div>
-                <div class="flex order-2 md:order-1">
-                    <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32" data-aos="fade-up"
-                        data-aos-duration="150">
-                        <h2 class="text-[#000929] font-satoshiBold text-text52 leading-tight">Compra, alquila o vende tu
-                            propiedad fácilmente</h2>
-                        <p class="text-[#000929] font-satoshiRegular text-text20 text-opacity-50">Una gran plataforma para
-                            comprar, vender o incluso alquilar tus propiedades sin comisiones.</p>
-                    </div>
+        </div>
+        <div class="flex order-2 md:order-1">
+          <div class="hidden md:flex flex-col gap-5 md:basis-1/2  justify-center md:pb-32" data-aos="fade-up"
+            data-aos-duration="150">
+            <h2 class="text-[#000929] font-satoshiBold text-text52 leading-tight">Compra, alquila o vende tu
+              propiedad fácilmente</h2>
+            <p class="text-[#000929] font-satoshiRegular text-text20 text-opacity-50">Una gran plataforma para
+              comprar, vender o incluso alquilar tus propiedades sin comisiones.</p>
+          </div>
 
-                    <div class="flex justify-center items-center md:basis-1/2 w-full md:w-11/12 mx-auto ">
-                        <img src="{{ asset('images/img/image_16.png') }}" alt="inmobiliaria"
-                            class="w-full hidden md:block">
-                        <img src="{{ asset('images/img/image_30.png') }}" alt="inmobiliaria"
-                            class="w-full block md:hidden">
+          <div class="flex justify-center items-center md:basis-1/2 w-full md:w-11/12 mx-auto ">
+            <img src="{{ asset('images/img/image_16.png') }}" alt="inmobiliaria" class="w-full hidden md:block">
+            <img src="{{ asset('images/img/image_30.png') }}" alt="inmobiliaria" class="w-full block md:hidden">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="w-11/12 mx-auto pt-20 md:pt-44 pb-20">
+        <div class="pb-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5">
+
+          @foreach ($inmuebles as $item)
+            <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
+
+              <div class="w-full flex justify-center items-center relative">
+                <img src="{{ asset($item->imagen) }}" alt="" class="rounded-t-2xl w-full" />
+              </div>
+
+              @foreach ($item->tags as $tag)
+                @if ($tag->name == 'Popular')
+                  <div
+                    class="flex gap-2 items-center justify-center absolute top-[5%] right-[5%] bg-[#2E609D] text-white font-satoshiBold text-text12 px-5 py-3 rounded-full">
+                    <div class="flex justify-start items-center">
+                      <img src="{{ asset('images/svg/imagen_6.svg') }}" alt="" />
                     </div>
+                    <p>{{ $tag->name }} </p>
+                  </div>
+                @endif
+              @endforeach
+
+              <div class="flex flex-col gap-5 p-6">
+                <div class="flex flex-col gap-1">
+                  <div class="flex gap-1 items-center">
+                    <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
+                      S/{{ $item->precio }}
+                    </p>
+                    @if ($item->frecuencia)
+                      <p class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
+                        / {{ $item->frecuencia }}
+                      </p>
+                    @endif
+
+                  </div>
+
+                  <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
+                    Condomínio: R$ 150,00
+                  </p>
                 </div>
+
+                <div class="flex flex-col gap-2">
+                  <a href="{{ route('detalle', $item->id) }}">
+                    <h2 class="text-[#000929] font-satoshiBold text-text32">
+                      {{ $item->producto }}
+                    </h2>
+                  </a>
+                  <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
+                    {{ $item->address }}, {{ $item->district_description }},
+                    {{ $item->province_description }},
+                    {{ $item->department_description }}, Perú
+                  </p>
+                  <p class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
+                    {{ $item->extract }}
+                  </p>
+                </div>
+
+                <div class="flex justify-between gap-5 items-center">
+                  @if ($item->cuartos != 0)
+                    <div class="flex gap-3">
+                      <div class="flex justify-center items-center">
+                        <img src="{{ asset('images/svg/imagen_3.svg') }}" alt="" />
+                      </div>
+                      <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                        {{ $item->cuartos }} Cuartos
+                      </p>
+                    </div>
+                  @endif
+
+                  @if ($item->banios != 0)
+                    <div class="flex gap-3">
+                      <div class="flex justify-center items-center">
+                        <img src="{{ asset('images/svg/imagen_4.svg') }}" alt="" />
+                      </div>
+                      <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                        {{ $item->banios }} Baños
+                      </p>
+                    </div>
+                  @endif
+
+                  @if ($item->area)
+                    <div class="flex gap-3">
+                      <div class="flex justify-center items-center">
+                        <img src="{{ asset('images/svg/imagen_5.svg') }}" alt="" />
+                      </div>
+                      <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
+                        {{ $item->area }}
+                      </p>
+                    </div>
+                  @endif
+                </div>
+
+                <div class="flex gap-2 items-center justify-start border-t border-[#100A55] border-opacity-15 pt-5">
+                  <div class="flex justify-start items-center">
+                    <img src="{{ asset($item->imagen_propietario) }}" alt="" class="rounded-full" />
+                  </div>
+                  <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                    {{ $item->propietario }}
+                  </p>
+                  <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                    |
+                  </p>
+                  <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
+                    {{ $item->tipo_propietario }}
+                  </p>
+                </div>
+              </div>
+
+
             </div>
-        </section>
+          @endforeach
 
-        <section>
-            <div class="w-11/12 mx-auto pt-20 md:pt-44 pb-20">
-                <div class="pb-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5">
-
-                    @foreach ($inmuebles as $item)
-                        @foreach ($item->tags as $tag)
-                            @if ($tag->name == 'Popular')
-                                <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up"
-                                    data-aos-duration="150">
-
-                                    <div class="w-full flex justify-center items-center relative">
-                                        <img src="{{ asset($item->imagen) }}" alt=""
-                                            class="rounded-t-2xl w-full" />
-                                    </div>
-
-                                    <div
-                                        class="flex gap-2 items-center justify-center absolute top-[5%] right-[5%] bg-[#2E609D] text-white font-satoshiBold text-text12 px-5 py-3 rounded-full">
-                                        <div class="flex justify-start items-center">
-                                            <img src="{{ asset('images/svg/imagen_6.svg') }}" alt="" />
-                                        </div>
-                                        <p>{{ $tag->name }} </p>
-                                    </div>
-
-                                    <div class="flex flex-col gap-5 p-6">
-                                        <div class="flex flex-col gap-1">
-                                            <div class="flex gap-1 items-center">
-                                                <p class="text-[#2E609D] font-jakarta font-extrabold text-text24">
-                                                    S/{{ $item->precio }}
-                                                </p>
-                                                @if ($item->frecuencia)
-                                                    <p
-                                                        class="font-jakarta font-medium text-text16 text-[#000929] opacity-50">
-                                                        / {{ $item->frecuencia }}
-                                                    </p>
-                                                @endif
-
-                                            </div>
-
-                                            <p class="text-[#13BEBA] opacity-40 font-satoshiMedium text-text12">
-                                                Condomínio: R$ 150,00
-                                            </p>
-                                        </div>
-
-                                        <div class="flex flex-col gap-2">
-                                            <a href="{{ route('detalle', $item->id) }}">
-                                                <h2 class="text-[#000929] font-satoshiBold text-text32">
-                                                    {{ $item->producto }}
-                                                </h2>
-                                            </a>
-                                            <p class="font-satoshiRegular text-text12 text-[#000929] opacity-50">
-                                                {{ $item->address }}, {{$item->district_description}},
-                                                {{$item->province_description}},
-                                                {{$item->department_description}}, Perú
-                                            </p>
-                                            <p class="font-satoshiRegular text-text16 text-[#000929] opacity-50">
-                                                {{ $item->extract }}
-                                            </p>
-                                        </div>
-
-                                        <div class="flex justify-between gap-5 items-center">
-                                            @if ($item->cuartos != 0)
-                                                <div class="flex gap-3">
-                                                    <div class="flex justify-center items-center">
-                                                        <img src="{{ asset('images/svg/imagen_3.svg') }}"
-                                                            alt="" />
-                                                    </div>
-                                                    <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                        {{ $item->cuartos }} Cuartos
-                                                    </p>
-                                                </div>
-                                            @endif
-
-                                            @if ($item->banios != 0)
-                                                <div class="flex gap-3">
-                                                    <div class="flex justify-center items-center">
-                                                        <img src="{{ asset('images/svg/imagen_4.svg') }}"
-                                                            alt="" />
-                                                    </div>
-                                                    <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                        {{ $item->banios }} Baños
-                                                    </p>
-                                                </div>
-                                            @endif
-
-                                            @if ($item->area)
-                                                <div class="flex gap-3">
-                                                    <div class="flex justify-center items-center">
-                                                        <img src="{{ asset('images/svg/imagen_5.svg') }}"
-                                                            alt="" />
-                                                    </div>
-                                                    <p class="font-satoshiMedium text-[#000929] opacity-70 text-text14">
-                                                        {{ $item->area }}
-                                                    </p>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <div
-                                            class="flex gap-2 items-center justify-start border-t border-[#100A55] border-opacity-15 pt-5">
-                                            <div class="flex justify-start items-center">
-                                                <img src="{{ asset($item->imagen_propietario) }}" alt=""
-                                                    class="rounded-full" />
-                                            </div>
-                                            <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
-                                                {{ $item->propietario }}
-                                            </p>
-                                            <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
-                                                |
-                                            </p>
-                                            <p class="font-satoshiMedium text-text14 text-[#000929] opacity-50">
-                                                {{ $item->tipo_propietario }}
-                                            </p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            @endif
-                        @endforeach
-                    @endforeach
-
-                    {{--  @foreach ($inmuebles as $item)
+          {{--  @foreach ($inmuebles as $item)
                
                         @if ($item->destacar == 1)
                             <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
@@ -643,7 +585,7 @@
                         @endif
                     @endforeach --}}
 
-                    {{-- <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
+          {{-- <div class="flex flex-col rounded-xl bg-white" data-aos="fade-up" data-aos-duration="150">
                         <div class="w-full flex justify-center items-center relative">
                             <img src="{{ asset('images/img/image_4.png') }}" alt="" class="rounded-t-lg w-full" />
                             <div
@@ -1451,83 +1393,83 @@
                             </div>
                         </div>
                     </div> --}}
-                </div>
-                {{-- revisar este boton --}}
-                <div class="flex justify-center items-center">
-                    <a href="#"
-                        class="border-[#2E609D] border rounded-lg font-satoshiBold text-text18 text-[#2E609D] px-5 md:px-10 py-3 text-center">Ver
-                        mas propiedades</a>
-                </div>
-                {{-- revisar este boton --}}
+        </div>
+        {{-- revisar este boton --}}
+        <div class="flex justify-center items-center">
+          <a href="#"
+            class="border-[#2E609D] border rounded-lg font-satoshiBold text-text18 text-[#2E609D] px-5 md:px-10 py-3 text-center">Ver
+            mas propiedades</a>
+        </div>
+        {{-- revisar este boton --}}
+      </div>
+    </section>
+
+    <section class="bg-[#FAFAFA] lg:bg-white">
+      <div class="bg-[#F7F7FD] flex flex-col gap-10 md:gap-16 py-16">
+        <div class="flex flex-col gap-2 w-11/12 mx-auto" data-aos="fade-up" data-aos-duration="150">
+          <h3 class="text-[#000929] font-satoshiBold text-text40 text-center">
+            ¿Es usted <span class="text-[#2E609D]">propitario?</span>
+          </h3>
+          <p class="text-[#000929] font-satoshiRegular text-text16 opacity-50 text-center">
+            Descubra formas de aumentar el valor de su casa y cotizar en la
+            lista. No es Spam.
+          </p>
+        </div>
+        <div class="flex flex-col gap-5">
+          <form action="" id="propFormulario" class="md:w-[630px] w-11/12 mx-auto">
+            @csrf
+            <div class="bg-[#FFFFFF] flex flex-row justify-between px-3 md:px-5 py-5 items-center">
+              <input type="email" name="email" id="email"
+                class="appearance-none font-satoshiMedium text-[#000929] w-full h-full border-none outline-none focus:outline-none focus:ring-0"
+                placeholder="Introduce tu correo electrónico" />
+              <input type="text" name="tipo" value="propiedad" hidden />
+
+              <div class="flex justify-end items-center">
+
+                <button type="submit"
+                  class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-5 md:px-10 py-3 text-center">
+                  Enviar
+                </button>
+              </div>
             </div>
-        </section>
+          </form>
 
-        <section class="bg-[#FAFAFA] lg:bg-white">
-            <div class="bg-[#F7F7FD] flex flex-col gap-10 md:gap-16 py-16">
-                <div class="flex flex-col gap-2 w-11/12 mx-auto" data-aos="fade-up" data-aos-duration="150">
-                    <h3 class="text-[#000929] font-satoshiBold text-text40 text-center">
-                        ¿Es usted <span class="text-[#2E609D]">propitario?</span>
-                    </h3>
-                    <p class="text-[#000929] font-satoshiRegular text-text16 opacity-50 text-center">
-                        Descubra formas de aumentar el valor de su casa y cotizar en la
-                        lista. No es Spam.
-                    </p>
-                </div>
-                <div class="flex flex-col gap-5">
-                    <form action="" id="propFormulario" class="md:w-[630px] w-11/12 mx-auto">
-                        @csrf
-                        <div class="bg-[#FFFFFF] flex flex-row justify-between px-3 md:px-5 py-5 items-center">
-                            <input type="email" name="email" id="email"
-                                class="appearance-none font-satoshiMedium text-[#000929] w-full h-full border-none outline-none focus:outline-none focus:ring-0"
-                                placeholder="Introduce tu correo electrónico" />
-                            <input type="text" name="tipo" value="propiedad" hidden />
-
-                            <div class="flex justify-end items-center">
-
-                                <button type="submit"
-                                    class="bg-[#2E609D] rounded-lg font-satoshiBold text-text16 text-white px-5 md:px-10 py-3 text-center">
-                                    Enviar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <p data-aos="fade-up" data-aos-duration="150"
-                        class="text-[#9EA3AE] text-text14 font-satoshiRegular text-center w-11/12 mx-auto">
-                        Únase a
-                        <span class="text-[#2E609D] font-satoshiBold">10,000+</span>
-                        propietarios más en nuestra comunidad inmobiliaria.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
+          <p data-aos="fade-up" data-aos-duration="150"
+            class="text-[#9EA3AE] text-text14 font-satoshiRegular text-center w-11/12 mx-auto">
+            Únase a
+            <span class="text-[#2E609D] font-satoshiBold">10,000+</span>
+            propietarios más en nuestra comunidad inmobiliaria.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
 
 
 @section('scripts_importados')
 
-    <script>
-        function validarEmail(value) {
-            const regex =
-                /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
+  <script>
+    function validarEmail(value) {
+      const regex =
+        /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
-            if (!regex.test(value)) {
-                alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
-                return false;
-            }
-            return true;
-        }
+      if (!regex.test(value)) {
+        alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
+        return false;
+      }
+      return true;
+    }
 
 
-        $('#propFormulario').submit(function(e) {
+    $('#propFormulario').submit(function(e) {
 
-            e.preventDefault();
+      e.preventDefault();
 
-            Swal.fire({
+      Swal.fire({
 
-                title: 'Procesando información',
-                html: `Registrando... 
+        title: 'Procesando información',
+        html: `Registrando... 
       <div class="max-w-2xl mx-auto overflow-hidden flex justify-center items-center mt-4">
           <div role="status">
           <svg aria-hidden="true" class="w-8 h-8 text-blue-600 animate-spin dark:text-gray-600 " viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1538,87 +1480,139 @@
           </div>
       </div>
       `,
-                allowOutsideClick: false,
-                onBeforeOpen: () => {
-                    Swal.showLoading();
-                }
-            });
-
-
-            if (!validarEmail($('#email').val())) {
-                return;
-            };
-            $.ajax({
-                url: '{{ route('guardarUserNewsLetter') }}',
-                method: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    Swal.close();
-                    Swal.fire({
-                        title: response.message,
-                        icon: "success",
-                    });
-                    $('#propFormulario')[0].reset();
-                },
-                error: function(response) {
-                    let message = ''
-
-                    let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
-                    console.log(isDuplicado)
-
-                    if (isDuplicado) {
-                        message =
-                            'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
-                    } else {
-                        message = response.responseJSON.message
-                    }
-                    Swal.close();
-                    Swal.fire({
-                        title: message,
-                        icon: "error",
-                    });
-                }
-            });
-
-        })
-    </script>
-
-
-
-
-
-    <script>
-        function showTab(tabId) {
-            // Hide all tab content
-            const tabContents = document.querySelectorAll(".tab-content");
-            tabContents.forEach((content) => {
-                content.classList.add("hidden");
-            });
-
-            // Show the selected tab content
-            const selectedTab = document.getElementById(tabId);
-            if (selectedTab) {
-                selectedTab.classList.remove("hidden");
-            }
-
-            // Remove the 'active' class from all tab buttons
-            const tabButtons = document.querySelectorAll(".tab-button");
-            tabButtons.forEach((button) => {
-                button.classList.remove("active");
-            });
-
-            // Add the 'active' class to the clicked tab button
-            const clickedButton = document.querySelector(
-                `[onclick="showTab('${tabId}')"]`
-            );
-            if (clickedButton) {
-                clickedButton.classList.add("active");
-            }
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+          Swal.showLoading();
         }
+      });
 
-        // Initialize the first tab
-        showTab("tab1");
-    </script>
+
+      if (!validarEmail($('#email').val())) {
+        return;
+      };
+      $.ajax({
+        url: '{{ route('guardarUserNewsLetter') }}',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(response) {
+          Swal.close();
+          Swal.fire({
+            title: response.message,
+            icon: "success",
+          });
+          $('#propFormulario')[0].reset();
+        },
+        error: function(response) {
+          let message = ''
+
+          let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
+          console.log(isDuplicado)
+
+          if (isDuplicado) {
+            message =
+              'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
+          } else {
+            message = response.responseJSON.message
+          }
+          Swal.close();
+          Swal.fire({
+            title: message,
+            icon: "error",
+          });
+        }
+      });
+
+    })
+  </script>
+
+
+
+
+
+  <script>
+    function showTab(tabId) {
+      // Hide all tab content
+      const tabContents = document.querySelectorAll(".tab-content");
+      tabContents.forEach((content) => {
+        content.classList.add("hidden");
+      });
+
+      // Show the selected tab content
+      const selectedTab = document.getElementById(tabId);
+      if (selectedTab) {
+        selectedTab.classList.remove("hidden");
+      }
+
+      // Remove the 'active' class from all tab buttons
+      const tabButtons = document.querySelectorAll(".tab-button");
+      tabButtons.forEach((button) => {
+        button.classList.remove("active");
+      });
+
+      // Add the 'active' class to the clicked tab button
+      const clickedButton = document.querySelector(
+        `[onclick="showTab('${tabId}')"]`
+      );
+      if (clickedButton) {
+        clickedButton.classList.add("active");
+      }
+    }
+
+    // Initialize the first tab
+    showTab("tab1");
+  </script>
+  <script>
+    function setUrl(tipoServicio, categoria, ubicacion) {
+
+      // Create a URL object based on the current window location
+      let url = new URL(window.location.href);
+
+      // Use URLSearchParams to manipulate the query string
+      let params = new URLSearchParams(url.search);
+
+      // Update the parameters
+
+      params.set('servicio', tipoServicio);
+      if (categoria) {
+        params.set('categoria', categoria);
+      }
+      if (ubicacion) {
+        params.set('ubicacion', ubicacion);
+      }
+
+      // Update the path to include 'propiedades'
+      url.pathname = '/propiedades';
+
+      // Set the updated search parameters
+      url.search = params.toString();
+      window.location.href = url.toString();
+    }
+    $(document).ready(function() {
+      $("#linkExplirarAlquileres").on('click', function(event) {
+        event.preventDefault();
+
+        // Get the values from the form inputs
+        let ubicacion = document.getElementById('departamento_id2').value;
+        let categoria = document.getElementById('categoria_id2').value;
+
+        let tipoServicio = 'alquiler'
+        setUrl(tipoServicio, categoria, ubicacion)
+
+      })
+      $("#linkExplirarCompras").on('click', function(event) {
+        event.preventDefault();
+
+        // Get the values from the form inputs
+        let ubicacion = document.getElementById('departamento_id').value;
+        let categoria = document.getElementById('categoria_id').value;
+
+        console.log(ubicacion, categoria)
+        let tipoServicio = 'comprar'
+        setUrl(tipoServicio, categoria, ubicacion)
+
+      })
+    })
+  </script>
 @stop
 
 @stop

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AnunciaController;
 use App\Http\Controllers\AttributesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
@@ -67,6 +68,7 @@ Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto')
 
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos');
 Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
+Route::post('guardarAnunciante', [IndexController::class, 'guardarAnunciante'])->name('guardarAnunciante');
 
 /* ---- */
 
@@ -174,6 +176,9 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         /* subscripciones */
         Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones') ;
+
+        Route::get('/anunciante', [AnunciaController::class, 'index'])->name('anunciante.index') ;
+        Route::post('/updateVisible', [AnunciaController::class, 'updateVisible'])->name('anuncia.updateVisible') ;
 
         
         Route::fallback(function() {

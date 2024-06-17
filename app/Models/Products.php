@@ -47,7 +47,9 @@ class Products extends Model
         'departamento_id',
         'provincia_id',
         'distrito_id',
-        'frecuencia'
+        'frecuencia',
+        'tipo_inmueble',
+        'vendedor_ext'
     ];
 
     public function categoria()

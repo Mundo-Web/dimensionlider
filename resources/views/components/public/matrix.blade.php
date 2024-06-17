@@ -2,103 +2,109 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="language" content="spanish">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito.">
-    <title> Venta de decoración de interiores - Deco TAB </title>
-    <meta name="keywords"
-        content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <meta charset="UTF-8">
+  <meta name="language" content="spanish">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito.">
+  <title> Venta de decoración de interiores - Deco TAB </title>
+  <meta name="keywords"
+    content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    {{-- Aqui van los CSS --}}
-    @yield('css_importados')
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    {{-- Swipper --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  {{-- Aqui van los CSS --}}
+  @yield('css_importados')
 
-    {{-- Alpine --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  {{-- Swipper --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    {{-- Sweet Alert --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {{-- Alpine --}}
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+  {{-- Sweet Alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style>
-        @font-face {
-            font-family: "satoshimedium";
-            src: url({{ asset('fonts/satoshi-medium-webfont.woff') }}) format("woff");
-        }
 
-        @font-face {
-            font-family: "satoshiregular";
-            src: url({{ asset('fonts/satoshi-regular-webfont.woff') }}) format("woff");
-        }
 
-        @font-face {
-            font-family: "satoshibold";
-            src: url({{ asset('fonts/satoshi-bold-webfont.woff') }}) format("woff");
-        }
-    </style>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+
+  <style>
+    @font-face {
+      font-family: "satoshimedium";
+      src: url({{ asset('fonts/satoshi-medium-webfont.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "satoshiregular";
+      src: url({{ asset('fonts/satoshi-regular-webfont.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "satoshibold";
+      src: url({{ asset('fonts/satoshi-bold-webfont.woff') }}) format("woff");
+    }
+  </style>
 </head>
 
 <body class="scroll__hidden_explorar">
-    @include('components.public.header')
+  @include('components.public.header')
 
-    <div>
-        {{-- Aqui va el contenido de cada pagina --}}
-        @yield('content')
+  <div>
+    {{-- Aqui va el contenido de cada pagina --}}
+    @yield('content')
 
-    </div>
-
-
-
-    @include('components.public.footer')
+  </div>
 
 
 
-    @yield('scripts_importados')
-    <script>
-        function alerta(message) {
-            Swal.fire({
-                title: message,
-                icon: "error",
-            });
-        }
-
-        function validarEmail(value) {
-            const regex =
-                /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
-
-            if (!regex.test(value)) {
-                alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
-                return false;
-            }
-            return true;
-        }
+  @include('components.public.footer')
 
 
-        $('#formContactos').submit(function(event) {
 
-            event.preventDefault();
-            let formDataArray = $(this).serializeArray();
+  @yield('scripts_importados')
+  <script>
+    function alerta(message) {
+      Swal.fire({
+        title: message,
+        icon: "error",
+      });
+    }
 
-            if (!validarEmail($('#email').val())) {
-                return;
-            };
+    function validarEmail(value) {
+      const regex =
+        /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
-            Swal.fire({
+      if (!regex.test(value)) {
+        alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
+        return false;
+      }
+      return true;
+    }
 
-                title: 'Procesando información',
-                html: `Enviando... 
+
+    $('#formContactos').submit(function(event) {
+
+      event.preventDefault();
+      let formDataArray = $(this).serializeArray();
+
+      if (!validarEmail($('#email').val())) {
+        return;
+      };
+
+      Swal.fire({
+
+        title: 'Procesando información',
+        html: `Enviando... 
                   <p class=" text-text12">Revise su correo de Span</p>
                       <div class="max-w-2xl mx-auto overflow-hidden flex justify-center items-center mt-4 ">
                           <div role="status">
@@ -109,48 +115,48 @@
                       </div>
                   </div>                  
             `,
-                allowOutsideClick: false,
-                onBeforeOpen: () => {
-                    Swal.showLoading();
-                }
-            });
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+          Swal.showLoading();
+        }
+      });
 
-            $.ajax({
-                url: '{{ route('guardarContactos') }}',
-                method: 'POST',
-                data: formDataArray,
-                success: function(response) {
+      $.ajax({
+        url: '{{ route('guardarContactos') }}',
+        method: 'POST',
+        data: formDataArray,
+        success: function(response) {
 
-                    Swal.close();
+          Swal.close();
 
-                    Swal.fire({
-                        title: response.message,
-                        icon: "success",
-                    });
+          Swal.fire({
+            title: response.message,
+            icon: "success",
+          });
 
-                    $('#formContactos')[0].reset();
+          $('#formContactos')[0].reset();
 
-                },
-                error: function(error) {
-                    Swal.close();
-                    const obj = error.responseJSON.message;
-                    const keys = Object.keys(error.responseJSON.message);
-                    let flag = false;
-                    keys.forEach(key => {
-                        if (!flag) {
-                            const e = obj[key][0];
-                            Swal.fire({
-                                title: error.message,
-                                text: e,
-                                icon: "error",
-                            });
-                            flag = true; // Marcar como mostrado
-                        }
-                    });
-                }
-            });
-        })
-    </script>
+        },
+        error: function(error) {
+          Swal.close();
+          const obj = error.responseJSON.message;
+          const keys = Object.keys(error.responseJSON.message);
+          let flag = false;
+          keys.forEach(key => {
+            if (!flag) {
+              const e = obj[key][0];
+              Swal.fire({
+                title: error.message,
+                text: e,
+                icon: "error",
+              });
+              flag = true; // Marcar como mostrado
+            }
+          });
+        }
+      });
+    })
+  </script>
 
 
 
